@@ -24,7 +24,7 @@ class FFAppState extends ChangeNotifier {
 
   late SharedPreferences prefs;
 
-  int _brightness = 0;
+  int _brightness = 255;
   int get brightness => _brightness;
   set brightness(int _value) {
     _brightness = _value;
