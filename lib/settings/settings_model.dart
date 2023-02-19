@@ -12,11 +12,6 @@ class SettingsModel extends FlutterFlowModel {
 
   int brightness = 255;
 
-  ///  State fields for stateful widgets in this page.
-
-  // State field(s) for Slider widget.
-  double? sliderValue;
-
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
