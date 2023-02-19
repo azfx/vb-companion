@@ -52,6 +52,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -70,19 +72,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   height: 50,
                   deviceID: widget.deviceID!,
                 ),
-              ),
-              Slider.adaptive(
-                activeColor: Color(0xFFFFFF00),
-                inactiveColor: FlutterFlowTheme.of(context).lineColor,
-                min: 128,
-                max: 255,
-                value: _model.sliderValue ??= _model.brightness.toDouble(),
-                label: _model.sliderValue.toString(),
-                divisions: 127,
-                onChanged: (newValue) {
-                  newValue = double.parse(newValue.toStringAsFixed(0));
-                  setState(() => _model.sliderValue = newValue);
-                },
               ),
             ],
           ),
