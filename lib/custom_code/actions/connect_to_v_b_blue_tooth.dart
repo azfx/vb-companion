@@ -6,6 +6,11 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom actions
+
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 Future<String> connectToVBBlueTooth() async {
@@ -16,7 +21,16 @@ Future<String> connectToVBBlueTooth() async {
 
   FlutterBluePlus flutterBlue = FlutterBluePlus.instance;
 
-  if (flutterBlue.isOn != true) {
+  bool bluetoothIsOn = await flutterBlue.isOn;
+  String result = "";
+
+  // sleep(const Duration(milliseconds: 2000)); // This will block UI thread.
+
+  bluetoothIsOn = await flutterBlue.isOn;
+
+  if (bluetoothIsOn != true) {
+    print('flutterBlue.isOn : ${bluetoothIsOn}');
+
     return "ERROR:BLUETOOTH_OFF";
   }
   List<BluetoothDevice> connectedDevices = await flutterBlue.connectedDevices;
@@ -25,9 +39,12 @@ Future<String> connectToVBBlueTooth() async {
   connectedDevices.forEach((device) {
     print('${device.name} found!');
     if (device.name == deviceNameFilter) {
+      print('${device.name} matches ${deviceNameFilter}');
       if (!VBConnectedDevices.contains(device)) VBConnectedDevices.add(device);
     }
   });
+
+  print('VBConnectedDevices.IsEmpty:  ${VBConnectedDevices.isEmpty}');
 
   if (!VBConnectedDevices.isEmpty) {
     return "CONNECTED:" + VBConnectedDevices.first.id.id;
@@ -35,32 +52,30 @@ Future<String> connectToVBBlueTooth() async {
 
   // Start scanning
   flutterBlue.startScan(timeout: Duration(seconds: 4));
-  List<BluetoothDevice> VBDevices = [];
-  // Listen to scan results
+  BluetoothDevice connectedDevice;
+
+  final Completer<BluetoothDevice> c = new Completer<BluetoothDevice>();
+
   var subscription = flutterBlue.scanResults.listen((results) {
     // do something with scan results
     for (ScanResult r in results) {
       print('${r.device.name} found! rssi: ${r.rssi}');
       if (r.device.name == deviceNameFilter) {
-        if (!VBDevices.contains(r.device)) VBDevices.add(r.device);
+        print('Subscription: ${r.device.name} matches ${deviceNameFilter}');
+        c.complete(r.device);
         flutterBlue.stopScan();
+        break;
       }
     }
   });
 
-  if (!VBDevices.isEmpty) {
-    BluetoothDevice vbDevice = VBDevices.first;
-    try {
-      await vbDevice.connect();
-      return "CONNECTED:" + vbDevice.id.id;
-    } catch (error) {
-      return "ERROR:CONNECTION_ERROR";
-    }
+  connectedDevice = await c.future;
+
+  if (connectedDevice != null) {
+    return "CONNECTED: ${connectedDevice.id.id}";
+  } else {
+    return "ERROR:SOMETHING";
   }
-
-  flutterBlue.stopScan();
-
-  return "ERROR:SOMETHING";
 
 // // Stop scanning
 // flutterBlue.stopScan();
