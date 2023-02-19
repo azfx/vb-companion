@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom widgets
+
 import 'index.dart';
 
 class BlueToothDeviceSlider extends StatefulWidget {
@@ -33,12 +35,12 @@ class _BlueToothDeviceSliderState extends State<BlueToothDeviceSlider> {
       inactiveColor: FlutterFlowTheme.of(context).lineColor,
       min: 128,
       max: 255,
-      value: FFAppState().brightness.toInt(),
+      value: FFAppState().brightness.toDouble(),
       label: FFAppState().brightness.toInt().toString(),
       divisions: 127,
       onChanged: (newValue) {
         newValue = double.parse(newValue.toStringAsFixed(0));
-        setState(() => FFAppState().brightness = newValue);
+        setState(() => FFAppState().brightness = newValue.toInt());
       },
     );
   }

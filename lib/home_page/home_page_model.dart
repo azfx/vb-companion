@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 class HomePageModel extends FlutterFlowModel {
   ///  Local state fields for this page.
 
-  String? connectionState;
+  String? connectionState = ' ';
 
   ///  State fields for stateful widgets in this page.
 
