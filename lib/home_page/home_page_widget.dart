@@ -57,10 +57,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AutoSizeText(
-                valueOrDefault<String>(
-                  _model.connectionState,
-                  'None',
-                ),
+                (String varConnState) {
+                  return varConnState.contains("CONNECTED")
+                      ? "CONNECTED"
+                      : varConnState;
+                }(_model.connectionState!),
                 style: FlutterFlowTheme.of(context).subtitle1.override(
                       fontFamily: 'Poppins',
                       color: Colors.white,
@@ -77,9 +78,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
+                  _model.connectionState = 'Connecting..';
+                  await Future.delayed(const Duration(milliseconds: 500));
                   _model.connectToVBBlueToothResult =
                       await actions.connectToVBBlueTooth();
                   _model.connectionState = _model.connectToVBBlueToothResult;
+                  if ((String varConnState) {
+                    return varConnState.contains("CONNECTED");
+                  }(_model.connectionState!)) {
+                    await Future.delayed(const Duration(milliseconds: 1000));
+
+                    context.goNamed(
+                      'Settings',
+                      queryParams: {
+                        'deviceID': serializeParam(
+                          (String varConnState) {
+                            return varConnState.split(":")[1];
+                          }(_model.connectionState!),
+                          ParamType.String,
+                        ),
+                      }.withoutNulls,
+                    );
+                  }
 
                   setState(() {});
                 },
