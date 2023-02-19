@@ -64,6 +64,19 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                child: Text(
+                  valueOrDefault<String>(
+                    FFAppState().brightness.toString(),
+                    '255',
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                      ),
+                ),
+              ),
               Container(
                 width: double.infinity,
                 height: 50,
