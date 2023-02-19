@@ -43,7 +43,8 @@
 	<true/>
 
 
-
+	<key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Please ensure Bluetooth is turned on.</string>
 
 
 	<key>UILaunchStoryboardName</key>
