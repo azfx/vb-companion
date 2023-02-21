@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:async';
 import 'dart:io';
 
@@ -56,13 +58,14 @@ Future<String> connectToVBBlueTooth() async {
 
   final Completer<BluetoothDevice> c = new Completer<BluetoothDevice>();
 
-  var subscription = flutterBlue.scanResults.listen((results) {
+  var subscription = flutterBlue.scanResults.listen((results) async {
     // do something with scan results
     for (ScanResult r in results) {
-      print('${r.device.name} found! rssi: ${r.rssi}');
+      //print('${r.device.name} found! rssi: ${r.rssi}');
       if (r.device.name == deviceNameFilter) {
-        print('Subscription: ${r.device.name} matches ${deviceNameFilter}');
-        c.complete(r.device);
+        //print('Subscription: ${r.device.name} matches ${deviceNameFilter}');
+        await r.device.connect();
+        if (!c.isCompleted) c.complete(r.device);
         flutterBlue.stopScan();
         break;
       }
@@ -72,7 +75,7 @@ Future<String> connectToVBBlueTooth() async {
   connectedDevice = await c.future;
 
   if (connectedDevice != null) {
-    return "CONNECTED: ${connectedDevice.id.id}";
+    return "CONNECTED:${connectedDevice.id.id}";
   } else {
     return "ERROR:SOMETHING";
   }
