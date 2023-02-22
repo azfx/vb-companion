@@ -35,6 +35,12 @@ class FFAppState extends ChangeNotifier {
   set connectionState(String _value) {
     _connectionState = _value;
   }
+
+  String _connectedDeviceID = '';
+  String get connectedDeviceID => _connectedDeviceID;
+  set connectedDeviceID(String _value) {
+    _connectedDeviceID = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
