@@ -54,7 +54,7 @@ class _HelpWidgetState extends State<HelpWidget> {
           style: FlutterFlowTheme.of(context).subtitle1,
         ),
         actions: [],
-        centerTitle: false,
+        centerTitle: true,
         elevation: 2,
       ),
       body: SafeArea(
