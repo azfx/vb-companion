@@ -80,8 +80,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
-                  _model.connectionState = 'Connecting..';
-                  await Future.delayed(const Duration(milliseconds: 1000));
                   _model.connectToVBBlueToothResult =
                       await actions.connectToVBBlueTooth();
                   await Future.delayed(const Duration(milliseconds: 500));
@@ -92,18 +90,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       'Settings',
                       queryParams: {
                         'deviceID': serializeParam(
-                          (String varConnState) {
-                            return varConnState.split(":")[1];
-                          }(_model.connectionState!),
+                          FFAppState().connectedDeviceID,
                           ParamType.String,
                         ),
                       }.withoutNulls,
                     );
                   } else {
                     HapticFeedback.mediumImpact();
-                    setState(() {
-                      _model.connectionState = ' ';
-                    });
 
                     context.pushNamed('Help');
                   }
