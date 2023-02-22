@@ -41,7 +41,7 @@ Future<String> connectToVBBlueTooth() async {
   List<BluetoothDevice> VBConnectedDevices = [];
 
   connectedDevices.forEach((device) {
-    print('${device.name} found!');
+    print('Connected device: ${device.name} found!');
     if (device.name == deviceNameFilter) {
       print('${device.name} matches ${deviceNameFilter}');
       if (!VBConnectedDevices.contains(device)) VBConnectedDevices.add(device);
