@@ -124,7 +124,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                     ),
                   ),
-                  if (FFAppState().connectionState != 'connected')
+                  if (FFAppState().connectionState == 'disconnected')
                     Container(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 1,

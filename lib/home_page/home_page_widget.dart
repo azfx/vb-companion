@@ -84,7 +84,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   await Future.delayed(const Duration(milliseconds: 500));
                   _model.connectToVBBlueToothResult =
                       await actions.connectToVBBlueTooth();
-                  _model.connectionState = _model.connectToVBBlueToothResult;
                   if ((String varConnState) {
                     return varConnState.contains("CONNECTED");
                   }(_model.connectionState!)) {
