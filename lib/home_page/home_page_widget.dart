@@ -121,6 +121,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         );
                       },
                     );
+                    setState(() {
+                      _model.connectionState = ' ';
+                    });
                   }
 
                   setState(() {});
