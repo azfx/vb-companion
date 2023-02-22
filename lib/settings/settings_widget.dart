@@ -129,44 +129,81 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 1,
                       decoration: BoxDecoration(
-                        color: Color(0x00FFFFFF),
+                        color: FlutterFlowTheme.of(context).primaryBackground,
                       ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          FFButtonWidget(
-                            onPressed: () async {
-                              context.goNamed(
-                                'HomePage',
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType: PageTransitionType.fade,
-                                  ),
-                                },
-                              );
-                            },
-                            text: 'Retry',
-                            options: FFButtonOptions(
-                              width: 130,
-                              height: 40,
-                              color: FlutterFlowTheme.of(context).primaryColor,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                  ),
-                              borderSide: BorderSide(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(25, 25, 25, 25),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                              child: Icon(
+                                Icons.error_outline,
                                 color:
-                                    FlutterFlowTheme.of(context).secondaryColor,
-                                width: 1,
+                                    FlutterFlowTheme.of(context).tertiaryColor,
+                                size: 60,
                               ),
-                              borderRadius: BorderRadius.circular(8),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                              child: Text(
+                                'Vision Buddy Headset disconnected!',
+                                style: FlutterFlowTheme.of(context)
+                                    .subtitle1
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .tertiaryColor,
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                              child: Text(
+                                'Please ensure the headset is powered on, and in bluetooth scan mode.',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
+                            ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                context.goNamed(
+                                  'HomePage',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                    ),
+                                  },
+                                );
+                              },
+                              text: 'Retry',
+                              options: FFButtonOptions(
+                                width: 130,
+                                height: 40,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryColor,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                 ],

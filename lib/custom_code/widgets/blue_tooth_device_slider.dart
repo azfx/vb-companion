@@ -70,7 +70,10 @@ class _BlueToothDeviceSliderState extends State<BlueToothDeviceSlider> {
               inactiveColor: FlutterFlowTheme.of(context).lineColor,
               min: widget.min,
               max: widget.max,
-              value: FFAppState().brightness.toDouble(),
+              value: FFAppState()
+                  .brightness
+                  .toDouble()
+                  .clamp(widget.min, widget.max),
               label: FFAppState().brightness.toInt().toString(),
               divisions: 127,
               onChanged: (newValue) async {
