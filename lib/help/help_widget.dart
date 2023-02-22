@@ -311,11 +311,10 @@ class _HelpWidgetState extends State<HelpWidget> {
                                           await Future.delayed(const Duration(
                                               milliseconds: 500));
                                           await actions.connectToVBBlueTooth();
+                                          await Future.delayed(const Duration(
+                                              milliseconds: 1000));
                                           if (FFAppState().connectionState ==
                                               'connected') {
-                                            await Future.delayed(const Duration(
-                                                milliseconds: 500));
-
                                             context.pushNamed(
                                               'Settings',
                                               queryParams: {
