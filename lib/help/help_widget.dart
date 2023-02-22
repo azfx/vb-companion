@@ -274,14 +274,21 @@ class _HelpWidgetState extends State<HelpWidget> {
                                     fit: BoxFit.contain,
                                   ),
                                 ),
+                                Text(
+                                  'Current Status',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .lineColor,
+                                      ),
+                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 20, 20, 20),
+                                      20, 0, 20, 20),
                                   child: Text(
-                                    valueOrDefault<String>(
-                                      FFAppState().connectionState,
-                                      'Ready to Connect!',
-                                    ),
+                                    FFAppState().connectionState.toUpperCase(),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context).title3,
                                   ),

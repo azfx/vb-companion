@@ -51,6 +51,8 @@ Future<String> connectToVBBlueTooth() async {
   print('VBConnectedDevices.IsEmpty:  ${VBConnectedDevices.isEmpty}');
 
   if (!VBConnectedDevices.isEmpty) {
+    FFAppState().update(
+        () => FFAppState().connectedDeviceID = VBConnectedDevices.first.id.id);
     return "CONNECTED:" + VBConnectedDevices.first.id.id;
   }
 

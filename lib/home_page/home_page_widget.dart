@@ -60,11 +60,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AutoSizeText(
-                (String varConnState) {
-                  return varConnState.contains("CONNECTED")
-                      ? "CONNECTED"
-                      : varConnState;
-                }(_model.connectionState!),
+                valueOrDefault<String>(
+                  FFAppState().connectionState,
+                  'Ready to Connect',
+                ).toUpperCase(),
                 style: FlutterFlowTheme.of(context).subtitle1.override(
                       fontFamily: 'Poppins',
                       color: Colors.white,
