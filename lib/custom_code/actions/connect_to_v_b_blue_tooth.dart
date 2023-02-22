@@ -55,8 +55,7 @@ Future<String> connectToVBBlueTooth() async {
   }
 
   // Start scanning
-  flutterBlue.startScan(
-      timeout: Duration(seconds: 4), withServices: [Guid(serviceIDFilter)]);
+  flutterBlue.startScan(timeout: Duration(seconds: 4));
   BluetoothDevice connectedDevice;
 
   final Completer<BluetoothDevice> c = new Completer<BluetoothDevice>();

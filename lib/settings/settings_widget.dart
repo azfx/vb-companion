@@ -124,7 +124,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                 ),
                               ],
                             );
-                            if (FFAppState().connectionState != 'connecting') {
+                            if (FFAppState().connectionState != 'connected') {
                               return ClipRect(
                                 child: ImageFiltered(
                                   imageFilter: ImageFilter.blur(
