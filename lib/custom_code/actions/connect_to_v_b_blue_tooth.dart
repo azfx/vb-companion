@@ -10,6 +10,8 @@ import 'index.dart'; // Imports other custom actions
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:async';
 import 'dart:io';
 
@@ -53,7 +55,8 @@ Future<String> connectToVBBlueTooth() async {
   }
 
   // Start scanning
-  flutterBlue.startScan(timeout: Duration(seconds: 4));
+  flutterBlue.startScan(
+      timeout: Duration(seconds: 4), withServices: [Guid(serviceIDFilter)]);
   BluetoothDevice connectedDevice;
 
   final Completer<BluetoothDevice> c = new Completer<BluetoothDevice>();
@@ -72,20 +75,17 @@ Future<String> connectToVBBlueTooth() async {
     }
   });
 
-  connectedDevice = await c.future;
+  Future.delayed(const Duration(milliseconds: 4000), () {
+    flutterBlue.stopScan();
+    if (!c.isCompleted)
+      c.completeError("No devices found"); // Stop scanning after 4 seconds
+  });
 
-  if (connectedDevice != null) {
+  try {
+    connectedDevice = await c.future;
     return "CONNECTED:${connectedDevice.id.id}";
-  } else {
-    return "ERROR:SOMETHING";
+  } catch (error) {
+    print(error);
+    return "Error: No Devices Found.";
   }
-
-// // Stop scanning
-// flutterBlue.stopScan();
-
-// List<BluetoothService> services = await device.discoverServices();
-// services.forEach((service) {
-//     // do something with service
-//     print('Service with uuid ${service.uuid} found!');
-// });
 }

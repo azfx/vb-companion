@@ -29,6 +29,12 @@ class FFAppState extends ChangeNotifier {
   set brightness(int _value) {
     _brightness = _value;
   }
+
+  String _connectionState = '';
+  String get connectionState => _connectionState;
+  set connectionState(String _value) {
+    _connectionState = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

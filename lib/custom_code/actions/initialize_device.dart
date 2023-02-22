@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom actions
 
+import 'index.dart'; // Imports other custom actions
+
 import 'dart:async';
 import 'dart:io';
 
@@ -32,6 +34,11 @@ Future initializeDevice(String deviceID) async {
       print("!${deviceID}!");
       if (device.id.id == deviceID) {
         print('${device.id} matches ${deviceID}');
+        device.state.listen((state) => {
+              //print("BluetoothState: ${state.name}");
+              FFAppState()
+                  .update(() => FFAppState().connectionState = state.name)
+            });
         List<BluetoothService> services = await device.discoverServices();
         for (var service in services) {
           if (service.uuid == Guid(serviceID)) {

@@ -5,6 +5,7 @@ import '../custom_code/actions/index.dart' as actions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_page_model.dart';
@@ -100,6 +101,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ParamType.String,
                         ),
                       }.withoutNulls,
+                    );
+                  } else {
+                    HapticFeedback.mediumImpact();
+                    await showDialog(
+                      context: context,
+                      builder: (alertDialogContext) {
+                        return AlertDialog(
+                          title: Text('Device not found'),
+                          content: Text(
+                              'Could not find Vision Buddy headset. Please ensure the headset is powered on, and bluetooth is enabled on your mobile device.'),
+                          actions: [
+                            TextButton(
+                              onPressed: () =>
+                                  Navigator.pop(alertDialogContext),
+                              child: Text('Ok'),
+                            ),
+                          ],
+                        );
+                      },
                     );
                   }
 

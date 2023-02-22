@@ -1,5 +1,7 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '../custom_code/actions/index.dart' as actions;
 import '../custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
@@ -64,31 +66,111 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
-                child: Text(
-                  valueOrDefault<String>(
-                    FFAppState().brightness.toString(),
-                    '255',
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Poppins',
-                        color: FlutterFlowTheme.of(context).primaryText,
+              Stack(
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(0, 0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 1,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).primaryBackground,
                       ),
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                height: 50,
-                child: custom_widgets.BlueToothDeviceSlider(
-                  width: double.infinity,
-                  height: 50,
-                  deviceID: widget.deviceID!,
-                  min: 128.0,
-                  max: 255.0,
-                  serviceID: '37200001-7638-4216-B629-96AD40F79BB1',
-                  charactaristicID: '47200001-7638-4216-B629-96AD40F79BB1',
-                ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Builder(builder: (_) {
+                            final child = Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 50),
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        FFAppState().brightness.toString(),
+                                        '255',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 50,
+                                    child: custom_widgets.BlueToothDeviceSlider(
+                                      width: double.infinity,
+                                      height: 50,
+                                      deviceID: widget.deviceID!,
+                                      min: 128.0,
+                                      max: 255.0,
+                                      serviceID:
+                                          '37200001-7638-4216-B629-96AD40F79BB1',
+                                      charactaristicID:
+                                          '47200001-7638-4216-B629-96AD40F79BB1',
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                            if (FFAppState().connectionState != 'connecting') {
+                              return ClipRect(
+                                child: ImageFiltered(
+                                  imageFilter: ImageFilter.blur(
+                                    sigmaX: 2,
+                                    sigmaY: 2,
+                                  ),
+                                  child: child,
+                                ),
+                              );
+                            }
+                            return child;
+                          }),
+                        ],
+                      ),
+                    ),
+                  ),
+                  if (FFAppState().connectionState != 'connected')
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 1,
+                      decoration: BoxDecoration(
+                        color: Color(0x00FFFFFF),
+                      ),
+                      child: FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: 'Oh helllo!',
+                        options: FFButtonOptions(
+                          width: 130,
+                          height: 40,
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                ],
               ),
             ],
           ),
