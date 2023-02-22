@@ -9,10 +9,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SettingsModel extends FlutterFlowModel {
-  ///  Local state fields for this page.
-
-  int brightness = 255;
-
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
