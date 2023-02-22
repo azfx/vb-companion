@@ -104,26 +104,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     );
                   } else {
                     HapticFeedback.mediumImpact();
-                    await showDialog(
-                      context: context,
-                      builder: (alertDialogContext) {
-                        return AlertDialog(
-                          title: Text('Device not found'),
-                          content: Text(
-                              'Could not find Vision Buddy headset. Please ensure the headset is powered on, and bluetooth is enabled on your mobile device.'),
-                          actions: [
-                            TextButton(
-                              onPressed: () =>
-                                  Navigator.pop(alertDialogContext),
-                              child: Text('Ok'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
                     setState(() {
                       _model.connectionState = ' ';
                     });
+
+                    context.pushNamed('Help');
                   }
 
                   setState(() {});

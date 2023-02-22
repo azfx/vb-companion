@@ -132,7 +132,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         color: FlutterFlowTheme.of(context).primaryBackground,
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(25, 25, 25, 25),
+                        padding: EdgeInsetsDirectional.fromSTEB(15, 15, 15, 15),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -152,6 +152,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                               child: Text(
                                 'Vision Buddy Headset disconnected!',
+                                textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .subtitle1
                                     .override(

@@ -82,9 +82,12 @@ Future<String> connectToVBBlueTooth() async {
 
   try {
     connectedDevice = await c.future;
+    FFAppState()
+        .update(() => FFAppState().connectedDeviceID = connectedDevice.id.id);
     return "CONNECTED:${connectedDevice.id.id}";
   } catch (error) {
     print(error);
+    FFAppState().update(() => FFAppState().connectedDeviceID = "");
     return "Error: No Devices Found.";
   }
 }
