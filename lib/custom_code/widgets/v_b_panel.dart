@@ -7,7 +7,11 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import '../../';
+import 'index.dart'; // Imports other custom widgets
+
+//import '../../';
+
+//import '../flutter_flow/flutter_flow_widgets.dart';
 
 class VBPanel extends StatefulWidget {
   const VBPanel({
@@ -92,16 +96,20 @@ class _VBPanelState extends State<VBPanel> {
                               width: MediaQuery.of(context).size.width * 0.7,
                               height: 50,
                               child: BlueToothDeviceSlider(
-                                width: MediaQuery.of(context).size.width * 0.7,
-                                height: 50,
-                                deviceID: widget.deviceID!,
-                                min: 128.0,
-                                max: 255.0,
-                                serviceID:
-                                    '37200001-7638-4216-B629-96AD40F79BB1',
-                                charactaristicID:
-                                    '47200001-7638-4216-B629-96AD40F79BB1',
-                              ),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.7,
+                                  height: 50,
+                                  deviceID: widget.deviceID!,
+                                  min: 128.0,
+                                  max: 255.0,
+                                  serviceID:
+                                      '37200001-7638-4216-B629-96AD40F79BB1',
+                                  charactaristicID:
+                                      '47200001-7638-4216-B629-96AD40F79BB1',
+                                  onChanged: (dynamic newValue) {
+                                    FFAppState().update(() => FFAppState()
+                                        .brightness = newValue.toInt());
+                                  }),
                             ),
                           ),
                         ),
@@ -114,16 +122,20 @@ class _VBPanelState extends State<VBPanel> {
                               width: MediaQuery.of(context).size.width * 0.7,
                               height: 50,
                               child: BlueToothDeviceSlider(
-                                width: MediaQuery.of(context).size.width * 0.7,
-                                height: 50,
-                                deviceID: widget.deviceID!,
-                                min: 128.0,
-                                max: 255.0,
-                                serviceID:
-                                    '37200001-7638-4216-B629-96AD40F79BB1',
-                                charactaristicID:
-                                    '47200001-7638-4216-B629-96AD40F79BB1',
-                              ),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.7,
+                                  height: 50,
+                                  deviceID: widget.deviceID!,
+                                  min: 128.0,
+                                  max: 255.0,
+                                  serviceID:
+                                      '37200001-7638-4216-B629-96AD40F79BB1',
+                                  charactaristicID:
+                                      '47200001-7638-4216-B629-96AD40F79BB1',
+                                  onChanged: (dynamic newValue) {
+                                    FFAppState().update(() => FFAppState()
+                                        .brightness = newValue.toInt());
+                                  }),
                             ),
                           ),
                         ),
@@ -143,40 +155,7 @@ class _VBPanelState extends State<VBPanel> {
                     ),
                   ),
                 ],
-              ),
-              Align(
-                alignment: AlignmentDirectional(0, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 29, 0, 0),
-                      child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
-                        },
-                        text: 'Mode',
-                        options: FFButtonOptions(
-                          width: 130,
-                          height: 40,
-                          color: FlutterFlowTheme.of(context).primaryColor,
-                          textStyle:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                  ),
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).secondaryColor,
-                            width: 1,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              )
             ],
           ),
         ),

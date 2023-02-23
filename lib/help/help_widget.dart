@@ -99,7 +99,13 @@ class _HelpWidgetState extends State<HelpWidget> {
                                       20, 20, 20, 20),
                                   child: Text(
                                     'Step 1',
-                                    style: FlutterFlowTheme.of(context).title3,
+                                    style: FlutterFlowTheme.of(context)
+                                        .title3
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
                                   ),
                                 ),
                                 Text(

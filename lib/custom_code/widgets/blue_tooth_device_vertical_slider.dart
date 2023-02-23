@@ -7,7 +7,10 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom widgets
+
 import 'package:syncfusion_flutter_sliders/sliders.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
 
 class BlueToothDeviceVerticalSlider extends StatefulWidget {
   const BlueToothDeviceVerticalSlider({
@@ -28,22 +31,33 @@ class BlueToothDeviceVerticalSlider extends StatefulWidget {
 
 class _BlueToothDeviceVerticalSliderState
     extends State<BlueToothDeviceVerticalSlider> {
-  double _value = 40.0;
+  double _value = 4.0;
   @override
   Widget build(BuildContext context) {
-    return SfSlider.vertical(
-      min: 0.0,
-      max: 100.0,
-      value: _value,
-      interval: 20,
-      showTicks: true,
-      showLabels: true,
-      minorTicksPerInterval: 1,
-      onChanged: (dynamic value) {
-        setState(() {
-          _value = value;
-        });
-      },
-    );
+    return SfSliderTheme(
+        data: SfSliderThemeData(
+            activeLabelStyle: TextStyle(
+                color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+            inactiveLabelStyle: TextStyle(color: Colors.white70, fontSize: 16),
+            activeTrackColor: Colors.white,
+            inactiveTrackColor: Colors.white30,
+            thumbColor: Colors.yellow,
+            activeTrackHeight: 2.0,
+            inactiveTrackHeight: 1.0),
+        child: SfSlider.vertical(
+          min: 1.0,
+          max: 10.0,
+          value: _value.toInt(),
+          interval: 1,
+          showTicks: true,
+          showLabels: true,
+          enableTooltip: true,
+          minorTicksPerInterval: 1,
+          onChanged: (dynamic value) {
+            setState(() {
+              _value = value;
+            });
+          },
+        ));
   }
 }

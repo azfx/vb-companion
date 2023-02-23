@@ -7,11 +7,9 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'index.dart'; // Imports other custom widgets
-
-import 'index.dart'; // Imports other custom widgets
-
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+import 'package:syncfusion_flutter_sliders/sliders.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
 
 import 'index.dart'; // Imports other custom widgets
 import 'dart:async';
@@ -30,6 +28,7 @@ class BlueToothDeviceSlider extends StatefulWidget {
     required this.deviceID,
     required this.serviceID,
     required this.charactaristicID,
+    required this.onChanged,
   }) : super(key: key);
 
   final double? width;
@@ -40,6 +39,8 @@ class BlueToothDeviceSlider extends StatefulWidget {
   final String deviceID;
   final String serviceID;
   final String charactaristicID;
+
+  final void Function(dynamic val) onChanged;
 
   @override
   _BlueToothDeviceSliderState createState() => _BlueToothDeviceSliderState();
@@ -65,27 +66,40 @@ class _BlueToothDeviceSliderState extends State<BlueToothDeviceSlider> {
             BluetoothCharacteristic? characteristic = service?.characteristics
                 .where((c) => c.uuid == Guid(widget.charactaristicID))
                 .first;
-            return Slider.adaptive(
-              activeColor: Color(0xFFFFFF00),
-              inactiveColor: FlutterFlowTheme.of(context).lineColor,
-              min: widget.min,
-              max: widget.max,
-              value: FFAppState()
-                  .brightness
-                  .toDouble()
-                  .clamp(widget.min, widget.max),
-              label: FFAppState().brightness.toInt().toString(),
-              divisions: 127,
-              onChanged: (newValue) async {
-                newValue = double.parse(newValue.toStringAsFixed(0));
-                FFAppState()
-                    .update(() => FFAppState().brightness = newValue.toInt());
-                print(int32bytes(newValue.toInt()));
-                await characteristic?.write(int32bytes(newValue.toInt()),
-                    withoutResponse: false);
-                await characteristic?.read();
-              },
-            );
+            return SfSliderTheme(
+                data: SfSliderThemeData(
+                    activeLabelStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                    inactiveLabelStyle:
+                        TextStyle(color: Colors.white70, fontSize: 16),
+                    activeTrackColor: Colors.white,
+                    inactiveTrackColor: FlutterFlowTheme.of(context).lineColor,
+                    thumbColor: FlutterFlowTheme.of(context).tertiaryColor,
+                    activeTrackHeight: 2.0,
+                    inactiveTrackHeight: 1.0),
+                child: SfSlider(
+                  min: widget.min,
+                  max: widget.max,
+                  value: FFAppState()
+                      .brightness
+                      .toDouble()
+                      .clamp(widget.min, widget.max),
+                  interval: 10,
+                  showTicks: false,
+                  showLabels: false,
+                  enableTooltip: true,
+                  minorTicksPerInterval: 1,
+                  onChanged: widget.onChanged,
+                  onChangeEnd: (dynamic newValue) async {
+                    newValue = double.parse(newValue.toStringAsFixed(0));
+                    print(int32bytes(newValue.toInt()));
+                    await characteristic?.write(int32bytes(newValue.toInt()),
+                        withoutResponse: false);
+                    await characteristic?.read();
+                  },
+                ));
           } else {
             return CircularProgressIndicator();
           }
