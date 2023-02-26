@@ -41,6 +41,24 @@ class FFAppState extends ChangeNotifier {
   set connectedDeviceID(String _value) {
     _connectedDeviceID = _value;
   }
+
+  int _contrast = 255;
+  int get contrast => _contrast;
+  set contrast(int _value) {
+    _contrast = _value;
+  }
+
+  int _rpLevel = 9;
+  int get rpLevel => _rpLevel;
+  set rpLevel(int _value) {
+    _rpLevel = _value;
+  }
+
+  int _zoomLevel = 1;
+  int get zoomLevel => _zoomLevel;
+  set zoomLevel(int _value) {
+    _zoomLevel = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
