@@ -5,7 +5,7 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <application
-        android:label="VB Companion"
+        android:label="Vision Buddy"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
@@ -45,7 +45,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="vbcompanion" android:host="vbcompanion.com" />
+                <data android:scheme="vb" android:host="companion.visionbuddy.com" />
             </intent-filter>
 
         </activity>
