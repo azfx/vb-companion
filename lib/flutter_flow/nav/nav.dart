@@ -33,9 +33,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ? Builder(
               builder: (context) => Container(
                 color: Colors.transparent,
-                child: Image.asset(
-                  'assets/images/VB-Logo-White-No-Text.png',
-                  fit: BoxFit.contain,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/VB-Logo-White-No-Text.png',
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
             )
@@ -48,9 +52,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ? Builder(
                   builder: (context) => Container(
                     color: Colors.transparent,
-                    child: Image.asset(
-                      'assets/images/VB-Logo-White-No-Text.png',
-                      fit: BoxFit.contain,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/VB-Logo-White-No-Text.png',
+                        width: 200,
+                        height: 200,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 )
