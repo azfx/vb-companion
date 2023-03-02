@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom widgets
 
+import 'index.dart'; // Imports other custom widgets
+
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
@@ -48,7 +50,7 @@ class BlueToothDeviceSlider extends StatefulWidget {
   final String serviceID;
   final String charactaristicID;
 
-  final void Function(dynamic val) onChanged;
+  final void Function() onChanged;
 
   @override
   _BlueToothDeviceSliderState createState() => _BlueToothDeviceSliderState();
@@ -98,8 +100,9 @@ class _BlueToothDeviceSliderState extends State<BlueToothDeviceSlider> {
                   showLabels: false,
                   enableTooltip: true,
                   minorTicksPerInterval: 1,
-                  onChanged: (dynamic newValue) {
-                    dynamic sliderValues = FFAppState().currentSliderValue;
+                  onChanged: (dynamic newValue) async {
+                    dynamic sliderValues =
+                        await FFAppState().currentSliderValue;
                     sliderValues[widget.fieldName] = newValue.toInt();
                     FFAppState().update(() {
                       FFAppState().currentSliderValue = sliderValues;
