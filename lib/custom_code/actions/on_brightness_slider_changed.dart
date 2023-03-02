@@ -6,13 +6,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'dart:async';
-import 'dart:io';
-
-import 'package:flutter_blue_plus/flutter_blue_plus.dart';
-
-Future turnOnBlueTooth() async {
+Future onBrightnessSliderChanged(dynamic newValue) async {
   // Add your function code here!
-  FlutterBluePlus flutterBlue = FlutterBluePlus.instance;
-  await flutterBlue.isOn;
+  FFAppState().update(() => FFAppState().brightness = newValue.toInt());
 }

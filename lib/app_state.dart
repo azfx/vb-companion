@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/lat_lng.dart';
+import 'dart:convert';
 
 class FFAppState extends ChangeNotifier {
   static final FFAppState _instance = FFAppState._internal();
@@ -58,6 +59,13 @@ class FFAppState extends ChangeNotifier {
   int get zoomLevel => _zoomLevel;
   set zoomLevel(int _value) {
     _zoomLevel = _value;
+  }
+
+  dynamic _currentSliderValue =
+      jsonDecode('{\"brightness\":255,\"contrast\":255,\"zoomLevel\":1}');
+  dynamic get currentSliderValue => _currentSliderValue;
+  set currentSliderValue(dynamic _value) {
+    _currentSliderValue = _value;
   }
 }
 

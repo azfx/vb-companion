@@ -52,6 +52,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Help',
               path: 'help',
               builder: (context, params) => HelpWidget(),
+            ),
+            FFRoute(
+              name: 'SettingsCopy',
+              path: 'settingsCopy',
+              builder: (context, params) => SettingsCopyWidget(
+                deviceID: params.getParam('deviceID', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

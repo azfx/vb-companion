@@ -1,7 +1,7 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../custom_code/actions/index.dart' as actions;
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -70,11 +70,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
               ),
               Align(
-                alignment: AlignmentDirectional(0, 0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Image.asset(
                   'assets/images/VB-Logo-White-No-Text.png',
-                  width: 200,
-                  height: 200,
+                  width: 200.0,
+                  height: 200.0,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -105,8 +105,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 },
                 text: 'Connect',
                 options: FFButtonOptions(
-                  width: 200,
-                  height: 50,
+                  width: 200.0,
+                  height: 50.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(1.0, 1.0, 1.0, 1.0),
                   color: FlutterFlowTheme.of(context).primaryColor,
                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Poppins',
@@ -114,9 +117,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                   borderSide: BorderSide(
                     color: FlutterFlowTheme.of(context).primaryBtnText,
-                    width: 1,
+                    width: 1.0,
                   ),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
             ],
