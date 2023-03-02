@@ -1,7 +1,7 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../custom_code/actions/index.dart' as actions;
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
@@ -55,7 +55,7 @@ class _HelpWidgetState extends State<HelpWidget> {
         ),
         actions: [],
         centerTitle: true,
-        elevation: 2,
+        elevation: 2.0,
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -66,11 +66,12 @@ class _HelpWidgetState extends State<HelpWidget> {
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  height: 500,
+                  height: 500.0,
                   child: Stack(
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
                         child: PageView(
                           controller: _model.pageViewController ??=
                               PageController(initialPage: 0),
@@ -80,23 +81,25 @@ class _HelpWidgetState extends State<HelpWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  height: 300,
+                                  width:
+                                      MediaQuery.of(context).size.width * 1.0,
+                                  height: 300.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
                                   ),
                                   child: Image.asset(
                                     'assets/images/Step_1_-_BW-PowerOn.png',
-                                    width: MediaQuery.of(context).size.width,
-                                    height:
-                                        MediaQuery.of(context).size.height * 1,
+                                    width:
+                                        MediaQuery.of(context).size.width * 1.0,
+                                    height: MediaQuery.of(context).size.height *
+                                        1.0,
                                     fit: BoxFit.contain,
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 20, 20, 20),
+                                      20.0, 20.0, 20.0, 20.0),
                                   child: Text(
                                     'Step 1',
                                     style: FlutterFlowTheme.of(context)
@@ -114,7 +117,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 25, 0, 0),
+                                      0.0, 25.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -131,8 +134,14 @@ class _HelpWidgetState extends State<HelpWidget> {
                                         },
                                         text: 'Next',
                                         options: FFButtonOptions(
-                                          width: 130,
-                                          height: 40,
+                                          width: 130.0,
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
                                           textStyle:
@@ -145,10 +154,10 @@ class _HelpWidgetState extends State<HelpWidget> {
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
-                                            width: 1,
+                                            width: 1.0,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(8.0),
                                         ),
                                       ),
                                     ],
@@ -160,23 +169,25 @@ class _HelpWidgetState extends State<HelpWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  height: 300,
+                                  width:
+                                      MediaQuery.of(context).size.width * 1.0,
+                                  height: 300.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
                                   ),
                                   child: Image.asset(
                                     'assets/images/Step_1_-_BW-PowerOn.png',
-                                    width: MediaQuery.of(context).size.width,
-                                    height:
-                                        MediaQuery.of(context).size.height * 1,
+                                    width:
+                                        MediaQuery.of(context).size.width * 1.0,
+                                    height: MediaQuery.of(context).size.height *
+                                        1.0,
                                     fit: BoxFit.contain,
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 20, 20, 20),
+                                      20.0, 20.0, 20.0, 20.0),
                                   child: Text(
                                     'Step 2',
                                     style: FlutterFlowTheme.of(context).title3,
@@ -188,7 +199,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      10, 25, 10, 0),
+                                      10.0, 25.0, 10.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -206,8 +217,14 @@ class _HelpWidgetState extends State<HelpWidget> {
                                         },
                                         text: 'Back',
                                         options: FFButtonOptions(
-                                          width: 130,
-                                          height: 40,
+                                          width: 130.0,
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
                                           textStyle:
@@ -220,10 +237,10 @@ class _HelpWidgetState extends State<HelpWidget> {
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
-                                            width: 1,
+                                            width: 1.0,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(8.0),
                                         ),
                                       ),
                                       FFButtonWidget(
@@ -237,8 +254,14 @@ class _HelpWidgetState extends State<HelpWidget> {
                                         },
                                         text: 'Next',
                                         options: FFButtonOptions(
-                                          width: 130,
-                                          height: 40,
+                                          width: 130.0,
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
                                           textStyle:
@@ -251,10 +274,10 @@ class _HelpWidgetState extends State<HelpWidget> {
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
-                                            width: 1,
+                                            width: 1.0,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(8.0),
                                         ),
                                       ),
                                     ],
@@ -266,17 +289,19 @@ class _HelpWidgetState extends State<HelpWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  height: 300,
+                                  width:
+                                      MediaQuery.of(context).size.width * 1.0,
+                                  height: 300.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
                                   ),
                                   child: Image.asset(
                                     'assets/images/Step_1_-_BW-PowerOn.png',
-                                    width: MediaQuery.of(context).size.width,
-                                    height:
-                                        MediaQuery.of(context).size.height * 1,
+                                    width:
+                                        MediaQuery.of(context).size.width * 1.0,
+                                    height: MediaQuery.of(context).size.height *
+                                        1.0,
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -292,7 +317,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 0, 20, 20),
+                                      20.0, 0.0, 20.0, 20.0),
                                   child: Text(
                                     FFAppState().connectionState.toUpperCase(),
                                     textAlign: TextAlign.center,
@@ -306,7 +331,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 25, 0, 0),
+                                      0.0, 25.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -355,8 +380,14 @@ class _HelpWidgetState extends State<HelpWidget> {
                                         },
                                         text: 'Connect',
                                         options: FFButtonOptions(
-                                          width: 200,
-                                          height: 50,
+                                          width: 200.0,
+                                          height: 50.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
                                           textStyle:
@@ -369,10 +400,10 @@ class _HelpWidgetState extends State<HelpWidget> {
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryColor,
-                                            width: 1,
+                                            width: 1.0,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(8.0),
                                         ),
                                       ),
                                     ],
@@ -384,9 +415,10 @@ class _HelpWidgetState extends State<HelpWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 0.9),
+                        alignment: AlignmentDirectional(0.0, 0.9),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 10.0),
                           child: smooth_page_indicator.SmoothPageIndicator(
                             controller: _model.pageViewController ??=
                                 PageController(initialPage: 0),
@@ -400,11 +432,11 @@ class _HelpWidgetState extends State<HelpWidget> {
                               );
                             },
                             effect: smooth_page_indicator.ExpandingDotsEffect(
-                              expansionFactor: 2,
-                              spacing: 8,
-                              radius: 16,
-                              dotWidth: 16,
-                              dotHeight: 16,
+                              expansionFactor: 2.0,
+                              spacing: 8.0,
+                              radius: 16.0,
+                              dotWidth: 16.0,
+                              dotHeight: 16.0,
                               dotColor: Color(0xFF9E9E9E),
                               activeDotColor:
                                   FlutterFlowTheme.of(context).secondaryColor,

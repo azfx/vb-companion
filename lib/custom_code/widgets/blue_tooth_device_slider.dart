@@ -1,11 +1,13 @@
 // Automatic FlutterFlow imports
-import '../../flutter_flow/flutter_flow_theme.dart';
-import '../../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
-import '../actions/index.dart'; // Imports custom actions
+import '/custom_code/actions/index.dart'; // Imports custom actions
 import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'index.dart'; // Imports other custom widgets
 
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
@@ -23,6 +25,9 @@ class BlueToothDeviceSlider extends StatefulWidget {
     Key? key,
     this.width,
     this.height,
+    this.displayName,
+    required this.fieldName,
+    required this.value,
     required this.min,
     required this.max,
     required this.deviceID,
@@ -33,8 +38,11 @@ class BlueToothDeviceSlider extends StatefulWidget {
 
   final double? width;
   final double? height;
+  final String? displayName;
+  final String fieldName;
   final double min;
   final double max;
+  final double value;
 
   final String deviceID;
   final String serviceID;
@@ -48,6 +56,8 @@ class BlueToothDeviceSlider extends StatefulWidget {
 
 class _BlueToothDeviceSliderState extends State<BlueToothDeviceSlider> {
   Future<BluetoothService?>? daFuture;
+
+  double? sliderValue;
 
   void initState() {
     super.initState();
@@ -82,16 +92,20 @@ class _BlueToothDeviceSliderState extends State<BlueToothDeviceSlider> {
                 child: SfSlider(
                   min: widget.min,
                   max: widget.max,
-                  value: FFAppState()
-                      .brightness
-                      .toDouble()
-                      .clamp(widget.min, widget.max),
+                  value: widget.value.toDouble().clamp(widget.min, widget.max),
                   interval: 10,
                   showTicks: false,
                   showLabels: false,
                   enableTooltip: true,
                   minorTicksPerInterval: 1,
-                  onChanged: widget.onChanged,
+                  onChanged: (dynamic newValue) {
+                    dynamic sliderValues = FFAppState().currentSliderValue;
+                    sliderValues[widget.fieldName] = newValue.toInt();
+                    FFAppState().update(() {
+                      FFAppState().currentSliderValue = sliderValues;
+                      widget.onChanged();
+                    });
+                  },
                   onChangeEnd: (dynamic newValue) async {
                     newValue = double.parse(newValue.toStringAsFixed(0));
                     print(int32bytes(newValue.toInt()));

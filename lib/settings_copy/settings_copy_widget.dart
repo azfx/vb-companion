@@ -2,16 +2,15 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'settings_model.dart';
-export 'settings_model.dart';
+import 'settings_copy_model.dart';
+export 'settings_copy_model.dart';
 
-class SettingsWidget extends StatefulWidget {
-  const SettingsWidget({
+class SettingsCopyWidget extends StatefulWidget {
+  const SettingsCopyWidget({
     Key? key,
     this.deviceID,
   }) : super(key: key);
@@ -19,11 +18,11 @@ class SettingsWidget extends StatefulWidget {
   final String? deviceID;
 
   @override
-  _SettingsWidgetState createState() => _SettingsWidgetState();
+  _SettingsCopyWidgetState createState() => _SettingsCopyWidgetState();
 }
 
-class _SettingsWidgetState extends State<SettingsWidget> {
-  late SettingsModel _model;
+class _SettingsCopyWidgetState extends State<SettingsCopyWidget> {
+  late SettingsCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
@@ -31,7 +30,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SettingsModel());
+    _model = createModel(context, () => SettingsCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -69,62 +68,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 height: MediaQuery.of(context).size.height * 0.8,
                 child: Stack(
                   children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 200.0,
-                                  height: 40.0,
-                                  child: custom_widgets.BlueToothDeviceSlider(
-                                    width: 200.0,
-                                    height: 40.0,
-                                    displayName: 'Brightness',
-                                    value: FFAppState().brightness.toDouble(),
-                                    min: 128.0,
-                                    max: 255.0,
-                                    deviceID: FFAppState().connectedDeviceID,
-                                    serviceID:
-                                        '37200001-7638-4216-B629-96AD40F79BB1',
-                                    charactaristicID:
-                                        '47200001-7638-4216-B629-96AD40F79BB1',
-                                    fieldName: 'brightness',
-                                    onChanged: () async {
-                                      setState(() {
-                                        FFAppState().brightness = getJsonField(
-                                          FFAppState().currentSliderValue,
-                                          r'''$.brightness''',
-                                        );
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              width: 70.0,
-                              height: 300.0,
-                              child:
-                                  custom_widgets.BlueToothDeviceVerticalSlider(
-                                width: 70.0,
-                                height: 300.0,
-                                characteristicID:
-                                    '47200004-7638-4216-B629-96AD40F79BB1',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
                     if (FFAppState().connectionState == 'disconnected')
                       Container(
                         width: MediaQuery.of(context).size.width * 1.0,

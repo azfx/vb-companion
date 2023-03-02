@@ -1,11 +1,13 @@
 // Automatic FlutterFlow imports
-import '../../flutter_flow/flutter_flow_theme.dart';
-import '../../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
-import '../actions/index.dart'; // Imports custom actions
+import '/custom_code/actions/index.dart'; // Imports custom actions
 import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
+
+import 'index.dart'; // Imports other custom widgets
 
 import 'index.dart'; // Imports other custom widgets
 
@@ -23,6 +25,8 @@ class VBPanel extends StatefulWidget {
     required this.brightnessID,
     required this.rpLevelID,
     required this.zoomLevelID,
+    required this.contrastID,
+    required this.volumeLevelID,
     required this.modeID,
   }) : super(key: key);
 
@@ -33,6 +37,8 @@ class VBPanel extends StatefulWidget {
   final String brightnessID;
   final String rpLevelID;
   final String zoomLevelID;
+  final String contrastID;
+  final String volumeLevelID;
   final String modeID;
 
   @override
@@ -96,16 +102,16 @@ class _VBPanelState extends State<VBPanel> {
                               width: MediaQuery.of(context).size.width * 0.7,
                               height: 50,
                               child: BlueToothDeviceSlider(
+                                  displayName: 'Brightness',
                                   width:
                                       MediaQuery.of(context).size.width * 0.7,
                                   height: 50,
                                   deviceID: widget.deviceID!,
                                   min: 128.0,
                                   max: 255.0,
-                                  serviceID:
-                                      '37200001-7638-4216-B629-96AD40F79BB1',
-                                  charactaristicID:
-                                      '47200001-7638-4216-B629-96AD40F79BB1',
+                                  value: FFAppState().brightness,
+                                  serviceID: widget.serviceID,
+                                  charactaristicID: widget.brightnessID,
                                   onChanged: (dynamic newValue) {
                                     FFAppState().update(() => FFAppState()
                                         .brightness = newValue.toInt());
@@ -122,19 +128,45 @@ class _VBPanelState extends State<VBPanel> {
                               width: MediaQuery.of(context).size.width * 0.7,
                               height: 50,
                               child: BlueToothDeviceSlider(
+                                  displayName: 'Contrast',
                                   width:
                                       MediaQuery.of(context).size.width * 0.7,
                                   height: 50,
                                   deviceID: widget.deviceID!,
                                   min: 128.0,
                                   max: 255.0,
-                                  serviceID:
-                                      '37200001-7638-4216-B629-96AD40F79BB1',
-                                  charactaristicID:
-                                      '47200001-7638-4216-B629-96AD40F79BB1',
+                                  value: FFAppState().contrast,
+                                  serviceID: widget.serviceID,
+                                  charactaristicID: widget.contrastID,
                                   onChanged: (dynamic newValue) {
                                     FFAppState().update(() => FFAppState()
-                                        .brightness = newValue.toInt());
+                                        .contrast = newValue.toInt());
+                                  }),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0, 0),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(15, 15, 15, 15),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.7,
+                              height: 50,
+                              child: BlueToothDeviceSlider(
+                                  displayName: 'RP Level',
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.7,
+                                  height: 50,
+                                  deviceID: widget.deviceID!,
+                                  min: 0.0,
+                                  max: 9.0,
+                                  value: FFAppState().rpLevel,
+                                  serviceID: widget.serviceID,
+                                  charactaristicID: widget.rpLevelID,
+                                  onChanged: (dynamic newValue) {
+                                    FFAppState().update(() => FFAppState()
+                                        .rpLevel = newValue.toInt());
                                   }),
                             ),
                           ),
