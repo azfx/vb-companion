@@ -69,61 +69,374 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 height: MediaQuery.of(context).size.height * 0.8,
                 child: Stack(
                   children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 200.0,
-                                  height: 40.0,
-                                  child: custom_widgets.BlueToothDeviceSlider(
-                                    width: 200.0,
-                                    height: 40.0,
-                                    displayName: 'Brightness',
-                                    value: FFAppState().brightness.toDouble(),
-                                    min: 128.0,
-                                    max: 255.0,
-                                    deviceID: FFAppState().connectedDeviceID,
-                                    serviceID:
-                                        '37200001-7638-4216-B629-96AD40F79BB1',
-                                    charactaristicID:
-                                        '47200001-7638-4216-B629-96AD40F79BB1',
-                                    fieldName: 'brightness',
-                                    onChanged: () async {
-                                      setState(() {
-                                        FFAppState().brightness = getJsonField(
-                                          FFAppState().currentSliderValue,
-                                          r'''$.brightness''',
-                                        );
-                                      });
-                                    },
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 5.0),
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      height: 70.0,
+                                      decoration: BoxDecoration(
+                                        color: Color(0x00E0E3E7),
+                                        borderRadius:
+                                            BorderRadius.circular(3.0),
+                                        border: Border.all(
+                                          color: Color(0x50E0E3E7),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 5.0, 10.0, 5.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Brightness',
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
+                                            ),
+                                            Container(
+                                              width: 200.0,
+                                              height: 40.0,
+                                              child: custom_widgets
+                                                  .BlueToothDeviceSlider(
+                                                width: 200.0,
+                                                height: 40.0,
+                                                displayName: 'Brightness',
+                                                value: FFAppState()
+                                                    .brightness
+                                                    .toDouble(),
+                                                min: 128.0,
+                                                max: 255.0,
+                                                deviceID: FFAppState()
+                                                    .connectedDeviceID,
+                                                serviceID:
+                                                    '37200001-7638-4216-B629-96AD40F79BB1',
+                                                charactaristicID:
+                                                    '47200001-7638-4216-B629-96AD40F79BB1',
+                                                fieldName: 'brightness',
+                                                onChanged: () async {
+                                                  setState(() {
+                                                    FFAppState().brightness =
+                                                        getJsonField(
+                                                      FFAppState()
+                                                          .currentSliderValue,
+                                                      r'''$.brightness''',
+                                                    );
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                   ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 5.0),
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      height: 70.0,
+                                      decoration: BoxDecoration(
+                                        color: Color(0x00E0E3E7),
+                                        borderRadius:
+                                            BorderRadius.circular(3.0),
+                                        border: Border.all(
+                                          color: Color(0x50E0E3E7),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 5.0, 10.0, 5.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Contrast',
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
+                                            ),
+                                            Container(
+                                              width: 200.0,
+                                              height: 40.0,
+                                              child: custom_widgets
+                                                  .BlueToothDeviceSlider(
+                                                width: 200.0,
+                                                height: 40.0,
+                                                displayName: 'Contrast',
+                                                value: FFAppState()
+                                                    .contrast
+                                                    .toDouble(),
+                                                min: 128.0,
+                                                max: 255.0,
+                                                deviceID: FFAppState()
+                                                    .connectedDeviceID,
+                                                serviceID:
+                                                    '37200001-7638-4216-B629-96AD40F79BB1',
+                                                charactaristicID:
+                                                    '47200002-7638-4216-B629-96AD40F79BB1',
+                                                fieldName: 'contrast',
+                                                onChanged: () async {
+                                                  setState(() {
+                                                    FFAppState().contrast =
+                                                        getJsonField(
+                                                      FFAppState()
+                                                          .currentSliderValue,
+                                                      r'''$.contrast''',
+                                                    );
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 5.0),
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      height: 70.0,
+                                      decoration: BoxDecoration(
+                                        color: Color(0x00E0E3E7),
+                                        borderRadius:
+                                            BorderRadius.circular(3.0),
+                                        border: Border.all(
+                                          color: Color(0x50E0E3E7),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 5.0, 10.0, 5.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'RP Window Size',
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
+                                            ),
+                                            Container(
+                                              width: 200.0,
+                                              height: 40.0,
+                                              child: custom_widgets
+                                                  .BlueToothDeviceSlider(
+                                                width: 200.0,
+                                                height: 40.0,
+                                                displayName: 'RP',
+                                                value: FFAppState()
+                                                    .rpLevel
+                                                    .toDouble(),
+                                                min: 128.0,
+                                                max: 255.0,
+                                                deviceID: FFAppState()
+                                                    .connectedDeviceID,
+                                                serviceID:
+                                                    '37200001-7638-4216-B629-96AD40F79BB1',
+                                                charactaristicID:
+                                                    '47200005-7638-4216-B629-96AD40F79BB1',
+                                                fieldName: 'rpLevel',
+                                                onChanged: () async {
+                                                  setState(() {
+                                                    FFAppState().rpLevel =
+                                                        getJsonField(
+                                                      FFAppState()
+                                                          .currentSliderValue,
+                                                      r'''$.rpLevel''',
+                                                    );
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 5.0),
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      height: 70.0,
+                                      decoration: BoxDecoration(
+                                        color: Color(0x00E0E3E7),
+                                        borderRadius:
+                                            BorderRadius.circular(3.0),
+                                        border: Border.all(
+                                          color: Color(0x50E0E3E7),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 5.0, 10.0, 5.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Volume',
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
+                                            ),
+                                            Container(
+                                              width: 200.0,
+                                              height: 40.0,
+                                              child: custom_widgets
+                                                  .BlueToothDeviceSlider(
+                                                width: 200.0,
+                                                height: 40.0,
+                                                displayName: 'Volume',
+                                                value: FFAppState()
+                                                    .volume
+                                                    .toDouble(),
+                                                min: 0.0,
+                                                max: 7.0,
+                                                deviceID: FFAppState()
+                                                    .connectedDeviceID,
+                                                serviceID:
+                                                    '37200001-7638-4216-B629-96AD40F79BB1',
+                                                charactaristicID:
+                                                    '47200007-7638-4216-B629-96AD40F79BB1',
+                                                fieldName: 'volume',
+                                                onChanged: () async {
+                                                  setState(() {
+                                                    FFAppState().volume =
+                                                        getJsonField(
+                                                      FFAppState()
+                                                          .currentSliderValue,
+                                                      r'''$.volume''',
+                                                    );
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: 100.0,
+                                      height: 310.0,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(3.0),
+                                        border: Border.all(
+                                          color: Color(0x50E0E3E7),
+                                        ),
+                                      ),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.2,
+                                            height: 300.0,
+                                            child: custom_widgets
+                                                .BlueToothDeviceVerticalSlider(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.2,
+                                              height: 300.0,
+                                              characteristicID:
+                                                  '47200004-7638-4216-B629-96AD40F79BB1',
+                                            ),
+                                          ),
+                                          Text(
+                                            'Zoom',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            Container(
-                              width: 70.0,
-                              height: 300.0,
-                              child:
-                                  custom_widgets.BlueToothDeviceVerticalSlider(
-                                width: 70.0,
-                                height: 300.0,
-                                characteristicID:
-                                    '47200004-7638-4216-B629-96AD40F79BB1',
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
+                            child: FFButtonWidget(
+                              onPressed: () {
+                                print('Button pressed ...');
+                              },
+                              text: 'Mode',
+                              options: FFButtonOptions(
+                                width: 130.0,
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                             ),
-                          ],
-                        ),
-                      ],
+                          ),
+                        ],
+                      ),
                     ),
                     if (FFAppState().connectionState == 'disconnected')
                       Container(

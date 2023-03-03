@@ -67,6 +67,12 @@ class FFAppState extends ChangeNotifier {
   set currentSliderValue(dynamic _value) {
     _currentSliderValue = _value;
   }
+
+  int _volume = 5;
+  int get volume => _volume;
+  set volume(int _value) {
+    _volume = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
