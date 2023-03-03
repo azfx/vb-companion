@@ -118,7 +118,7 @@ class _BlueToothDeviceSliderState extends State<BlueToothDeviceSlider> {
                   },
                 ));
           } else {
-            return CircularProgressIndicator();
+            return LinearProgressIndicator();
           }
         });
   }
