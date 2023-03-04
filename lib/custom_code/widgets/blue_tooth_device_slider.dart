@@ -13,6 +13,8 @@ import 'index.dart'; // Imports other custom widgets
 
 import 'index.dart'; // Imports other custom widgets
 
+import 'index.dart'; // Imports other custom widgets
+
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
@@ -97,7 +99,7 @@ class _BlueToothDeviceSliderState extends State<BlueToothDeviceSlider> {
                   min: widget.min,
                   max: widget.max,
                   value: widget.value.toDouble().clamp(widget.min, widget.max),
-                  interval: 10,
+                  interval: 1,
                   showTicks: false,
                   showLabels: false,
                   enableTooltip: true,
