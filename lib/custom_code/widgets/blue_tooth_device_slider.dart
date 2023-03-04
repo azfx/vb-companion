@@ -11,6 +11,8 @@ import 'index.dart'; // Imports other custom widgets
 
 import 'index.dart'; // Imports other custom widgets
 
+import 'index.dart'; // Imports other custom widgets
+
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
@@ -118,7 +120,10 @@ class _BlueToothDeviceSliderState extends State<BlueToothDeviceSlider> {
                   },
                 ));
           } else {
-            return LinearProgressIndicator();
+            return LinearProgressIndicator(
+                backgroundColor: Colors.black,
+                color: Colors.white70,
+                minHeight: 1);
           }
         });
   }

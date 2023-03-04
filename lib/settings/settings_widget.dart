@@ -387,8 +387,29 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                       .width *
                                                   0.2,
                                               height: 300.0,
-                                              characteristicID:
+                                              displayName: 'Zoom',
+                                              fieldName: 'zoomLevel',
+                                              value: FFAppState()
+                                                  .zoomLevel
+                                                  .toDouble(),
+                                              min: 1.0,
+                                              max: 10.0,
+                                              deviceID: FFAppState()
+                                                  .connectedDeviceID,
+                                              serviceID:
+                                                  '37200001-7638-4216-B629-96AD40F79BB1',
+                                              charactaristicID:
                                                   '47200004-7638-4216-B629-96AD40F79BB1',
+                                              onChanged: () async {
+                                                setState(() {
+                                                  FFAppState().zoomLevel =
+                                                      getJsonField(
+                                                    FFAppState()
+                                                        .currentSliderValue,
+                                                    r'''$.zoomLevel''',
+                                                  );
+                                                });
+                                              },
                                             ),
                                           ),
                                           Text(
@@ -406,7 +427,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 0.0),
+                                0.0, 20.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () {
                                 print('Button pressed ...');
@@ -414,7 +435,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               text: 'Mode',
                               options: FFButtonOptions(
                                 width: 130.0,
-                                height: 40.0,
+                                height: 50.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -428,7 +449,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       color: Colors.white,
                                     ),
                                 borderSide: BorderSide(
-                                  color: Colors.transparent,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryColor,
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
