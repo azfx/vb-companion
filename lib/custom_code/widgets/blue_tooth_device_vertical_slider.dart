@@ -13,6 +13,8 @@ import 'index.dart'; // Imports other custom widgets
 
 import 'index.dart'; // Imports other custom widgets
 
+import 'index.dart'; // Imports other custom widgets
+
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
@@ -55,7 +57,7 @@ class BlueToothDeviceVerticalSlider extends StatefulWidget {
 
 class _BlueToothDeviceVerticalSliderState
     extends State<BlueToothDeviceVerticalSlider> {
-  Future<BluetoothService?>? daFuture;
+  Future<BluetoothCharacteristic?>? daFuture;
 
   double? sliderValue;
 
@@ -63,19 +65,21 @@ class _BlueToothDeviceVerticalSliderState
     super.initState();
     // Note here we are not awaiting the user, but rather storing
     // the future in the variable
-    daFuture = getServicesForConnectedDevice(widget.deviceID, widget.serviceID);
+    daFuture = getCharacteristicForConnectedDevice(
+        widget.deviceID,
+        widget.serviceID,
+        widget.charactaristicID,
+        widget.fieldName,
+        widget.displayName);
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: daFuture,
-        builder: (context, AsyncSnapshot<BluetoothService?> snapshot) {
+        builder: (context, AsyncSnapshot<BluetoothCharacteristic?> snapshot) {
           if (snapshot.hasData) {
-            BluetoothService? service = snapshot.data;
-            BluetoothCharacteristic? characteristic = service?.characteristics
-                .where((c) => c.uuid == Guid(widget.charactaristicID))
-                .first;
+            BluetoothCharacteristic? characteristic = snapshot.data;
             return SfSliderTheme(
                 data: SfSliderThemeData(
                     activeLabelStyle: TextStyle(
@@ -99,6 +103,7 @@ class _BlueToothDeviceVerticalSliderState
                   enableTooltip: true,
                   minorTicksPerInterval: 1,
                   onChanged: (dynamic newValue) async {
+                    print("new value: ${newValue}");
                     dynamic sliderValues =
                         await FFAppState().currentSliderValue;
                     sliderValues[widget.fieldName] = newValue.toInt();
@@ -108,7 +113,8 @@ class _BlueToothDeviceVerticalSliderState
                     });
                   },
                   onChangeEnd: (dynamic newValue) async {
-                    newValue = double.parse(newValue.toStringAsFixed(0));
+                    newValue = double.parse(newValue.toStringAsFixed(0)) -
+                        1; // Zoom index offset
                     print(int32bytes(newValue.toInt()));
                     await characteristic?.write(int32bytes(newValue.toInt()),
                         withoutResponse: false);
@@ -128,8 +134,31 @@ class _BlueToothDeviceVerticalSliderState
 Uint8List int32bytes(int value) => Uint8List(4)
   ..buffer.asByteData().setInt32(0, value, Endian.big); // 175 = [0,0,0,175];
 
-Future<BluetoothService?> getServicesForConnectedDevice(
-    String deviceID, String serviceID) async {
+listenToCharactristicChanges(BluetoothCharacteristic? characteristic,
+    String fieldName, String? name) async {
+  print("listenToCharactristicChanges called");
+  await characteristic?.setNotifyValue(!characteristic.isNotifying);
+
+  // characteristic?.onValueChangedStream.listen((value) async {
+  //     dynamic sliderValues =
+  //       await FFAppState().currentSliderValue;
+  //     int newValue = value[3].toInt();
+  //     if (sliderValues[fieldName] != newValue) {
+  //       sliderValues[fieldName] = newValue;
+  //       print("${name} value changed to: ${value}");
+  //       FFAppState().update(() {
+  //         FFAppState().currentSliderValue = sliderValues;
+  //       });
+  //     }
+  // });
+}
+
+Future<BluetoothCharacteristic?> getCharacteristicForConnectedDevice(
+    String deviceID,
+    String serviceID,
+    String charactaristicID,
+    String fieldName,
+    String? displayName) async {
   print("Looking for VB Headset..");
 
   const deviceNameFilter = "Vision Buddy";
@@ -149,7 +178,12 @@ Future<BluetoothService?> getServicesForConnectedDevice(
         services = await device.discoverServices();
         for (var service in services) {
           if (service.uuid == Guid(serviceID)) {
-            return service;
+            BluetoothCharacteristic characteristic = service.characteristics
+                .where((c) => c.uuid == Guid(charactaristicID))
+                .first;
+            listenToCharactristicChanges(
+                characteristic, fieldName, displayName);
+            return characteristic;
           }
         }
       }

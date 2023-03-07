@@ -363,7 +363,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   children: [
                                     Container(
                                       width: 100.0,
-                                      height: 310.0,
+                                      height: 550.0,
                                       decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(3.0),
@@ -373,20 +373,22 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       ),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Container(
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
                                                 0.2,
-                                            height: 300.0,
+                                            height: 500.0,
                                             child: custom_widgets
                                                 .BlueToothDeviceVerticalSlider(
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width *
                                                   0.2,
-                                              height: 300.0,
+                                              height: 500.0,
                                               displayName: 'Zoom',
                                               fieldName: 'zoomLevel',
                                               value: FFAppState()
@@ -412,10 +414,16 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                               },
                                             ),
                                           ),
-                                          Text(
-                                            'Zoom',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1,
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 5.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Zoom',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
+                                            ),
                                           ),
                                         ],
                                       ),
