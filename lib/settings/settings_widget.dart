@@ -90,7 +90,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.6,
-                                      height: 70.0,
+                                      height: 75.0,
                                       decoration: BoxDecoration(
                                         color: Color(0x00E0E3E7),
                                         borderRadius:
@@ -134,6 +134,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                 charactaristicID:
                                                     '47200001-7638-4216-B629-96AD40F79BB1',
                                                 fieldName: 'brightness',
+                                                showLabels: false,
+                                                showTicks: false,
+                                                enableTooltip: false,
+                                                interval: 1,
+                                                minorTicksPerInterval: 1,
                                                 onChanged: () async {
                                                   setState(() {
                                                     FFAppState().brightness =
@@ -157,7 +162,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.6,
-                                      height: 70.0,
+                                      height: 75.0,
                                       decoration: BoxDecoration(
                                         color: Color(0x00E0E3E7),
                                         borderRadius:
@@ -201,6 +206,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                 charactaristicID:
                                                     '47200002-7638-4216-B629-96AD40F79BB1',
                                                 fieldName: 'contrast',
+                                                showLabels: false,
+                                                showTicks: false,
+                                                enableTooltip: false,
+                                                interval: 1,
+                                                minorTicksPerInterval: 1,
                                                 onChanged: () async {
                                                   setState(() {
                                                     FFAppState().contrast =
@@ -224,7 +234,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.6,
-                                      height: 70.0,
+                                      height: 75.0,
                                       decoration: BoxDecoration(
                                         color: Color(0x00E0E3E7),
                                         borderRadius:
@@ -268,6 +278,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                 charactaristicID:
                                                     '47200005-7638-4216-B629-96AD40F79BB1',
                                                 fieldName: 'rpLevel',
+                                                showLabels: false,
+                                                showTicks: false,
+                                                enableTooltip: false,
+                                                interval: 1,
+                                                minorTicksPerInterval: 1,
                                                 onChanged: () async {
                                                   setState(() {
                                                     FFAppState().rpLevel =
@@ -291,7 +306,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.6,
-                                      height: 70.0,
+                                      height: 75.0,
                                       decoration: BoxDecoration(
                                         color: Color(0x00E0E3E7),
                                         borderRadius:
@@ -335,6 +350,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                 charactaristicID:
                                                     '47200007-7638-4216-B629-96AD40F79BB1',
                                                 fieldName: 'volume',
+                                                showLabels: false,
+                                                showTicks: false,
+                                                enableTooltip: false,
+                                                interval: 1,
+                                                minorTicksPerInterval: 1,
                                                 onChanged: () async {
                                                   setState(() {
                                                     FFAppState().volume =
@@ -363,7 +383,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                   children: [
                                     Container(
                                       width: 100.0,
-                                      height: 550.0,
+                                      height: 450.0,
                                       decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(3.0),
@@ -381,14 +401,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                     .size
                                                     .width *
                                                 0.2,
-                                            height: 500.0,
+                                            height: 400.0,
                                             child: custom_widgets
                                                 .BlueToothDeviceVerticalSlider(
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width *
                                                   0.2,
-                                              height: 500.0,
+                                              height: 400.0,
                                               displayName: 'Zoom',
                                               fieldName: 'zoomLevel',
                                               value: FFAppState()
@@ -402,6 +422,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                                   '37200001-7638-4216-B629-96AD40F79BB1',
                                               charactaristicID:
                                                   '47200004-7638-4216-B629-96AD40F79BB1',
+                                              showLabels: true,
+                                              showTicks: true,
+                                              enableTooltip: true,
+                                              interval: 1,
+                                              minorTicksPerInterval: 1,
                                               onChanged: () async {
                                                 setState(() {
                                                   FFAppState().zoomLevel =

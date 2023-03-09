@@ -15,6 +15,8 @@ import 'index.dart'; // Imports other custom widgets
 
 import 'index.dart'; // Imports other custom widgets
 
+import 'index.dart'; // Imports other custom widgets
+
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
@@ -30,6 +32,11 @@ class BlueToothDeviceVerticalSlider extends StatefulWidget {
     required this.value,
     required this.min,
     required this.max,
+    required this.showLabels,
+    required this.showTicks,
+    required this.enableTooltip,
+    required this.interval,
+    required this.minorTicksPerInterval,
     required this.deviceID,
     required this.serviceID,
     required this.charactaristicID,
@@ -43,6 +50,11 @@ class BlueToothDeviceVerticalSlider extends StatefulWidget {
   final double min;
   final double max;
   final double value;
+  final bool showLabels;
+  final bool showTicks;
+  final bool enableTooltip;
+  final int interval;
+  final int minorTicksPerInterval;
 
   final String deviceID;
   final String serviceID;
@@ -98,10 +110,10 @@ class _BlueToothDeviceVerticalSliderState
                   max: widget.max,
                   value: widget.value.toDouble().clamp(widget.min, widget.max),
                   interval: 1,
-                  showTicks: true,
-                  showLabels: true,
-                  enableTooltip: true,
-                  minorTicksPerInterval: 1,
+                  showTicks: widget.showTicks,
+                  showLabels: widget.showLabels,
+                  enableTooltip: widget.enableTooltip,
+                  minorTicksPerInterval: widget.minorTicksPerInterval,
                   onChanged: (dynamic newValue) async {
                     print("new value: ${newValue}");
                     dynamic sliderValues =
@@ -113,10 +125,7 @@ class _BlueToothDeviceVerticalSliderState
                     });
                   },
                   onChangeEnd: (dynamic newValue) async {
-                    newValue = double.parse(newValue.toStringAsFixed(0)) -
-                        1; // Zoom index offset
-                    print(int32bytes(newValue.toInt()));
-                    await characteristic?.write(int32bytes(newValue.toInt()),
+                    await characteristic?.write([0, 0, 0, newValue.toInt()],
                         withoutResponse: false);
                     await characteristic?.read();
                   },
@@ -130,9 +139,6 @@ class _BlueToothDeviceVerticalSliderState
         });
   }
 }
-
-Uint8List int32bytes(int value) => Uint8List(4)
-  ..buffer.asByteData().setInt32(0, value, Endian.big); // 175 = [0,0,0,175];
 
 listenToCharactristicChanges(BluetoothCharacteristic? characteristic,
     String fieldName, String? name) async {
@@ -160,9 +166,6 @@ Future<BluetoothCharacteristic?> getCharacteristicForConnectedDevice(
     String fieldName,
     String? displayName) async {
   print("Looking for VB Headset..");
-
-  const deviceNameFilter = "Vision Buddy";
-  const serviceIDFilter = "37200001-7638-4216-B629-96AD40F79BB1";
 
   FlutterBluePlus flutterBlue = FlutterBluePlus.instance;
   bool bluetoothIsOn = await flutterBlue.isOn;
