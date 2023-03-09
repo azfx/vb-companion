@@ -30,24 +30,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
   final animationsMap = {
     'textOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
-      applyInitialState: true,
       effects: [
         FadeEffect(
           curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 0.0,
-        ),
-      ],
-    ),
-    'textOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
+          delay: 400.ms,
           duration: 600.ms,
           begin: 0.0,
           end: 1.0,
@@ -97,13 +83,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
       await actions.turnOnBlueTooth();
     });
 
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -138,11 +117,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       fontFamily: 'Poppins',
                       color: Colors.white,
                     ),
-              )
-                  .animateOnPageLoad(animationsMap['textOnPageLoadAnimation']!)
-                  .animateOnActionTrigger(
-                    animationsMap['textOnActionTriggerAnimation']!,
-                  ),
+              ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation']!),
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Image.asset(
@@ -156,11 +131,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 onPressed: () async {
                   _model.connectToVBBlueToothResult =
                       await actions.connectToVBBlueTooth();
-                  if (animationsMap['textOnActionTriggerAnimation'] != null) {
-                    await animationsMap['textOnActionTriggerAnimation']!
-                        .controller
-                        .forward(from: 0.0);
-                  }
                   await Future.delayed(const Duration(milliseconds: 500));
                   if (FFAppState().connectionState == 'connected') {
                     HapticFeedback.heavyImpact();
