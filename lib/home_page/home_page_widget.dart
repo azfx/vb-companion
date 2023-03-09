@@ -1,3 +1,4 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -6,6 +7,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_page_model.dart';
@@ -18,11 +20,72 @@ class HomePageWidget extends StatefulWidget {
   _HomePageWidgetState createState() => _HomePageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget> {
+class _HomePageWidgetState extends State<HomePageWidget>
+    with TickerProviderStateMixin {
   late HomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+
+  final animationsMap = {
+    'textOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      applyInitialState: true,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 0.0,
+        ),
+      ],
+    ),
+    'textOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: true,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+    'imageOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 900.ms,
+          begin: 0.4,
+          end: 1.0,
+        ),
+      ],
+    ),
+    'buttonOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 500.ms,
+          duration: 600.ms,
+          begin: Offset(0.0, 9.000000000000014),
+          end: Offset(0.0, 0.0),
+        ),
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 600.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
@@ -33,6 +96,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.turnOnBlueTooth();
     });
+
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -68,7 +138,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       fontFamily: 'Poppins',
                       color: Colors.white,
                     ),
-              ),
+              )
+                  .animateOnPageLoad(animationsMap['textOnPageLoadAnimation']!)
+                  .animateOnActionTrigger(
+                    animationsMap['textOnActionTriggerAnimation']!,
+                  ),
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Image.asset(
@@ -76,12 +150,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   width: 200.0,
                   height: 200.0,
                   fit: BoxFit.cover,
-                ),
+                ).animateOnPageLoad(animationsMap['imageOnPageLoadAnimation']!),
               ),
               FFButtonWidget(
                 onPressed: () async {
                   _model.connectToVBBlueToothResult =
                       await actions.connectToVBBlueTooth();
+                  if (animationsMap['textOnActionTriggerAnimation'] != null) {
+                    animationsMap['textOnActionTriggerAnimation']!
+                        .controller
+                        .forward(from: 0.0);
+                  }
                   await Future.delayed(const Duration(milliseconds: 500));
                   if (FFAppState().connectionState == 'connected') {
                     HapticFeedback.heavyImpact();
@@ -121,7 +200,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-              ),
+              ).animateOnPageLoad(animationsMap['buttonOnPageLoadAnimation']!),
             ],
           ),
         ),
