@@ -22,8 +22,8 @@ import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import "dart:typed_data";
 
-class BlueToothDeviceVerticalSlider extends StatefulWidget {
-  const BlueToothDeviceVerticalSlider({
+class BlueToothDeviceSlider extends StatefulWidget {
+  const BlueToothDeviceSlider({
     Key? key,
     this.width,
     this.height,
@@ -63,12 +63,10 @@ class BlueToothDeviceVerticalSlider extends StatefulWidget {
   final void Function() onChanged;
 
   @override
-  _BlueToothDeviceVerticalSliderState createState() =>
-      _BlueToothDeviceVerticalSliderState();
+  _BlueToothDeviceSliderState createState() => _BlueToothDeviceSliderState();
 }
 
-class _BlueToothDeviceVerticalSliderState
-    extends State<BlueToothDeviceVerticalSlider> {
+class _BlueToothDeviceSliderState extends State<BlueToothDeviceSlider> {
   Future<BluetoothCharacteristic?>? daFuture;
 
   double? sliderValue;
