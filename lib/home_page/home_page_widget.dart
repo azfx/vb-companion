@@ -157,7 +157,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   _model.connectToVBBlueToothResult =
                       await actions.connectToVBBlueTooth();
                   if (animationsMap['textOnActionTriggerAnimation'] != null) {
-                    animationsMap['textOnActionTriggerAnimation']!
+                    await animationsMap['textOnActionTriggerAnimation']!
                         .controller
                         .forward(from: 0.0);
                   }
