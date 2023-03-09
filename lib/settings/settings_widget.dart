@@ -1,3 +1,4 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -5,6 +6,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'settings_model.dart';
@@ -22,11 +24,27 @@ class SettingsWidget extends StatefulWidget {
   _SettingsWidgetState createState() => _SettingsWidgetState();
 }
 
-class _SettingsWidgetState extends State<SettingsWidget> {
+class _SettingsWidgetState extends State<SettingsWidget>
+    with TickerProviderStateMixin {
   late SettingsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+
+  final animationsMap = {
+    'stackOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 500.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
@@ -583,7 +601,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       ),
                   ],
                 ),
-              ),
+              ).animateOnPageLoad(animationsMap['stackOnPageLoadAnimation']!),
             ],
           ),
         ),
