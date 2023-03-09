@@ -154,13 +154,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
               ),
               FFButtonWidget(
                 onPressed: () async {
-                  _model.connectToVBBlueToothResult =
-                      await actions.connectToVBBlueTooth();
                   if (animationsMap['textOnActionTriggerAnimation'] != null) {
                     await animationsMap['textOnActionTriggerAnimation']!
                         .controller
                         .forward(from: 0.0);
                   }
+                  _model.connectToVBBlueToothResult =
+                      await actions.connectToVBBlueTooth();
                   await Future.delayed(const Duration(milliseconds: 500));
                   if (FFAppState().connectionState == 'connected') {
                     HapticFeedback.heavyImpact();
