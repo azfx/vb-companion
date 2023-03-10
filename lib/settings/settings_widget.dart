@@ -143,8 +143,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                 value: FFAppState()
                                                     .brightness
                                                     .toDouble(),
-                                                min: 128.0,
-                                                max: 255.0,
+                                                min: 1.0,
+                                                max: 100.0,
                                                 deviceID: FFAppState()
                                                     .connectedDeviceID,
                                                 serviceID:
@@ -152,10 +152,10 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                 charactaristicID:
                                                     '47200001-7638-4216-B629-96AD40F79BB1',
                                                 fieldName: 'brightness',
-                                                showLabels: false,
+                                                showLabels: true,
                                                 showTicks: false,
-                                                enableTooltip: false,
-                                                interval: 1,
+                                                enableTooltip: true,
+                                                interval: 25,
                                                 minorTicksPerInterval: 1,
                                                 onChanged: () async {
                                                   setState(() {
@@ -287,8 +287,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                 value: FFAppState()
                                                     .rpLevel
                                                     .toDouble(),
-                                                min: 128.0,
-                                                max: 255.0,
+                                                min: 1.0,
+                                                max: 10.0,
                                                 deviceID: FFAppState()
                                                     .connectedDeviceID,
                                                 serviceID:
@@ -296,9 +296,9 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                 charactaristicID:
                                                     '47200005-7638-4216-B629-96AD40F79BB1',
                                                 fieldName: 'rpLevel',
-                                                showLabels: false,
+                                                showLabels: true,
                                                 showTicks: false,
-                                                enableTooltip: false,
+                                                enableTooltip: true,
                                                 interval: 1,
                                                 minorTicksPerInterval: 1,
                                                 onChanged: () async {
@@ -360,7 +360,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                     .volume
                                                     .toDouble(),
                                                 min: 0.0,
-                                                max: 7.0,
+                                                max: 15.0,
                                                 deviceID: FFAppState()
                                                     .connectedDeviceID,
                                                 serviceID:
@@ -368,9 +368,9 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                 charactaristicID:
                                                     '47200007-7638-4216-B629-96AD40F79BB1',
                                                 fieldName: 'volume',
-                                                showLabels: false,
+                                                showLabels: true,
                                                 showTicks: false,
-                                                enableTooltip: false,
+                                                enableTooltip: true,
                                                 interval: 1,
                                                 minorTicksPerInterval: 1,
                                                 onChanged: () async {
