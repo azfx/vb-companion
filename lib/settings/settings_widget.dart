@@ -144,7 +144,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                     .brightness
                                                     .toDouble(),
                                                 min: 1.0,
-                                                max: 100.0,
+                                                max: 10.0,
                                                 deviceID: FFAppState()
                                                     .connectedDeviceID,
                                                 serviceID:
@@ -215,8 +215,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                 value: FFAppState()
                                                     .contrast
                                                     .toDouble(),
-                                                min: 128.0,
-                                                max: 255.0,
+                                                min: 1.0,
+                                                max: 10.0,
                                                 deviceID: FFAppState()
                                                     .connectedDeviceID,
                                                 serviceID:
@@ -359,8 +359,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                                 value: FFAppState()
                                                     .volume
                                                     .toDouble(),
-                                                min: 0.0,
-                                                max: 15.0,
+                                                min: 1.0,
+                                                max: 10.0,
                                                 deviceID: FFAppState()
                                                     .connectedDeviceID,
                                                 serviceID:
