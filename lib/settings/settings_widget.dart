@@ -108,7 +108,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.6,
-                                      height: 75.0,
+                                      height: 85.0,
                                       decoration: BoxDecoration(
                                         color: Color(0x00E0E3E7),
                                         borderRadius:
@@ -134,11 +134,11 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                             ),
                                             Container(
                                               width: 200.0,
-                                              height: 40.0,
+                                              height: 45.0,
                                               child: custom_widgets
                                                   .BlueToothDeviceSlider(
                                                 width: 200.0,
-                                                height: 40.0,
+                                                height: 45.0,
                                                 displayName: 'Brightness',
                                                 value: FFAppState()
                                                     .brightness
@@ -180,7 +180,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.6,
-                                      height: 75.0,
+                                      height: 85.0,
                                       decoration: BoxDecoration(
                                         color: Color(0x00E0E3E7),
                                         borderRadius:
@@ -206,11 +206,11 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                             ),
                                             Container(
                                               width: 200.0,
-                                              height: 40.0,
+                                              height: 45.0,
                                               child: custom_widgets
                                                   .BlueToothDeviceSlider(
                                                 width: 200.0,
-                                                height: 40.0,
+                                                height: 45.0,
                                                 displayName: 'Contrast',
                                                 value: FFAppState()
                                                     .contrast
@@ -252,7 +252,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.6,
-                                      height: 75.0,
+                                      height: 85.0,
                                       decoration: BoxDecoration(
                                         color: Color(0x00E0E3E7),
                                         borderRadius:
@@ -278,11 +278,11 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                             ),
                                             Container(
                                               width: 200.0,
-                                              height: 40.0,
+                                              height: 45.0,
                                               child: custom_widgets
                                                   .BlueToothDeviceSlider(
                                                 width: 200.0,
-                                                height: 40.0,
+                                                height: 45.0,
                                                 displayName: 'RP',
                                                 value: FFAppState()
                                                     .rpLevel
@@ -324,7 +324,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                     child: Container(
                                       width: MediaQuery.of(context).size.width *
                                           0.6,
-                                      height: 75.0,
+                                      height: 85.0,
                                       decoration: BoxDecoration(
                                         color: Color(0x00E0E3E7),
                                         borderRadius:
@@ -350,11 +350,11 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                             ),
                                             Container(
                                               width: 200.0,
-                                              height: 40.0,
+                                              height: 45.0,
                                               child: custom_widgets
                                                   .BlueToothDeviceSlider(
                                                 width: 200.0,
-                                                height: 40.0,
+                                                height: 45.0,
                                                 displayName: 'Volume',
                                                 value: FFAppState()
                                                     .volume
