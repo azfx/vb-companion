@@ -177,7 +177,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                         .primaryBackground,
                                   ),
                                   child: Image.asset(
-                                    'assets/images/Step_1_-_BW-PowerOn.png',
+                                    'assets/images/Step2.png',
                                     width:
                                         MediaQuery.of(context).size.width * 1.0,
                                     height: MediaQuery.of(context).size.height *
@@ -297,7 +297,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                         .primaryBackground,
                                   ),
                                   child: Image.asset(
-                                    'assets/images/Step_1_-_BW-PowerOn.png',
+                                    'assets/images/VB-Logo-White-No-Text.png',
                                     width:
                                         MediaQuery.of(context).size.width * 1.0,
                                     height: MediaQuery.of(context).size.height *

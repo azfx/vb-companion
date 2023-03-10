@@ -480,8 +480,14 @@ class _SettingsWidgetState extends State<SettingsWidget>
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 0.0),
                             child: FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                await actions.sendCommandOverBluetooth(
+                                  'nextMode',
+                                  '',
+                                  FFAppState().connectedDeviceID,
+                                  '37200001-7638-4216-B629-96AD40F79BB1',
+                                  '47200008-7638-4216-B629-96AD40F79BB1',
+                                );
                               },
                               text: 'Mode',
                               options: FFButtonOptions(
