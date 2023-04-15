@@ -360,7 +360,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                           if (FFAppState().connectionState ==
                                               'connected') {
                                             context.pushNamed(
-                                              'Settings',
+                                              'MainPanel',
                                               queryParams: {
                                                 'deviceID': serializeParam(
                                                   FFAppState()
