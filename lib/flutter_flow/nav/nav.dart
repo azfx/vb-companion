@@ -59,6 +59,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SettingsCopyWidget(
                 deviceID: params.getParam('deviceID', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'MainPanel',
+              path: 'mainPanel',
+              builder: (context, params) => MainPanelWidget(
+                deviceID: params.getParam('deviceID', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

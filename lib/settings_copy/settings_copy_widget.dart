@@ -54,12 +54,12 @@ class _SettingsCopyWidgetState extends State<SettingsCopyWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -87,8 +87,7 @@ class _SettingsCopyWidgetState extends State<SettingsCopyWidget> {
                                     0.0, 0.0, 0.0, 10.0),
                                 child: Icon(
                                   Icons.error_outline,
-                                  color: FlutterFlowTheme.of(context)
-                                      .tertiaryColor,
+                                  color: FlutterFlowTheme.of(context).tertiary,
                                   size: 60.0,
                                 ),
                               ),
@@ -99,11 +98,11 @@ class _SettingsCopyWidgetState extends State<SettingsCopyWidget> {
                                   'Vision Buddy Headset disconnected!',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
-                                      .subtitle1
+                                      .titleMedium
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .tertiary,
                                       ),
                                 ),
                               ),
@@ -113,7 +112,8 @@ class _SettingsCopyWidgetState extends State<SettingsCopyWidget> {
                                 child: Text(
                                   'Please ensure the headset is powered on, and in bluetooth scan mode.',
                                   textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                               ),
                               FFButtonWidget(
@@ -136,17 +136,17 @@ class _SettingsCopyWidgetState extends State<SettingsCopyWidget> {
                                       0.0, 0.0, 0.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                  color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
-                                      .subtitle2
+                                      .titleSmall
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: Colors.white,
                                       ),
+                                  elevation: 2.0,
                                   borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryColor,
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),

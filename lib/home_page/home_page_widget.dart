@@ -98,12 +98,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -113,7 +113,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   FFAppState().connectionState,
                   'Ready to Connect',
                 ).toUpperCase(),
-                style: FlutterFlowTheme.of(context).subtitle1.override(
+                style: FlutterFlowTheme.of(context).titleMedium.override(
                       fontFamily: 'Poppins',
                       color: Colors.white,
                     ),
@@ -136,7 +136,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     HapticFeedback.heavyImpact();
 
                     context.goNamed(
-                      'Settings',
+                      'MainPanel',
                       queryParams: {
                         'deviceID': serializeParam(
                           FFAppState().connectedDeviceID,
@@ -159,11 +159,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   iconPadding:
                       EdgeInsetsDirectional.fromSTEB(1.0, 1.0, 1.0, 1.0),
-                  color: FlutterFlowTheme.of(context).primaryColor,
-                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                  color: FlutterFlowTheme.of(context).primary,
+                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Poppins',
                         color: Colors.white,
                       ),
+                  elevation: 2.0,
                   borderSide: BorderSide(
                     color: FlutterFlowTheme.of(context).primaryBtnText,
                     width: 1.0,

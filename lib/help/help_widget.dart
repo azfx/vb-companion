@@ -22,6 +22,11 @@ class _HelpWidgetState extends State<HelpWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
+  int get pageViewCurrentIndex => _model.pageViewController != null &&
+          _model.pageViewController!.hasClients &&
+          _model.pageViewController!.page != null
+      ? _model.pageViewController!.page!.round()
+      : 0;
 
   @override
   void initState() {
@@ -43,23 +48,23 @@ class _HelpWidgetState extends State<HelpWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-        automaticallyImplyLeading: false,
-        title: Text(
-          'Connection Help',
-          style: FlutterFlowTheme.of(context).subtitle1,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Connection Help',
+            style: FlutterFlowTheme.of(context).titleMedium,
+          ),
+          actions: [],
+          centerTitle: true,
+          elevation: 2.0,
         ),
-        actions: [],
-        centerTitle: true,
-        elevation: 2.0,
-      ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+        body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -103,7 +108,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                   child: Text(
                                     'Step 1',
                                     style: FlutterFlowTheme.of(context)
-                                        .title3
+                                        .headlineSmall
                                         .override(
                                           fontFamily: 'Poppins',
                                           color: FlutterFlowTheme.of(context)
@@ -113,7 +118,8 @@ class _HelpWidgetState extends State<HelpWidget> {
                                 ),
                                 Text(
                                   'Power On Vision Buddy Headset',
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -143,17 +149,18 @@ class _HelpWidgetState extends State<HelpWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .subtitle2
+                                                  .titleSmall
                                                   .override(
                                                     fontFamily: 'Poppins',
                                                     color: Colors.white,
                                                   ),
+                                          elevation: 2.0,
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             width: 1.0,
                                           ),
                                           borderRadius:
@@ -190,12 +197,14 @@ class _HelpWidgetState extends State<HelpWidget> {
                                       20.0, 20.0, 20.0, 20.0),
                                   child: Text(
                                     'Step 2',
-                                    style: FlutterFlowTheme.of(context).title3,
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall,
                                   ),
                                 ),
                                 Text(
                                   'Press the zoom in button for 10 seconds',
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -226,17 +235,18 @@ class _HelpWidgetState extends State<HelpWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .subtitle2
+                                                  .titleSmall
                                                   .override(
                                                     fontFamily: 'Poppins',
                                                     color: Colors.white,
                                                   ),
+                                          elevation: 2.0,
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             width: 1.0,
                                           ),
                                           borderRadius:
@@ -263,17 +273,18 @@ class _HelpWidgetState extends State<HelpWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .subtitle2
+                                                  .titleSmall
                                                   .override(
                                                     fontFamily: 'Poppins',
                                                     color: Colors.white,
                                                   ),
+                                          elevation: 2.0,
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             width: 1.0,
                                           ),
                                           borderRadius:
@@ -308,7 +319,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                 Text(
                                   'Current Status',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
@@ -321,13 +332,15 @@ class _HelpWidgetState extends State<HelpWidget> {
                                   child: Text(
                                     FFAppState().connectionState.toUpperCase(),
                                     textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context).title3,
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall,
                                   ),
                                 ),
                                 Text(
                                   'You will hear a prompt stating the headset is ready to connect.',
                                   textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -389,17 +402,18 @@ class _HelpWidgetState extends State<HelpWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                              .primary,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .subtitle2
+                                                  .titleSmall
                                                   .override(
                                                     fontFamily: 'Poppins',
                                                     color: Colors.white,
                                                   ),
+                                          elevation: 2.0,
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .secondaryColor,
+                                                .secondary,
                                             width: 1.0,
                                           ),
                                           borderRadius:
@@ -424,8 +438,8 @@ class _HelpWidgetState extends State<HelpWidget> {
                                 PageController(initialPage: 0),
                             count: 3,
                             axisDirection: Axis.horizontal,
-                            onDotClicked: (i) {
-                              _model.pageViewController!.animateToPage(
+                            onDotClicked: (i) async {
+                              await _model.pageViewController!.animateToPage(
                                 i,
                                 duration: Duration(milliseconds: 500),
                                 curve: Curves.ease,
@@ -439,7 +453,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                               dotHeight: 16.0,
                               dotColor: Color(0xFF9E9E9E),
                               activeDotColor:
-                                  FlutterFlowTheme.of(context).secondaryColor,
+                                  FlutterFlowTheme.of(context).secondary,
                               paintStyle: PaintingStyle.fill,
                             ),
                           ),
