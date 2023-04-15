@@ -13,7 +13,7 @@ class UpDownButtonModel extends FlutterFlowModel {
 
   String? deviceID;
 
-  int? settingValue;
+  int? settingValue = 10;
 
   /// Initialization and disposal methods.
 
