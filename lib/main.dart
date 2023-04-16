@@ -8,6 +8,7 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 
@@ -105,7 +106,8 @@ class _NavBarPageState extends State<NavBarPage> {
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
       body: _currentPage ?? tabs[_currentPageName],
-      bottomNavigationBar: BottomNavigationBar(
+      extendBody: true,
+      bottomNavigationBar: FloatingNavbar(
         currentIndex: currentIndex,
         onTap: (i) => setState(() {
           _currentPage = null;
@@ -114,33 +116,85 @@ class _NavBarPageState extends State<NavBarPage> {
         backgroundColor: Color(0xFF363A3F),
         selectedItemColor: Color(0xFFFFFF00),
         unselectedItemColor: FlutterFlowTheme.of(context).secondary,
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: FaIcon(
-              FontAwesomeIcons.home,
-              size: 20.0,
+        selectedBackgroundColor: Color(0x00000000),
+        borderRadius: 8.0,
+        itemBorderRadius: 8.0,
+        margin: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        width: double.infinity,
+        elevation: 0.0,
+        items: [
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  FontAwesomeIcons.home,
+                  color: currentIndex == 0
+                      ? Color(0xFFFFFF00)
+                      : FlutterFlowTheme.of(context).secondary,
+                  size: 24.0,
+                ),
+                Text(
+                  'Home',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 0
+                        ? Color(0xFFFFFF00)
+                        : FlutterFlowTheme.of(context).secondary,
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'Home',
-            tooltip: '',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.emoji_people,
-              size: 26.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.emoji_people,
+                  color: currentIndex == 1
+                      ? Color(0xFFFFFF00)
+                      : FlutterFlowTheme.of(context).secondary,
+                  size: 24.0,
+                ),
+                Text(
+                  'Buddy',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 1
+                        ? Color(0xFFFFFF00)
+                        : FlutterFlowTheme.of(context).secondary,
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'Buddy',
-            tooltip: '',
           ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
-              FontAwesomeIcons.tools,
-              size: 20.0,
+          FloatingNavbarItem(
+            customWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  FontAwesomeIcons.tools,
+                  color: currentIndex == 2
+                      ? Color(0xFFFFFF00)
+                      : FlutterFlowTheme.of(context).secondary,
+                  size: 24.0,
+                ),
+                Text(
+                  'Modes',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: currentIndex == 2
+                        ? Color(0xFFFFFF00)
+                        : FlutterFlowTheme.of(context).secondary,
+                    fontSize: 11.0,
+                  ),
+                ),
+              ],
             ),
-            label: 'Modes',
-            tooltip: '',
           )
         ],
       ),
