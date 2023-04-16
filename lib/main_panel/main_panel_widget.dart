@@ -80,13 +80,13 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.9,
+                height: MediaQuery.of(context).size.height * 0.8,
                 child: Stack(
                   children: [
                     if (FFAppState().connectionState == 'disconnected')
                       Container(
                         width: MediaQuery.of(context).size.width * 1.0,
-                        height: MediaQuery.of(context).size.height * 0.8,
+                        height: 440.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBackground,
                         ),
