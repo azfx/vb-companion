@@ -39,10 +39,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'HomePage',
               path: 'homePage',
-              builder: (context, params) => NavBarPage(
-                initialPage: '',
-                page: HomePageWidget(),
-              ),
+              builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
               name: 'SettingsOld',
