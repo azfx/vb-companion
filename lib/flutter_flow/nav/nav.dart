@@ -42,9 +42,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HomePageWidget(),
             ),
             FFRoute(
-              name: 'Settings',
-              path: 'settings',
-              builder: (context, params) => SettingsWidget(
+              name: 'SettingsOld',
+              path: 'settingsOld',
+              builder: (context, params) => SettingsOldWidget(
                 deviceID: params.getParam('deviceID', ParamType.String),
               ),
             ),
@@ -63,9 +63,50 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'MainPanel',
               path: 'mainPanel',
-              builder: (context, params) => MainPanelWidget(
-                deviceID: params.getParam('deviceID', ParamType.String),
-              ),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'MainPanel')
+                  : MainPanelWidget(
+                      deviceID: params.getParam('deviceID', ParamType.String),
+                    ),
+            ),
+            FFRoute(
+              name: 'Settings',
+              path: 'settings',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Settings')
+                  : SettingsWidget(),
+            ),
+            FFRoute(
+              name: 'Magnification',
+              path: 'magnification',
+              builder: (context, params) => MagnificationWidget(),
+            ),
+            FFRoute(
+              name: 'TVSettings',
+              path: 'tvSettings',
+              builder: (context, params) => TVSettingsWidget(),
+            ),
+            FFRoute(
+              name: 'RPSettings',
+              path: 'rpSettings',
+              builder: (context, params) => RPSettingsWidget(),
+            ),
+            FFRoute(
+              name: 'GeneralSettings',
+              path: 'generalSettings',
+              builder: (context, params) => GeneralSettingsWidget(),
+            ),
+            FFRoute(
+              name: 'Buddy',
+              path: 'buddy',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Buddy')
+                  : BuddyWidget(),
+            ),
+            FFRoute(
+              name: 'FittnessSettings',
+              path: 'fitness',
+              builder: (context, params) => FittnessSettingsWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

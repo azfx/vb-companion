@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'main_panel_model.dart';
@@ -60,13 +61,26 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          automaticallyImplyLeading: false,
+          title: Image.asset(
+            'assets/images/VB-Logo-White-No-Text.png',
+            width: 100.0,
+            height: 58.8,
+            fit: BoxFit.contain,
+          ),
+          actions: [],
+          centerTitle: true,
+          elevation: 4.0,
+        ),
         body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.8,
+                height: MediaQuery.of(context).size.height * 0.9,
                 child: Stack(
                   children: [
                     if (FFAppState().connectionState == 'disconnected')
@@ -171,16 +185,6 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
-                                'MAIN SETTINGS',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 24.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Row(
@@ -209,12 +213,12 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                         model: _model.upDownButtonModel2,
                                         updateCallback: () => setState(() {}),
                                         child: UpDownButtonWidget(
-                                          settingName: 'Contrast',
+                                          settingName: 'Volume',
                                           commandName: 'setContrast',
                                           serviceID:
                                               '37200001-7638-4216-B629-96AD40F79BB1',
                                           characteristicID:
-                                              '47200002-7638-4216-B629-96AD40F79BB1',
+                                              '47200007-7638-4216-B629-96AD40F79BB1',
                                           maxSettingValue: 10,
                                           minSettingValue: 1,
                                           deltaValue: 1,
@@ -292,7 +296,11 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                       '47200008-7638-4216-B629-96AD40F79BB1',
                                     );
                                   },
-                                  text: 'Settings',
+                                  text: 'Buddy',
+                                  icon: Icon(
+                                    Icons.emoji_people_sharp,
+                                    size: 15.0,
+                                  ),
                                   options: FFButtonOptions(
                                     width: 130.0,
                                     height: 50.0,
@@ -300,15 +308,19 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                         0.0, 0.0, 0.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0xFF363A3F),
+                                    color:
+                                        FlutterFlowTheme.of(context).secondary,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
                                           fontFamily: 'Poppins',
-                                          color: Colors.white,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
