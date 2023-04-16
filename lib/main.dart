@@ -139,7 +139,7 @@ class _NavBarPageState extends State<NavBarPage> {
               FontAwesomeIcons.tools,
               size: 20.0,
             ),
-            label: 'Home',
+            label: 'Modes',
             tooltip: '',
           )
         ],
