@@ -177,7 +177,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width * 1.0,
-                          height: 500.0,
+                          height: 440.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context).primary,
                           ),
