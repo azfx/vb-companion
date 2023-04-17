@@ -151,6 +151,9 @@ class _SettingsWidgetState extends State<SettingsWidget>
                     children: [
                       InkWell(
                         onTap: () async {
+                          await Future.delayed(
+                              const Duration(milliseconds: 1000));
+
                           context.pushNamed('Magnification');
                         },
                         child: wrapWithModel(
