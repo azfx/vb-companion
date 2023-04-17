@@ -115,7 +115,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiary,
                                       ),
@@ -155,7 +155,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         color: Colors.white,
                                       ),
                                   elevation: 2.0,
@@ -270,7 +270,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily: 'Nunito',
                                           color: Colors.white,
                                         ),
                                     elevation: 2.0,
@@ -313,7 +313,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily: 'Nunito',
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                         ),

@@ -617,7 +617,7 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Poppins',
+                                                          fontFamily: 'Nunito',
                                                           fontSize: 24.0,
                                                           fontWeight:
                                                               FontWeight.bold,
@@ -779,7 +779,7 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'Nunito',
                                       color: Colors.white,
                                     ),
                                 elevation: 2.0,
@@ -816,7 +816,7 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'Nunito',
                                       color: Colors.white,
                                     ),
                                 elevation: 2.0,
@@ -863,7 +863,7 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiary,
                                       ),
@@ -903,7 +903,7 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         color: Colors.white,
                                       ),
                                   elevation: 2.0,

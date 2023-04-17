@@ -100,7 +100,7 @@ class _SettingsCopyWidgetState extends State<SettingsCopyWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiary,
                                       ),
@@ -140,7 +140,7 @@ class _SettingsCopyWidgetState extends State<SettingsCopyWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         color: Colors.white,
                                       ),
                                   elevation: 2.0,

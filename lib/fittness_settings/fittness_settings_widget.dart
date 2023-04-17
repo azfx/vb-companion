@@ -125,7 +125,7 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget>
           title: Text(
             'Buddy',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: 'Nunito',
                   color: Colors.white,
                   fontSize: 22.0,
                 ),
@@ -205,7 +205,7 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 15.0,
                                       ),
                                 ),
@@ -245,7 +245,7 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 15.0,
                                       ),
                                 ),
@@ -284,7 +284,7 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 15.0,
                                       ),
                                 ),

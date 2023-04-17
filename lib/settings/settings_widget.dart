@@ -216,7 +216,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 16.0,
                                       ),
                                 ),
@@ -251,7 +251,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .titleMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'Nunito',
                                       fontSize: 16.0,
                                     ),
                               ),
@@ -285,7 +285,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .titleMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'Nunito',
                                       fontSize: 16.0,
                                     ),
                               ),
@@ -319,7 +319,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .titleMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'Nunito',
                                       fontSize: 16.0,
                                     ),
                               ),
@@ -353,7 +353,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .titleMedium
                                     .override(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'Nunito',
                                       fontSize: 16.0,
                                     ),
                               ),

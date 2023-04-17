@@ -110,7 +110,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .headlineSmall
                                         .override(
-                                          fontFamily: 'Poppins',
+                                          fontFamily: 'Nunito',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                         ),
@@ -154,7 +154,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
                                                   .override(
-                                                    fontFamily: 'Poppins',
+                                                    fontFamily: 'Nunito',
                                                     color: Colors.white,
                                                   ),
                                           elevation: 2.0,
@@ -240,7 +240,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
                                                   .override(
-                                                    fontFamily: 'Poppins',
+                                                    fontFamily: 'Nunito',
                                                     color: Colors.white,
                                                   ),
                                           elevation: 2.0,
@@ -278,7 +278,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
                                                   .override(
-                                                    fontFamily: 'Poppins',
+                                                    fontFamily: 'Nunito',
                                                     color: Colors.white,
                                                   ),
                                           elevation: 2.0,
@@ -321,7 +321,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         color: FlutterFlowTheme.of(context)
                                             .lineColor,
                                       ),
@@ -407,7 +407,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
                                                   .override(
-                                                    fontFamily: 'Poppins',
+                                                    fontFamily: 'Nunito',
                                                     color: Colors.white,
                                                   ),
                                           elevation: 2.0,

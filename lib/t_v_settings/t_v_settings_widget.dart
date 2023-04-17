@@ -125,7 +125,7 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget>
           title: Text(
             'TV Settings',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: 'Nunito',
                   color: Colors.white,
                   fontSize: 22.0,
                 ),
@@ -200,7 +200,7 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 16.0,
                                       ),
                                 ),
@@ -239,7 +239,7 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 16.0,
                                       ),
                                 ),
@@ -278,7 +278,7 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 16.0,
                                       ),
                                 ),

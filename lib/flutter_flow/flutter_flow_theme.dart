@@ -165,86 +165,86 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Poppins';
+  String get displayLargeFamily => 'Nunito';
   TextStyle get displayLarge => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 57.0,
       );
-  String get displayMediumFamily => 'Poppins';
+  String get displayMediumFamily => 'Nunito';
   TextStyle get displayMedium => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Poppins';
+  String get displaySmallFamily => 'Nunito';
   TextStyle get displaySmall => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 24.0,
       );
-  String get headlineLargeFamily => 'Poppins';
+  String get headlineLargeFamily => 'Nunito';
   TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Poppins';
+  String get headlineMediumFamily => 'Nunito';
   TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
         fontSize: 22.0,
       );
-  String get headlineSmallFamily => 'Poppins';
+  String get headlineSmallFamily => 'Nunito';
   TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 20.0,
       );
-  String get titleLargeFamily => 'Poppins';
+  String get titleLargeFamily => 'Nunito';
   TextStyle get titleLarge => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
-  String get titleMediumFamily => 'Poppins';
+  String get titleMediumFamily => 'Nunito';
   TextStyle get titleMedium => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 18.0,
       );
-  String get titleSmallFamily => 'Poppins';
+  String get titleSmallFamily => 'Nunito';
   TextStyle get titleSmall => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
         fontSize: 16.0,
       );
-  String get labelLargeFamily => 'Poppins';
+  String get labelLargeFamily => 'Nunito';
   TextStyle get labelLarge => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelMediumFamily => 'Poppins';
+  String get labelMediumFamily => 'Nunito';
   TextStyle get labelMedium => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get labelSmallFamily => 'Poppins';
+  String get labelSmallFamily => 'Nunito';
   TextStyle get labelSmall => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 11.0,
@@ -253,16 +253,16 @@ class ThemeTypography extends Typography {
   TextStyle get bodyLarge => GoogleFonts.getFont(
         'Roboto',
       );
-  String get bodyMediumFamily => 'Poppins';
+  String get bodyMediumFamily => 'Nunito';
   TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Poppins';
+  String get bodySmallFamily => 'Nunito';
   TextStyle get bodySmall => GoogleFonts.getFont(
-        'Poppins',
+        'Nunito',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
         fontSize: 14.0,

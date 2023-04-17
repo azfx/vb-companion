@@ -114,7 +114,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   'Ready to Connect',
                 ).toUpperCase(),
                 style: FlutterFlowTheme.of(context).titleMedium.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Nunito',
                       color: Colors.white,
                     ),
               ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation']!),
@@ -153,7 +153,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       EdgeInsetsDirectional.fromSTEB(1.0, 1.0, 1.0, 1.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Poppins',
+                        fontFamily: 'Nunito',
                         color: Colors.white,
                       ),
                   elevation: 2.0,

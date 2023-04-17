@@ -125,7 +125,7 @@ class _GeneralSettingsWidgetState extends State<GeneralSettingsWidget>
           title: Text(
             'General Settings',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: 'Nunito',
                   color: Colors.white,
                   fontSize: 22.0,
                 ),
@@ -180,7 +180,7 @@ class _GeneralSettingsWidgetState extends State<GeneralSettingsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 15.0,
                                       ),
                                 ),
@@ -220,7 +220,7 @@ class _GeneralSettingsWidgetState extends State<GeneralSettingsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 15.0,
                                       ),
                                 ),
@@ -259,7 +259,7 @@ class _GeneralSettingsWidgetState extends State<GeneralSettingsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 15.0,
                                       ),
                                 ),

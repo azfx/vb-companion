@@ -166,7 +166,7 @@ class _BuddyWidgetState extends State<BuddyWidget>
           title: Text(
             'Buddy',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Poppins',
+                  fontFamily: 'Nunito',
                   color: Colors.white,
                   fontSize: 22.0,
                 ),
@@ -201,7 +201,7 @@ class _BuddyWidgetState extends State<BuddyWidget>
                     '\"Change to TV mode..\"',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Nunito',
                           fontStyle: FontStyle.italic,
                         ),
                   ),
@@ -226,7 +226,7 @@ class _BuddyWidgetState extends State<BuddyWidget>
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Poppins',
+                          fontFamily: 'Nunito',
                           color: Colors.white,
                         ),
                     borderSide: BorderSide(
@@ -279,7 +279,7 @@ class _BuddyWidgetState extends State<BuddyWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 15.0,
                                       ),
                                 ),
@@ -319,7 +319,7 @@ class _BuddyWidgetState extends State<BuddyWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 15.0,
                                       ),
                                 ),
@@ -358,7 +358,7 @@ class _BuddyWidgetState extends State<BuddyWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 15.0,
                                       ),
                                 ),
@@ -397,7 +397,7 @@ class _BuddyWidgetState extends State<BuddyWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 15.0,
                                       ),
                                 ),
@@ -436,7 +436,7 @@ class _BuddyWidgetState extends State<BuddyWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .titleMedium
                                       .override(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'Nunito',
                                         fontSize: 15.0,
                                       ),
                                 ),

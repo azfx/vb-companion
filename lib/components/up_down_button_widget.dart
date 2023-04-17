@@ -124,7 +124,7 @@ class _UpDownButtonWidgetState extends State<UpDownButtonWidget> {
                   '10',
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Nunito',
                       fontSize: 24.0,
                     ),
               ),
@@ -168,7 +168,7 @@ class _UpDownButtonWidgetState extends State<UpDownButtonWidget> {
                   'Setting',
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'Nunito',
                       color: FlutterFlowTheme.of(context).tertiary,
                       fontSize: 18.0,
                     ),
