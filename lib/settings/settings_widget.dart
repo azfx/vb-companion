@@ -173,7 +173,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           if (animationsMap[
                                   'containerOnActionTriggerAnimation1'] !=
                               null) {
-                            animationsMap['containerOnActionTriggerAnimation1']!
+                            await animationsMap[
+                                    'containerOnActionTriggerAnimation1']!
                                 .controller
                                 .forward(from: 0.0);
                           }
