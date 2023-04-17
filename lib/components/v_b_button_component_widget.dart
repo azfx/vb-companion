@@ -56,20 +56,6 @@ class _VBButtonComponentWidgetState extends State<VBButtonComponentWidget>
     super.initState();
     _model = createModel(context, () => VBButtonComponentModel());
 
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (animationsMap['containerOnActionTriggerAnimation'] != null) {
-        await animationsMap['containerOnActionTriggerAnimation']!
-            .controller
-            .forward(from: 0.0);
-      }
-      if (animationsMap['containerOnActionTriggerAnimation'] != null) {
-        await animationsMap['containerOnActionTriggerAnimation']!
-            .controller
-            .reverse();
-      }
-    });
-
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -93,30 +79,44 @@ class _VBButtonComponentWidgetState extends State<VBButtonComponentWidget>
 
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-      child: Container(
-        width: 100.0,
-        height: 100.0,
-        decoration: BoxDecoration(
-          color: Color(0xFF363A3F),
-          borderRadius: BorderRadius.circular(6.0),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            widget.buttonIcon!,
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-              child: Text(
-                widget.buttonText,
-                style: FlutterFlowTheme.of(context).titleMedium.override(
-                      fontFamily: 'Nunito',
-                      fontSize: 16.0,
-                    ),
+      child: InkWell(
+        onTap: () async {
+          if (animationsMap['containerOnActionTriggerAnimation'] != null) {
+            await animationsMap['containerOnActionTriggerAnimation']!
+                .controller
+                .forward(from: 0.0);
+          }
+          if (animationsMap['containerOnActionTriggerAnimation'] != null) {
+            await animationsMap['containerOnActionTriggerAnimation']!
+                .controller
+                .reverse();
+          }
+        },
+        child: Container(
+          width: 100.0,
+          height: 100.0,
+          decoration: BoxDecoration(
+            color: Color(0xFF363A3F),
+            borderRadius: BorderRadius.circular(6.0),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              widget.buttonIcon!,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                child: Text(
+                  widget.buttonText,
+                  style: FlutterFlowTheme.of(context).titleMedium.override(
+                        fontFamily: 'Nunito',
+                        fontSize: 16.0,
+                      ),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ).animateOnActionTrigger(
         animationsMap['containerOnActionTriggerAnimation']!,
