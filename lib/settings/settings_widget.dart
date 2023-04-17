@@ -1,10 +1,7 @@
 import '/components/v_b_button_component_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -18,87 +15,16 @@ class SettingsWidget extends StatefulWidget {
   _SettingsWidgetState createState() => _SettingsWidgetState();
 }
 
-class _SettingsWidgetState extends State<SettingsWidget>
-    with TickerProviderStateMixin {
+class _SettingsWidgetState extends State<SettingsWidget> {
   late SettingsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
 
-  final animationsMap = {
-    'containerOnActionTriggerAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.9,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.9,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.9,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
-
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => SettingsModel());
-
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -143,8 +69,8 @@ class _SettingsWidgetState extends State<SettingsWidget>
                     padding: EdgeInsets.zero,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
+                      crossAxisSpacing: 20.0,
+                      mainAxisSpacing: 20.0,
                       childAspectRatio: 1.5,
                     ),
                     scrollDirection: Axis.vertical,
@@ -157,7 +83,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           context.pushNamed('Magnification');
                         },
                         child: wrapWithModel(
-                          model: _model.vBButtonComponentModel,
+                          model: _model.vBButtonComponentModel1,
                           updateCallback: () => setState(() {}),
                           child: VBButtonComponentWidget(
                             buttonIcon: Icon(
@@ -172,148 +98,96 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           ),
                         ),
                       ),
-                      Container(
-                        width: 100.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF363A3F),
-                          borderRadius: BorderRadius.circular(4.0),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
+                      InkWell(
+                        onTap: () async {
+                          await Future.delayed(
+                              const Duration(milliseconds: 1000));
+
+                          context.pushNamed('Magnification');
+                        },
+                        child: wrapWithModel(
+                          model: _model.vBButtonComponentModel2,
+                          updateCallback: () => setState(() {}),
+                          child: VBButtonComponentWidget(
+                            buttonIcon: Icon(
                               Icons.live_tv,
                               color: FlutterFlowTheme.of(context).secondary,
                               size: 30.0,
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 4.0, 0.0, 0.0),
-                              child: Text(
-                                'TV MODE',
-                                style: FlutterFlowTheme.of(context)
-                                    .titleMedium
-                                    .override(
-                                      fontFamily: 'Nunito',
-                                      fontSize: 16.0,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation1']!,
-                      ),
-                      Container(
-                        width: 100.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF363A3F),
-                          borderRadius: BorderRadius.circular(4.0),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.border_outer,
-                              color: FlutterFlowTheme.of(context).secondary,
-                              size: 30.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 4.0, 0.0, 0.0),
-                              child: Text(
-                                'RP MODE',
-                                style: FlutterFlowTheme.of(context)
-                                    .titleMedium
-                                    .override(
-                                      fontFamily: 'Nunito',
-                                      fontSize: 16.0,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation2']!,
-                      ),
-                      Container(
-                        width: 100.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF363A3F),
-                          borderRadius: BorderRadius.circular(4.0),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.border_outer,
-                              color: FlutterFlowTheme.of(context).secondary,
-                              size: 30.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 4.0, 0.0, 0.0),
-                              child: Text(
-                                'FITNESS MODE',
-                                style: FlutterFlowTheme.of(context)
-                                    .titleMedium
-                                    .override(
-                                      fontFamily: 'Nunito',
-                                      fontSize: 16.0,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation3']!,
-                      ),
-                      Container(
-                        width: 100.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF363A3F),
-                          borderRadius: BorderRadius.circular(4.0),
-                        ),
-                        child: MouseRegion(
-                          opaque: false,
-                          cursor: MouseCursor.defer ?? MouseCursor.defer,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.settings_outlined,
-                                color: FlutterFlowTheme.of(context).secondary,
-                                size: 30.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Text(
-                                  'GENERAL',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Nunito',
-                                        fontSize: 16.0,
-                                      ),
-                                ),
-                              ),
-                            ],
+                            buttonText: 'TV MODE',
+                            onButtonTap: () async {
+                              context.pushNamed('TVSettings');
+                            },
                           ),
-                          onEnter: ((event) async {
-                            setState(() => _model.mouseRegionHovered = true);
-                          }),
-                          onExit: ((event) async {
-                            setState(() => _model.mouseRegionHovered = false);
-                          }),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          await Future.delayed(
+                              const Duration(milliseconds: 1000));
+
+                          context.pushNamed('Magnification');
+                        },
+                        child: wrapWithModel(
+                          model: _model.vBButtonComponentModel3,
+                          updateCallback: () => setState(() {}),
+                          child: VBButtonComponentWidget(
+                            buttonIcon: Icon(
+                              Icons.fitness_center_sharp,
+                              color: FlutterFlowTheme.of(context).secondary,
+                              size: 30.0,
+                            ),
+                            buttonText: 'FITNESS MODE',
+                            onButtonTap: () async {
+                              context.pushNamed('FittnessSettings');
+                            },
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          await Future.delayed(
+                              const Duration(milliseconds: 1000));
+
+                          context.pushNamed('Magnification');
+                        },
+                        child: wrapWithModel(
+                          model: _model.vBButtonComponentModel4,
+                          updateCallback: () => setState(() {}),
+                          child: VBButtonComponentWidget(
+                            buttonIcon: Icon(
+                              Icons.border_outer,
+                              color: FlutterFlowTheme.of(context).secondary,
+                              size: 30.0,
+                            ),
+                            buttonText: 'RP MODE',
+                            onButtonTap: () async {
+                              context.pushNamed('RPSettings');
+                            },
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          await Future.delayed(
+                              const Duration(milliseconds: 1000));
+
+                          context.pushNamed('Magnification');
+                        },
+                        child: wrapWithModel(
+                          model: _model.vBButtonComponentModel5,
+                          updateCallback: () => setState(() {}),
+                          child: VBButtonComponentWidget(
+                            buttonIcon: Icon(
+                              Icons.settings_outlined,
+                              color: FlutterFlowTheme.of(context).secondary,
+                              size: 30.0,
+                            ),
+                            buttonText: 'GENERAL',
+                            onButtonTap: () async {
+                              context.pushNamed('GeneralSettings');
+                            },
+                          ),
                         ),
                       ),
                     ],

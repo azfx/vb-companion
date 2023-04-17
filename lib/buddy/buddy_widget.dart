@@ -1,3 +1,4 @@
+import '/components/v_b_button_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -87,26 +88,6 @@ class _BuddyWidgetState extends State<BuddyWidget>
       ],
     ),
     'containerOnActionTriggerAnimation4': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.9,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation5': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       applyInitialState: true,
       effects: [
@@ -267,45 +248,6 @@ class _BuddyWidgetState extends State<BuddyWidget>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FaIcon(
-                                FontAwesomeIcons.toggleOn,
-                                color: FlutterFlowTheme.of(context).secondary,
-                                size: 30.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Text(
-                                  'Current Time',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Nunito',
-                                        fontSize: 15.0,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation1']!,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          context.pushNamed('Magnification');
-                        },
-                        child: Container(
-                          width: 100.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF363A3F),
-                            borderRadius: BorderRadius.circular(4.0),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              FaIcon(
                                 FontAwesomeIcons.toggleOff,
                                 color: FlutterFlowTheme.of(context).secondary,
                                 size: 30.0,
@@ -328,7 +270,7 @@ class _BuddyWidgetState extends State<BuddyWidget>
                           ),
                         ),
                       ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation2']!,
+                        animationsMap['containerOnActionTriggerAnimation1']!,
                       ),
                       InkWell(
                         onTap: () async {
@@ -367,7 +309,7 @@ class _BuddyWidgetState extends State<BuddyWidget>
                           ),
                         ),
                       ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation3']!,
+                        animationsMap['containerOnActionTriggerAnimation2']!,
                       ),
                       InkWell(
                         onTap: () async {
@@ -406,7 +348,7 @@ class _BuddyWidgetState extends State<BuddyWidget>
                           ),
                         ),
                       ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation4']!,
+                        animationsMap['containerOnActionTriggerAnimation3']!,
                       ),
                       InkWell(
                         onTap: () async {
@@ -445,7 +387,34 @@ class _BuddyWidgetState extends State<BuddyWidget>
                           ),
                         ),
                       ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation5']!,
+                        animationsMap['containerOnActionTriggerAnimation4']!,
+                      ),
+                      wrapWithModel(
+                        model: _model.vBButtonComponentModel,
+                        updateCallback: () => setState(() {}),
+                        child: VBButtonComponentWidget(
+                          buttonIcon: Icon(
+                            Icons.access_time_sharp,
+                            color: FlutterFlowTheme.of(context).secondary,
+                            size: 30.0,
+                          ),
+                          buttonText: 'Current Time',
+                          onButtonTap: () async {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'This feature is not implemented yet.',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),
