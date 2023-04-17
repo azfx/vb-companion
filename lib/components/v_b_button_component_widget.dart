@@ -14,11 +14,13 @@ class VBButtonComponentWidget extends StatefulWidget {
     Key? key,
     this.buttonIcon,
     String? buttonText,
+    this.onButtonTap,
   })  : this.buttonText = buttonText ?? 'Button',
         super(key: key);
 
   final Widget? buttonIcon;
   final String buttonText;
+  final Future<dynamic> Function()? onButtonTap;
 
   @override
   _VBButtonComponentWidgetState createState() =>
@@ -91,6 +93,7 @@ class _VBButtonComponentWidgetState extends State<VBButtonComponentWidget>
                 .controller
                 .reverse();
           }
+          await widget.onButtonTap?.call();
         },
         child: Container(
           width: 100.0,

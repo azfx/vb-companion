@@ -166,6 +166,9 @@ class _SettingsWidgetState extends State<SettingsWidget>
                               size: 30.0,
                             ),
                             buttonText: 'MAGNIFICATION',
+                            onButtonTap: () async {
+                              context.pushNamed('Magnification');
+                            },
                           ),
                         ),
                       ),
