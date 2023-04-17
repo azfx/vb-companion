@@ -80,7 +80,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.8,
+                height: 440.0,
                 child: Stack(
                   children: [
                     if (FFAppState().connectionState == 'disconnected')
