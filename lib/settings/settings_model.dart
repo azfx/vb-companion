@@ -1,3 +1,4 @@
+import '/components/v_b_button_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,14 +12,21 @@ import 'package:provider/provider.dart';
 class SettingsModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
+  // Model for VBButtonComponent component.
+  late VBButtonComponentModel vBButtonComponentModel;
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered = false;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    vBButtonComponentModel =
+        createModel(context, () => VBButtonComponentModel());
+  }
 
-  void dispose() {}
+  void dispose() {
+    vBButtonComponentModel.dispose();
+  }
 
   /// Additional helper methods are added here.
 

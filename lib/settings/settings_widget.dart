@@ -1,3 +1,4 @@
+import '/components/v_b_button_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -29,12 +30,19 @@ class _SettingsWidgetState extends State<SettingsWidget>
       trigger: AnimationTrigger.onActionTrigger,
       applyInitialState: true,
       effects: [
+        SaturateEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 200.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
         ScaleEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
-          duration: 100.ms,
-          begin: 1.0,
-          end: 0.9,
+          duration: 200.ms,
+          begin: 0.9,
+          end: 1.0,
         ),
       ],
     ),
@@ -59,26 +67,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
       ],
     ),
     'containerOnActionTriggerAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.9,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation4': AnimationInfo(
       trigger: AnimationTrigger.onActionTrigger,
       applyInitialState: true,
       effects: [
@@ -163,59 +151,20 @@ class _SettingsWidgetState extends State<SettingsWidget>
                     children: [
                       InkWell(
                         onTap: () async {
-                          if (animationsMap[
-                                  'containerOnActionTriggerAnimation1'] !=
-                              null) {
-                            await animationsMap[
-                                    'containerOnActionTriggerAnimation1']!
-                                .controller
-                                .forward(from: 0.0);
-                          }
-                          if (animationsMap[
-                                  'containerOnActionTriggerAnimation1'] !=
-                              null) {
-                            await animationsMap[
-                                    'containerOnActionTriggerAnimation1']!
-                                .controller
-                                .reverse();
-                          }
-
                           context.pushNamed('Magnification');
                         },
-                        child: Container(
-                          width: 100.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF363A3F),
-                            borderRadius: BorderRadius.circular(6.0),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.remove_red_eye_outlined,
-                                color: FlutterFlowTheme.of(context).secondary,
-                                size: 30.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Text(
-                                  'MAGNIFICATION',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Nunito',
-                                        fontSize: 16.0,
-                                      ),
-                                ),
-                              ),
-                            ],
+                        child: wrapWithModel(
+                          model: _model.vBButtonComponentModel,
+                          updateCallback: () => setState(() {}),
+                          child: VBButtonComponentWidget(
+                            buttonIcon: Icon(
+                              Icons.remove_red_eye_outlined,
+                              color: FlutterFlowTheme.of(context).secondary,
+                              size: 30.0,
+                            ),
+                            buttonText: 'MAGNIFICATION',
                           ),
                         ),
-                      ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation1']!,
                       ),
                       Container(
                         width: 100.0,
@@ -249,7 +198,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           ],
                         ),
                       ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation2']!,
+                        animationsMap['containerOnActionTriggerAnimation1']!,
                       ),
                       Container(
                         width: 100.0,
@@ -283,7 +232,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           ],
                         ),
                       ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation3']!,
+                        animationsMap['containerOnActionTriggerAnimation2']!,
                       ),
                       Container(
                         width: 100.0,
@@ -317,7 +266,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           ],
                         ),
                       ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation4']!,
+                        animationsMap['containerOnActionTriggerAnimation3']!,
                       ),
                       Container(
                         width: 100.0,
