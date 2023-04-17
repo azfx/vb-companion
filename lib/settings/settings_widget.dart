@@ -105,26 +105,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
         ),
       ],
     ),
-    'containerOnActionTriggerAnimation5': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.9,
-          end: 1.0,
-        ),
-      ],
-    ),
   };
 
   @override
@@ -190,6 +170,14 @@ class _SettingsWidgetState extends State<SettingsWidget>
                     children: [
                       InkWell(
                         onTap: () async {
+                          if (animationsMap[
+                                  'containerOnActionTriggerAnimation1'] !=
+                              null) {
+                            animationsMap['containerOnActionTriggerAnimation1']!
+                                .controller
+                                .forward(from: 0.0);
+                          }
+
                           context.pushNamed('Magnification');
                         },
                         child: Container(
@@ -336,32 +324,40 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           color: Color(0xFF363A3F),
                           borderRadius: BorderRadius.circular(4.0),
                         ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.settings_outlined,
-                              color: FlutterFlowTheme.of(context).secondary,
-                              size: 30.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 4.0, 0.0, 0.0),
-                              child: Text(
-                                'GENERAL',
-                                style: FlutterFlowTheme.of(context)
-                                    .titleMedium
-                                    .override(
-                                      fontFamily: 'Nunito',
-                                      fontSize: 16.0,
-                                    ),
+                        child: MouseRegion(
+                          opaque: false,
+                          cursor: MouseCursor.defer ?? MouseCursor.defer,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.settings_outlined,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 30.0,
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 4.0, 0.0, 0.0),
+                                child: Text(
+                                  'GENERAL',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .override(
+                                        fontFamily: 'Nunito',
+                                        fontSize: 16.0,
+                                      ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          onEnter: ((event) async {
+                            setState(() => _model.mouseRegionHovered = true);
+                          }),
+                          onExit: ((event) async {
+                            setState(() => _model.mouseRegionHovered = false);
+                          }),
                         ),
-                      ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation5']!,
                       ),
                     ],
                   ),
