@@ -29,19 +29,12 @@ class _SettingsWidgetState extends State<SettingsWidget>
       trigger: AnimationTrigger.onActionTrigger,
       applyInitialState: true,
       effects: [
-        SaturateEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
         ScaleEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.9,
-          end: 1.0,
+          duration: 100.ms,
+          begin: 1.0,
+          end: 0.9,
         ),
       ],
     ),
@@ -178,6 +171,14 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 .controller
                                 .forward(from: 0.0);
                           }
+                          if (animationsMap[
+                                  'containerOnActionTriggerAnimation1'] !=
+                              null) {
+                            await animationsMap[
+                                    'containerOnActionTriggerAnimation1']!
+                                .controller
+                                .reverse();
+                          }
 
                           context.pushNamed('Magnification');
                         },
@@ -186,7 +187,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           height: 100.0,
                           decoration: BoxDecoration(
                             color: Color(0xFF363A3F),
-                            borderRadius: BorderRadius.circular(4.0),
+                            borderRadius: BorderRadius.circular(6.0),
                           ),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
