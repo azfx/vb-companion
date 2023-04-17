@@ -135,15 +135,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   if (FFAppState().connectionState == 'connected') {
                     HapticFeedback.heavyImpact();
 
-                    context.goNamed(
-                      'MainPanel',
-                      queryParams: {
-                        'deviceID': serializeParam(
-                          FFAppState().connectedDeviceID,
-                          ParamType.String,
-                        ),
-                      }.withoutNulls,
-                    );
+                    context.goNamed('MainPanel');
                   } else {
                     HapticFeedback.mediumImpact();
 

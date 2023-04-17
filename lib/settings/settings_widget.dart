@@ -161,7 +161,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
-          automaticallyImplyLeading: true,
+          automaticallyImplyLeading: false,
           title: Text(
             'SETTINGS',
             style: FlutterFlowTheme.of(context).titleMedium,
