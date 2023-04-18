@@ -107,6 +107,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'FittnessSettings',
               path: 'fitness',
               builder: (context, params) => FittnessSettingsWidget(),
+            ),
+            FFRoute(
+              name: 'Disconnected',
+              path: 'disconnected',
+              builder: (context, params) => DisconnectedWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

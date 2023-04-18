@@ -13,3 +13,4 @@ export '/general_settings/general_settings_widget.dart'
 export '/buddy/buddy_widget.dart' show BuddyWidget;
 export '/fittness_settings/fittness_settings_widget.dart'
     show FittnessSettingsWidget;
+export '/disconnected/disconnected_widget.dart' show DisconnectedWidget;

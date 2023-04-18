@@ -2,6 +2,8 @@ import '/components/up_down_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -145,7 +147,7 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget>
                   settingName: 'Zoom',
                   commandName: 'setZoom',
                   serviceID: '37200001-7638-4216-B629-96AD40F79BB1',
-                  characteristicID: '47200004-7638-4216-B629-96AD40F79BB1',
+                  characteristicID: '47200008-7638-4216-B629-96AD40F79BB1',
                   maxSettingValue: 10,
                   minSettingValue: 1,
                   deltaValue: 1,
@@ -183,29 +185,40 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget>
                             color: Color(0xFF363A3F),
                             borderRadius: BorderRadius.circular(4.0),
                           ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.remove_red_eye_outlined,
-                                color: FlutterFlowTheme.of(context).secondary,
-                                size: 30.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Text(
-                                  'STANDARD',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Nunito',
-                                        fontSize: 16.0,
-                                      ),
+                          child: InkWell(
+                            onTap: () async {
+                              await actions.sendCommandOverBluetooth(
+                                'setStandardPictureMode',
+                                'none',
+                                FFAppState().connectedDeviceID,
+                                '37200001-7638-4216-B629-96AD40F79BB1',
+                                '47200008-7638-4216-B629-96AD40F79BB1',
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.remove_red_eye_outlined,
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  size: 30.0,
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 4.0, 0.0, 0.0),
+                                  child: Text(
+                                    'STANDARD',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .override(
+                                          fontFamily: 'Nunito',
+                                          fontSize: 16.0,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ).animateOnActionTrigger(
@@ -222,29 +235,40 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget>
                             color: Color(0xFF363A3F),
                             borderRadius: BorderRadius.circular(4.0),
                           ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.remove_red_eye_outlined,
-                                color: FlutterFlowTheme.of(context).secondary,
-                                size: 30.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Text(
-                                  'VIVID',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Nunito',
-                                        fontSize: 16.0,
-                                      ),
+                          child: InkWell(
+                            onTap: () async {
+                              await actions.sendCommandOverBluetooth(
+                                'setVividPictureMode',
+                                'none',
+                                FFAppState().connectedDeviceID,
+                                '37200001-7638-4216-B629-96AD40F79BB1',
+                                '47200008-7638-4216-B629-96AD40F79BB1',
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.remove_red_eye_outlined,
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  size: 30.0,
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 4.0, 0.0, 0.0),
+                                  child: Text(
+                                    'VIVID',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .override(
+                                          fontFamily: 'Nunito',
+                                          fontSize: 16.0,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ).animateOnActionTrigger(
@@ -265,10 +289,21 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget>
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
-                                Icons.remove_red_eye_outlined,
-                                color: FlutterFlowTheme.of(context).secondary,
-                                size: 30.0,
+                              InkWell(
+                                onTap: () async {
+                                  await actions.sendCommandOverBluetooth(
+                                    'setBrightPictureMode',
+                                    'none',
+                                    FFAppState().connectedDeviceID,
+                                    '37200001-7638-4216-B629-96AD40F79BB1',
+                                    '47200008-7638-4216-B629-96AD40F79BB1',
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.remove_red_eye_outlined,
+                                  color: FlutterFlowTheme.of(context).secondary,
+                                  size: 30.0,
+                                ),
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -290,6 +325,78 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget>
                         animationsMap['containerOnActionTriggerAnimation3']!,
                       ),
                     ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    await actions.sendCommandOverBluetooth(
+                      'connectToTransmitter',
+                      'none',
+                      FFAppState().connectedDeviceID,
+                      '37200001-7638-4216-B629-96AD40F79BB1',
+                      '47200008-7638-4216-B629-96AD40F79BB1',
+                    );
+                  },
+                  text: 'Connect To  Streamer',
+                  icon: Icon(
+                    Icons.wifi_sharp,
+                    size: 15.0,
+                  ),
+                  options: FFButtonOptions(
+                    width: 250.0,
+                    height: 40.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Nunito',
+                          color: Colors.white,
+                        ),
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).secondary,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    await actions.sendCommandOverBluetooth(
+                      'checkTransmitterConnection',
+                      'none',
+                      FFAppState().connectedDeviceID,
+                      '37200001-7638-4216-B629-96AD40F79BB1',
+                      '47200008-7638-4216-B629-96AD40F79BB1',
+                    );
+                  },
+                  text: 'Check Connection',
+                  icon: Icon(
+                    Icons.help_center_outlined,
+                    size: 15.0,
+                  ),
+                  options: FFButtonOptions(
+                    width: 250.0,
+                    height: 40.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Nunito',
+                          color: Colors.white,
+                        ),
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).secondary,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
               ),

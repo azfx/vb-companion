@@ -1,3 +1,4 @@
+import '/components/disconnected_state_widget.dart';
 import '/components/up_down_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -83,94 +84,6 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                 height: 440.0,
                 child: Stack(
                   children: [
-                    if (FFAppState().connectionState == 'disconnected')
-                      Container(
-                        width: MediaQuery.of(context).size.width * 1.0,
-                        height: 440.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              25.0, 25.0, 25.0, 25.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
-                                child: Icon(
-                                  Icons.error_outline,
-                                  color: FlutterFlowTheme.of(context).tertiary,
-                                  size: 60.0,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 20.0),
-                                child: Text(
-                                  'Vision Buddy Headset disconnected!',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Nunito',
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                      ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 20.0),
-                                child: Text(
-                                  'Please ensure the headset is powered on, and in bluetooth scan mode.',
-                                  textAlign: TextAlign.center,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                ),
-                              ),
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  context.goNamed(
-                                    'HomePage',
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType: PageTransitionType.fade,
-                                      ),
-                                    },
-                                  );
-                                },
-                                text: 'Retry',
-                                options: FFButtonOptions(
-                                  width: 130.0,
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Nunito',
-                                        color: Colors.white,
-                                      ),
-                                  elevation: 2.0,
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -235,7 +148,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                           serviceID:
                                               '37200001-7638-4216-B629-96AD40F79BB1',
                                           characteristicID:
-                                              '47200004-7638-4216-B629-96AD40F79BB1',
+                                              '47200008-7638-4216-B629-96AD40F79BB1',
                                           maxSettingValue: 10,
                                           minSettingValue: 1,
                                           deltaValue: 1,
@@ -331,6 +244,11 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                           ),
                         ),
                       ],
+                    ),
+                    wrapWithModel(
+                      model: _model.disconnectedStateModel,
+                      updateCallback: () => setState(() {}),
+                      child: DisconnectedStateWidget(),
                     ),
                   ],
                 ),

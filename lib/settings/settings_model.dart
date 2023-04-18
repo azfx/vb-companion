@@ -1,6 +1,8 @@
+import '/components/disconnected_state_widget.dart';
 import '/components/v_b_button_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,6 +21,8 @@ class SettingsModel extends FlutterFlowModel {
   late VBButtonComponentModel vBButtonComponentModel4;
   // Model for VBButtonComponent component.
   late VBButtonComponentModel vBButtonComponentModel5;
+  // Model for DisconnectedState component.
+  late DisconnectedStateModel disconnectedStateModel;
 
   /// Initialization and disposal methods.
 
@@ -33,6 +37,8 @@ class SettingsModel extends FlutterFlowModel {
         createModel(context, () => VBButtonComponentModel());
     vBButtonComponentModel5 =
         createModel(context, () => VBButtonComponentModel());
+    disconnectedStateModel =
+        createModel(context, () => DisconnectedStateModel());
   }
 
   void dispose() {
@@ -41,6 +47,7 @@ class SettingsModel extends FlutterFlowModel {
     vBButtonComponentModel3.dispose();
     vBButtonComponentModel4.dispose();
     vBButtonComponentModel5.dispose();
+    disconnectedStateModel.dispose();
   }
 
   /// Additional helper methods are added here.

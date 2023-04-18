@@ -1,3 +1,4 @@
+import '/components/disconnected_state_widget.dart';
 import '/components/up_down_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -18,6 +19,8 @@ class MainPanelModel extends FlutterFlowModel {
   late UpDownButtonModel upDownButtonModel2;
   // Model for UpDownButton component.
   late UpDownButtonModel upDownButtonModel3;
+  // Model for DisconnectedState component.
+  late DisconnectedStateModel disconnectedStateModel;
 
   /// Initialization and disposal methods.
 
@@ -25,12 +28,15 @@ class MainPanelModel extends FlutterFlowModel {
     upDownButtonModel1 = createModel(context, () => UpDownButtonModel());
     upDownButtonModel2 = createModel(context, () => UpDownButtonModel());
     upDownButtonModel3 = createModel(context, () => UpDownButtonModel());
+    disconnectedStateModel =
+        createModel(context, () => DisconnectedStateModel());
   }
 
   void dispose() {
     upDownButtonModel1.dispose();
     upDownButtonModel2.dispose();
     upDownButtonModel3.dispose();
+    disconnectedStateModel.dispose();
   }
 
   /// Additional helper methods are added here.

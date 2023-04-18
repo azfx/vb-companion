@@ -114,7 +114,7 @@ class _UpDownButtonWidgetState extends State<UpDownButtonWidget> {
                       widget.characteristicID!,
                     );
                   } else {
-                    HapticFeedback.mediumImpact();
+                    HapticFeedback.heavyImpact();
                   }
                 },
               ),
@@ -158,7 +158,7 @@ class _UpDownButtonWidgetState extends State<UpDownButtonWidget> {
                       widget.characteristicID!,
                     );
                   } else {
-                    HapticFeedback.mediumImpact();
+                    HapticFeedback.heavyImpact();
                   }
                 },
               ),

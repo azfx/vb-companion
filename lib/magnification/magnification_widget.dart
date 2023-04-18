@@ -71,7 +71,7 @@ class _MagnificationWidgetState extends State<MagnificationWidget> {
                   settingName: 'Zoom',
                   commandName: 'setZoom',
                   serviceID: '37200001-7638-4216-B629-96AD40F79BB1',
-                  characteristicID: '47200004-7638-4216-B629-96AD40F79BB1',
+                  characteristicID: '47200008-7638-4216-B629-96AD40F79BB1',
                   maxSettingValue: 10,
                   minSettingValue: 1,
                   deltaValue: 1,

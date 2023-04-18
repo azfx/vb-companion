@@ -1,12 +1,8 @@
 import '/components/v_b_button_component_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'buddy_model.dart';
@@ -19,107 +15,16 @@ class BuddyWidget extends StatefulWidget {
   _BuddyWidgetState createState() => _BuddyWidgetState();
 }
 
-class _BuddyWidgetState extends State<BuddyWidget>
-    with TickerProviderStateMixin {
+class _BuddyWidgetState extends State<BuddyWidget> {
   late BuddyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
 
-  final animationsMap = {
-    'containerOnActionTriggerAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.9,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.9,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.9,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnActionTriggerAnimation4': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        SaturateEffect(
-          curve: Curves.bounceOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        ScaleEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 200.ms,
-          begin: 0.9,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
-
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => BuddyModel());
-
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -191,8 +96,19 @@ class _BuddyWidgetState extends State<BuddyWidget>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          'This feature is not implemented yet.',
+                          style: TextStyle(
+                            color: FlutterFlowTheme.of(context).primary,
+                          ),
+                        ),
+                        duration: Duration(milliseconds: 4000),
+                        backgroundColor: FlutterFlowTheme.of(context).secondary,
+                      ),
+                    );
                   },
                   text: 'Ask Buddy',
                   icon: Icon(
@@ -232,165 +148,8 @@ class _BuddyWidgetState extends State<BuddyWidget>
                     ),
                     scrollDirection: Axis.vertical,
                     children: [
-                      InkWell(
-                        onTap: () async {
-                          context.pushNamed('Magnification');
-                        },
-                        child: Container(
-                          width: 100.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF363A3F),
-                            borderRadius: BorderRadius.circular(4.0),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.toggleOff,
-                                color: FlutterFlowTheme.of(context).secondary,
-                                size: 30.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Text(
-                                  'Current Weather',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Nunito',
-                                        fontSize: 15.0,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation1']!,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          context.pushNamed('Magnification');
-                        },
-                        child: Container(
-                          width: 100.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF363A3F),
-                            borderRadius: BorderRadius.circular(4.0),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.batteryThreeQuarters,
-                                color: FlutterFlowTheme.of(context).secondary,
-                                size: 30.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Text(
-                                  'Call Uber',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Nunito',
-                                        fontSize: 15.0,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation2']!,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          context.pushNamed('Magnification');
-                        },
-                        child: Container(
-                          width: 100.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF363A3F),
-                            borderRadius: BorderRadius.circular(4.0),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.search_outlined,
-                                color: FlutterFlowTheme.of(context).secondary,
-                                size: 40.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Text(
-                                  'Magnifier',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Nunito',
-                                        fontSize: 15.0,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation3']!,
-                      ),
-                      InkWell(
-                        onTap: () async {
-                          context.pushNamed('Magnification');
-                        },
-                        child: Container(
-                          width: 100.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF363A3F),
-                            borderRadius: BorderRadius.circular(4.0),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.gamepad,
-                                color: FlutterFlowTheme.of(context).secondary,
-                                size: 35.0,
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Text(
-                                  'Games',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        fontFamily: 'Nunito',
-                                        fontSize: 15.0,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ).animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation4']!,
-                      ),
                       wrapWithModel(
-                        model: _model.vBButtonComponentModel,
+                        model: _model.vBButtonComponentModel1,
                         updateCallback: () => setState(() {}),
                         child: VBButtonComponentWidget(
                           buttonIcon: Icon(
@@ -399,6 +158,60 @@ class _BuddyWidgetState extends State<BuddyWidget>
                             size: 30.0,
                           ),
                           buttonText: 'Current Time',
+                          onButtonTap: () async {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'This feature is not implemented yet.',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      wrapWithModel(
+                        model: _model.vBButtonComponentModel2,
+                        updateCallback: () => setState(() {}),
+                        child: VBButtonComponentWidget(
+                          buttonIcon: Icon(
+                            Icons.cloud_queue,
+                            color: FlutterFlowTheme.of(context).secondary,
+                            size: 30.0,
+                          ),
+                          buttonText: 'Weather',
+                          onButtonTap: () async {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'This feature is not implemented yet.',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      wrapWithModel(
+                        model: _model.vBButtonComponentModel3,
+                        updateCallback: () => setState(() {}),
+                        child: VBButtonComponentWidget(
+                          buttonIcon: Icon(
+                            Icons.zoom_in,
+                            color: FlutterFlowTheme.of(context).secondary,
+                            size: 30.0,
+                          ),
+                          buttonText: 'Magnifier',
                           onButtonTap: () async {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
