@@ -33,7 +33,8 @@ Future initializeDevice(String deviceID) async {
       print("!${device.id.id}!");
       print("!${deviceID}!");
       if (device.id.id == deviceID) {
-        print('${device.id} matches ${deviceID}');
+        print(
+            '${device.id} matches ${deviceID}, begin listening to connection state');
         device.state.listen((state) => {
               //print("BluetoothState: ${state.name}");
               FFAppState()
