@@ -54,9 +54,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => HelpWidget(),
             ),
             FFRoute(
-              name: 'SettingsCopy',
-              path: 'settingsCopy',
-              builder: (context, params) => SettingsCopyWidget(
+              name: 'SettingsTemplate',
+              path: 'settingsTemplate',
+              builder: (context, params) => SettingsTemplateWidget(
                 deviceID: params.getParam('deviceID', ParamType.String),
               ),
             ),
