@@ -80,6 +80,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         scrollDirection: Axis.vertical,
                         children: [
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await Future.delayed(
                                   const Duration(milliseconds: 1000));
@@ -111,6 +115,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             ),
                           ),
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await Future.delayed(
                                   const Duration(milliseconds: 1000));
@@ -142,6 +150,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             ),
                           ),
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await Future.delayed(
                                   const Duration(milliseconds: 1000));
@@ -165,6 +177,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             ),
                           ),
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await Future.delayed(
                                   const Duration(milliseconds: 1000));
@@ -188,6 +204,10 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                             ),
                           ),
                           InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onTap: () async {
                               await Future.delayed(
                                   const Duration(milliseconds: 1000));

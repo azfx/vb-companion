@@ -40,8 +40,8 @@ class _VBButtonComponentWidgetState extends State<VBButtonComponentWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 100.ms,
-          begin: 1.0,
-          end: 0.9,
+          begin: Offset(1.0, 1.0),
+          end: Offset(0.9, 0.9),
         ),
       ],
     ),
@@ -80,6 +80,10 @@ class _VBButtonComponentWidgetState extends State<VBButtonComponentWidget>
     context.watch<FFAppState>();
 
     return InkWell(
+      splashColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       onTap: () async {
         if (animationsMap['containerOnActionTriggerAnimation'] != null) {
           await animationsMap['containerOnActionTriggerAnimation']!
@@ -110,6 +114,7 @@ class _VBButtonComponentWidgetState extends State<VBButtonComponentWidget>
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
               child: Text(
                 widget.buttonText,
+                textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).titleMedium.override(
                       fontFamily: 'Nunito',
                       fontSize: 16.0,

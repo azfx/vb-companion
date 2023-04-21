@@ -127,7 +127,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                         updateCallback: () => setState(() {}),
                                         child: UpDownButtonWidget(
                                           settingName: 'Volume',
-                                          commandName: 'setContrast',
+                                          commandName: 'setVolume',
                                           serviceID:
                                               '37200001-7638-4216-B629-96AD40F79BB1',
                                           characteristicID:
