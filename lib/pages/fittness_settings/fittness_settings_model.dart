@@ -16,6 +16,8 @@ class FittnessSettingsModel extends FlutterFlowModel {
   late VBButtonComponentModel vBButtonComponentModel2;
   // Model for VBButtonComponent component.
   late VBButtonComponentModel vBButtonComponentModel3;
+  // Model for VBButtonComponent component.
+  late VBButtonComponentModel vBButtonComponentModel4;
   // Model for DisconnectedState component.
   late DisconnectedStateModel disconnectedStateModel;
 
@@ -28,6 +30,8 @@ class FittnessSettingsModel extends FlutterFlowModel {
         createModel(context, () => VBButtonComponentModel());
     vBButtonComponentModel3 =
         createModel(context, () => VBButtonComponentModel());
+    vBButtonComponentModel4 =
+        createModel(context, () => VBButtonComponentModel());
     disconnectedStateModel =
         createModel(context, () => DisconnectedStateModel());
   }
@@ -36,6 +40,7 @@ class FittnessSettingsModel extends FlutterFlowModel {
     vBButtonComponentModel1.dispose();
     vBButtonComponentModel2.dispose();
     vBButtonComponentModel3.dispose();
+    vBButtonComponentModel4.dispose();
     disconnectedStateModel.dispose();
   }
 

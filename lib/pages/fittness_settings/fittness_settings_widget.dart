@@ -170,6 +170,27 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget> {
                               },
                             ),
                           ),
+                          wrapWithModel(
+                            model: _model.vBButtonComponentModel4,
+                            updateCallback: () => setState(() {}),
+                            child: VBButtonComponentWidget(
+                              buttonIcon: Icon(
+                                Icons.ondemand_video_rounded,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 30.0,
+                              ),
+                              buttonText: 'TV',
+                              onButtonTap: () async {
+                                await actions.sendCommandOverBluetooth(
+                                  'playVideo',
+                                  'TV',
+                                  FFAppState().connectedDeviceID,
+                                  '37200001-7638-4216-B629-96AD40F79BB1',
+                                  '47200008-7638-4216-B629-96AD40F79BB1',
+                                );
+                              },
+                            ),
+                          ),
                         ],
                       ),
                     ),
