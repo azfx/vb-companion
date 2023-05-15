@@ -44,7 +44,7 @@
 
 
 	<key>NSBluetoothAlwaysUsageDescription</key>
-    <string>Please ensure Bluetooth is turned on.</string>
+    <string>Vision Buddy companion application needs bluetooth access to connect to the Vision Buddy device. Please turn bluetooth ON to proceed. Once connected, you should be able to change Zoom, Contrast, Brightness and various Modes using this app.</string>
 
 
 	<key>UILaunchStoryboardName</key>
