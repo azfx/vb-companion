@@ -3,12 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
-import '../flutter_flow_theme.dart';
+import 'package:provider/provider.dart';
 
-import '../../index.dart';
-import '../../main.dart';
-import '../lat_lng.dart';
-import '../place.dart';
+import '/index.dart';
+import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -17,6 +19,11 @@ export 'serialization_util.dart';
 const kTransitionInfoKey = '__transition_info__';
 
 class AppStateNotifier extends ChangeNotifier {
+  AppStateNotifier._();
+
+  static AppStateNotifier? _instance;
+  static AppStateNotifier get instance => _instance ??= AppStateNotifier._();
+
   bool showSplashImage = true;
 
   void stopShowingSplashImage() {
@@ -29,7 +36,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, _) => HomePageWidget(),
+      errorBuilder: (context, state) => HomePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -45,7 +52,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'SettingsOld',
               path: 'settingsOld',
               builder: (context, params) => SettingsOldWidget(
-                deviceID: params.getParam('deviceID', ParamType.String),
+                deviceID: params.getParam(
+                  'deviceID',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -57,7 +67,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'SettingsTemplate',
               path: 'settingsTemplate',
               builder: (context, params) => SettingsTemplateWidget(
-                deviceID: params.getParam('deviceID', ParamType.String),
+                deviceID: params.getParam(
+                  'deviceID',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -66,7 +79,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'MainPanel')
                   : MainPanelWidget(
-                      deviceID: params.getParam('deviceID', ParamType.String),
+                      deviceID: params.getParam(
+                        'deviceID',
+                        ParamType.String,
+                      ),
                     ),
             ),
             FFRoute(
@@ -112,11 +128,64 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Disconnected',
               path: 'disconnected',
               builder: (context, params) => DisconnectedWidget(),
+            ),
+            FFRoute(
+              name: 'Reading',
+              path: 'reading',
+              builder: (context, params) => ReadingWidget(),
+            ),
+            FFRoute(
+              name: 'ContrastModes',
+              path: 'contrastModes',
+              builder: (context, params) => ContrastModesWidget(),
+            ),
+            FFRoute(
+              name: 'Videos',
+              path: 'videos',
+              builder: (context, params) => VideosWidget(),
+            ),
+            FFRoute(
+              name: 'CameraPictureModes',
+              path: 'cameraPictureModes',
+              builder: (context, params) => CameraPictureModesWidget(),
+            ),
+            FFRoute(
+              name: 'AdminSettings',
+              path: 'adminSettings',
+              builder: (context, params) => AdminSettingsWidget(
+                pin: params.getParam(
+                  'pin',
+                  ParamType.String,
+                ),
+                switchButton: params.getParam(
+                  'switchButton',
+                  ParamType.bool,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'EyeTests',
+              path: 'eyetests',
+              builder: (context, params) => EyeTestsWidget(),
+            ),
+            FFRoute(
+              name: 'SetupWifi',
+              path: 'setupwifi',
+              builder: (context, params) => SetupWifiWidget(
+                deviceID: params.getParam(
+                  'deviceID',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'EDIDSettings',
+              path: 'eDIDSettings',
+              builder: (context, params) => EDIDSettingsWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
-      urlPathStrategy: UrlPathStrategy.path,
     );
 
 extension NavParamExtensions on Map<String, String?> {
@@ -131,10 +200,10 @@ extension NavigationExtensions on BuildContext {
   void safePop() {
     // If there is only one route on the stack, navigate to the initial
     // page instead of popping.
-    if (GoRouter.of(this).routerDelegate.matches.length <= 1) {
-      go('/');
-    } else {
+    if (canPop()) {
       pop();
+    } else {
+      go('/');
     }
   }
 }
@@ -143,8 +212,8 @@ extension _GoRouterStateExtensions on GoRouterState {
   Map<String, dynamic> get extraMap =>
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
-    ..addAll(params)
-    ..addAll(queryParams)
+    ..addAll(pathParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -163,7 +232,7 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.extraMap.length == 1 &&
+      (state.allParams.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
@@ -184,9 +253,9 @@ class FFParameters {
 
   dynamic getParam<T>(
     String paramName,
-    ParamType type, [
+    ParamType type, {
     bool isList = false,
-  ]) {
+  }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }
@@ -228,6 +297,7 @@ class FFRoute {
         name: name,
         path: path,
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(
@@ -243,13 +313,20 @@ class FFRoute {
                   key: state.pageKey,
                   child: child,
                   transitionDuration: transitionInfo.duration,
-                  transitionsBuilder: PageTransition(
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) =>
+                          PageTransition(
                     type: transitionInfo.transitionType,
                     duration: transitionInfo.duration,
                     reverseDuration: transitionInfo.duration,
                     alignment: transitionInfo.alignment,
                     child: child,
-                  ).transitionsBuilder,
+                  ).buildTransitions(
+                    context,
+                    animation,
+                    secondaryAnimation,
+                    child,
+                  ),
                 )
               : MaterialPage(key: state.pageKey, child: child);
         },
@@ -271,4 +348,34 @@ class TransitionInfo {
   final Alignment? alignment;
 
   static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+}
+
+class RootPageContext {
+  const RootPageContext(this.isRootPage, [this.errorRoute]);
+  final bool isRootPage;
+  final String? errorRoute;
+
+  static bool isInactiveRootPage(BuildContext context) {
+    final rootPageContext = context.read<RootPageContext?>();
+    final isRootPage = rootPageContext?.isRootPage ?? false;
+    final location = GoRouterState.of(context).uri.toString();
+    return isRootPage &&
+        location != '/' &&
+        location != rootPageContext?.errorRoute;
+  }
+
+  static Widget wrap(Widget child, {String? errorRoute}) => Provider.value(
+        value: RootPageContext(true, errorRoute),
+        child: child,
+      );
+}
+
+extension GoRouterLocationExtension on GoRouter {
+  String getCurrentLocation() {
+    final RouteMatch lastMatch = routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
 }

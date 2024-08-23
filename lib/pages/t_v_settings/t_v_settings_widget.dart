@@ -12,17 +12,16 @@ import 't_v_settings_model.dart';
 export 't_v_settings_model.dart';
 
 class TVSettingsWidget extends StatefulWidget {
-  const TVSettingsWidget({Key? key}) : super(key: key);
+  const TVSettingsWidget({super.key});
 
   @override
-  _TVSettingsWidgetState createState() => _TVSettingsWidgetState();
+  State<TVSettingsWidget> createState() => _TVSettingsWidgetState();
 }
 
 class _TVSettingsWidgetState extends State<TVSettingsWidget> {
   late TVSettingsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -36,7 +35,6 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -45,7 +43,7 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -58,6 +56,7 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget> {
                   fontFamily: 'Nunito',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -65,6 +64,7 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget> {
           elevation: 2.0,
         ),
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(
@@ -88,13 +88,15 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 0.0),
                     child: Text(
                       'PICTURE SETTINGS',
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Nunito',
+                            letterSpacing: 0.0,
+                          ),
                     ),
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
+                      padding: EdgeInsets.all(10.0),
                       child: GridView(
                         padding: EdgeInsets.zero,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -199,6 +201,7 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget> {
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Nunito',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).secondary,
@@ -238,6 +241,7 @@ class _TVSettingsWidgetState extends State<TVSettingsWidget> {
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Nunito',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).secondary,

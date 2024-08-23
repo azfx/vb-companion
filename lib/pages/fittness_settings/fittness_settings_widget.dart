@@ -2,6 +2,7 @@ import '/components/disconnected_state/disconnected_state_widget.dart';
 import '/components/v_b_button_component/v_b_button_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,17 +11,16 @@ import 'fittness_settings_model.dart';
 export 'fittness_settings_model.dart';
 
 class FittnessSettingsWidget extends StatefulWidget {
-  const FittnessSettingsWidget({Key? key}) : super(key: key);
+  const FittnessSettingsWidget({super.key});
 
   @override
-  _FittnessSettingsWidgetState createState() => _FittnessSettingsWidgetState();
+  State<FittnessSettingsWidget> createState() => _FittnessSettingsWidgetState();
 }
 
 class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget> {
   late FittnessSettingsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -34,7 +34,6 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -43,7 +42,7 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -51,11 +50,12 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: true,
           title: Text(
-            'Buddy',
+            'Fitness',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Nunito',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -63,22 +63,26 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget> {
           elevation: 2.0,
         ),
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                    padding: EdgeInsets.all(5.0),
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 1.0,
+                      width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 50.0,
                       decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 4.0,
                             color: Color(0x33000000),
-                            offset: Offset(0.0, 2.0),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
                           )
                         ],
                         border: Border.all(
@@ -89,14 +93,16 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget> {
                       child: Text(
                         'Watch Fitness Videos',
                         textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Nunito',
+                              letterSpacing: 0.0,
+                            ),
                       ),
                     ),
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
+                      padding: EdgeInsets.all(10.0),
                       child: GridView(
                         padding: EdgeInsets.zero,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -179,7 +185,7 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget> {
                                 color: FlutterFlowTheme.of(context).secondary,
                                 size: 30.0,
                               ),
-                              buttonText: 'TV',
+                              buttonText: 'Switch to TV',
                               onButtonTap: () async {
                                 await actions.sendCommandOverBluetooth(
                                   'playVideo',
@@ -188,6 +194,21 @@ class _FittnessSettingsWidgetState extends State<FittnessSettingsWidget> {
                                   '37200001-7638-4216-B629-96AD40F79BB1',
                                   '47200008-7638-4216-B629-96AD40F79BB1',
                                 );
+                              },
+                            ),
+                          ),
+                          wrapWithModel(
+                            model: _model.vBButtonComponentModel5,
+                            updateCallback: () => setState(() {}),
+                            child: VBButtonComponentWidget(
+                              buttonIcon: Icon(
+                                Icons.ondemand_video_rounded,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 30.0,
+                              ),
+                              buttonText: 'More Videos',
+                              onButtonTap: () async {
+                                context.pushNamed('Videos');
                               },
                             ),
                           ),

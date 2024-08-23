@@ -11,22 +11,16 @@ import 'help_model.dart';
 export 'help_model.dart';
 
 class HelpWidget extends StatefulWidget {
-  const HelpWidget({Key? key}) : super(key: key);
+  const HelpWidget({super.key});
 
   @override
-  _HelpWidgetState createState() => _HelpWidgetState();
+  State<HelpWidget> createState() => _HelpWidgetState();
 }
 
 class _HelpWidgetState extends State<HelpWidget> {
   late HelpModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
-  int get pageViewCurrentIndex => _model.pageViewController != null &&
-          _model.pageViewController!.hasClients &&
-          _model.pageViewController!.page != null
-      ? _model.pageViewController!.page!.round()
-      : 0;
 
   @override
   void initState() {
@@ -40,7 +34,6 @@ class _HelpWidgetState extends State<HelpWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -49,7 +42,7 @@ class _HelpWidgetState extends State<HelpWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -58,13 +51,17 @@ class _HelpWidgetState extends State<HelpWidget> {
           automaticallyImplyLeading: false,
           title: Text(
             'Connection Help',
-            style: FlutterFlowTheme.of(context).titleMedium,
+            style: FlutterFlowTheme.of(context).titleMedium.override(
+                  fontFamily: 'Nunito',
+                  letterSpacing: 0.0,
+                ),
           ),
           actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -86,8 +83,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 1.0,
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
                                   height: 300.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
@@ -96,15 +92,14 @@ class _HelpWidgetState extends State<HelpWidget> {
                                   child: Image.asset(
                                     'assets/images/Step_1_-_BW-PowerOn.png',
                                     width:
-                                        MediaQuery.of(context).size.width * 1.0,
-                                    height: MediaQuery.of(context).size.height *
-                                        1.0,
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 1.0,
                                     fit: BoxFit.contain,
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 20.0, 20.0, 20.0),
+                                  padding: EdgeInsets.all(20.0),
                                   child: Text(
                                     'Step 1',
                                     style: FlutterFlowTheme.of(context)
@@ -113,13 +108,18 @@ class _HelpWidgetState extends State<HelpWidget> {
                                           fontFamily: 'Nunito',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
                                 Text(
                                   'Power On Vision Buddy Headset',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Nunito',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -156,6 +156,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                                   .override(
                                                     fontFamily: 'Nunito',
                                                     color: Colors.white,
+                                                    letterSpacing: 0.0,
                                                   ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(
@@ -176,8 +177,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 1.0,
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
                                   height: 300.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
@@ -186,25 +186,32 @@ class _HelpWidgetState extends State<HelpWidget> {
                                   child: Image.asset(
                                     'assets/images/Step2.png',
                                     width:
-                                        MediaQuery.of(context).size.width * 1.0,
-                                    height: MediaQuery.of(context).size.height *
-                                        1.0,
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 1.0,
                                     fit: BoxFit.contain,
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 20.0, 20.0, 20.0),
+                                  padding: EdgeInsets.all(20.0),
                                   child: Text(
                                     'Step 2',
                                     style: FlutterFlowTheme.of(context)
-                                        .headlineSmall,
+                                        .headlineSmall
+                                        .override(
+                                          fontFamily: 'Nunito',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
                                 Text(
                                   'Press the zoom in button for 10 seconds',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Nunito',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -242,6 +249,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                                   .override(
                                                     fontFamily: 'Nunito',
                                                     color: Colors.white,
+                                                    letterSpacing: 0.0,
                                                   ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(
@@ -280,6 +288,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                                   .override(
                                                     fontFamily: 'Nunito',
                                                     color: Colors.white,
+                                                    letterSpacing: 0.0,
                                                   ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(
@@ -300,8 +309,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 1.0,
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
                                   height: 300.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
@@ -310,9 +318,9 @@ class _HelpWidgetState extends State<HelpWidget> {
                                   child: Image.asset(
                                     'assets/images/VB-Logo-White-No-Text.png',
                                     width:
-                                        MediaQuery.of(context).size.width * 1.0,
-                                    height: MediaQuery.of(context).size.height *
-                                        1.0,
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 1.0,
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -324,6 +332,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                         fontFamily: 'Nunito',
                                         color: FlutterFlowTheme.of(context)
                                             .lineColor,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                                 Padding(
@@ -333,14 +342,22 @@ class _HelpWidgetState extends State<HelpWidget> {
                                     FFAppState().connectionState.toUpperCase(),
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
-                                        .headlineSmall,
+                                        .headlineSmall
+                                        .override(
+                                          fontFamily: 'Nunito',
+                                          letterSpacing: 0.0,
+                                        ),
                                   ),
                                 ),
                                 Text(
                                   'You will hear a prompt stating the headset is ready to connect.',
                                   textAlign: TextAlign.center,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Nunito',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -400,6 +417,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                                   .override(
                                                     fontFamily: 'Nunito',
                                                     color: Colors.white,
+                                                    letterSpacing: 0.0,
                                                   ),
                                           elevation: 2.0,
                                           borderSide: BorderSide(
@@ -435,6 +453,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                                 duration: Duration(milliseconds: 500),
                                 curve: Curves.ease,
                               );
+                              setState(() {});
                             },
                             effect: smooth_page_indicator.ExpandingDotsEffect(
                               expansionFactor: 2.0,

@@ -2,6 +2,8 @@ import '/components/disconnected_state/disconnected_state_widget.dart';
 import '/components/up_down_button/up_down_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -9,17 +11,16 @@ import 'magnification_model.dart';
 export 'magnification_model.dart';
 
 class MagnificationWidget extends StatefulWidget {
-  const MagnificationWidget({Key? key}) : super(key: key);
+  const MagnificationWidget({super.key});
 
   @override
-  _MagnificationWidgetState createState() => _MagnificationWidgetState();
+  State<MagnificationWidget> createState() => _MagnificationWidgetState();
 }
 
 class _MagnificationWidgetState extends State<MagnificationWidget> {
   late MagnificationModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -33,7 +34,6 @@ class _MagnificationWidgetState extends State<MagnificationWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -42,7 +42,7 @@ class _MagnificationWidgetState extends State<MagnificationWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -55,6 +55,7 @@ class _MagnificationWidgetState extends State<MagnificationWidget> {
                   fontFamily: 'Nunito',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -62,6 +63,7 @@ class _MagnificationWidgetState extends State<MagnificationWidget> {
           elevation: 2.0,
         ),
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(
@@ -79,7 +81,7 @@ class _MagnificationWidgetState extends State<MagnificationWidget> {
                             updateCallback: () => setState(() {}),
                             child: UpDownButtonWidget(
                               settingName: 'Brightness',
-                              commandName: 'setBrightness',
+                              commandName: 'setCameraBrightness',
                               serviceID: '37200001-7638-4216-B629-96AD40F79BB1',
                               characteristicID:
                                   '47200008-7638-4216-B629-96AD40F79BB1',
@@ -110,8 +112,8 @@ class _MagnificationWidgetState extends State<MagnificationWidget> {
                             model: _model.upDownButtonModel3,
                             updateCallback: () => setState(() {}),
                             child: UpDownButtonWidget(
-                              settingName: 'Zoom',
-                              commandName: 'setZoom',
+                              settingName: 'Saturation',
+                              commandName: 'setSaturation',
                               serviceID: '37200001-7638-4216-B629-96AD40F79BB1',
                               characteristicID:
                                   '47200008-7638-4216-B629-96AD40F79BB1',
@@ -122,6 +124,74 @@ class _MagnificationWidgetState extends State<MagnificationWidget> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        context.pushNamed('CameraPictureModes');
+                      },
+                      text: 'Picture Modes',
+                      options: FFButtonOptions(
+                        width: 200.0,
+                        height: 50.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Nunito',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 2.0,
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).tertiary,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        await actions.sendCommandOverBluetooth(
+                          'RESET',
+                          'MAGNIFICATION',
+                          FFAppState().connectedDeviceID,
+                          '37200001-7638-4216-B629-96AD40F79BB1',
+                          '47200008-7638-4216-B629-96AD40F79BB1',
+                        );
+                      },
+                      text: 'Reset Mode',
+                      options: FFButtonOptions(
+                        width: 130.0,
+                        height: 40.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Nunito',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 2.0,
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primaryBtnText,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ),
                 ],

@@ -2,13 +2,15 @@ import '/components/disconnected_state/disconnected_state_widget.dart';
 import '/components/v_b_button_component/v_b_button_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'settings_widget.dart' show SettingsWidget;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class SettingsModel extends FlutterFlowModel {
+class SettingsModel extends FlutterFlowModel<SettingsWidget> {
   ///  State fields for stateful widgets in this page.
 
   // Model for VBButtonComponent component.
@@ -21,11 +23,12 @@ class SettingsModel extends FlutterFlowModel {
   late VBButtonComponentModel vBButtonComponentModel4;
   // Model for VBButtonComponent component.
   late VBButtonComponentModel vBButtonComponentModel5;
+  // Model for VBButtonComponent component.
+  late VBButtonComponentModel vBButtonComponentModel6;
   // Model for DisconnectedState component.
   late DisconnectedStateModel disconnectedStateModel;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {
     vBButtonComponentModel1 =
         createModel(context, () => VBButtonComponentModel());
@@ -37,19 +40,20 @@ class SettingsModel extends FlutterFlowModel {
         createModel(context, () => VBButtonComponentModel());
     vBButtonComponentModel5 =
         createModel(context, () => VBButtonComponentModel());
+    vBButtonComponentModel6 =
+        createModel(context, () => VBButtonComponentModel());
     disconnectedStateModel =
         createModel(context, () => DisconnectedStateModel());
   }
 
+  @override
   void dispose() {
     vBButtonComponentModel1.dispose();
     vBButtonComponentModel2.dispose();
     vBButtonComponentModel3.dispose();
     vBButtonComponentModel4.dispose();
     vBButtonComponentModel5.dispose();
+    vBButtonComponentModel6.dispose();
     disconnectedStateModel.dispose();
   }
-
-  /// Additional helper methods are added here.
-
 }

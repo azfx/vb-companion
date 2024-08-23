@@ -1,7 +1,9 @@
+import '/components/admin_pin/admin_pin_widget.dart';
 import '/components/disconnected_state/disconnected_state_widget.dart';
 import '/components/v_b_button_component/v_b_button_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,17 +12,16 @@ import 'general_settings_model.dart';
 export 'general_settings_model.dart';
 
 class GeneralSettingsWidget extends StatefulWidget {
-  const GeneralSettingsWidget({Key? key}) : super(key: key);
+  const GeneralSettingsWidget({super.key});
 
   @override
-  _GeneralSettingsWidgetState createState() => _GeneralSettingsWidgetState();
+  State<GeneralSettingsWidget> createState() => _GeneralSettingsWidgetState();
 }
 
 class _GeneralSettingsWidgetState extends State<GeneralSettingsWidget> {
   late GeneralSettingsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -34,7 +35,6 @@ class _GeneralSettingsWidgetState extends State<GeneralSettingsWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -43,7 +43,7 @@ class _GeneralSettingsWidgetState extends State<GeneralSettingsWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -56,6 +56,7 @@ class _GeneralSettingsWidgetState extends State<GeneralSettingsWidget> {
                   fontFamily: 'Nunito',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -63,6 +64,7 @@ class _GeneralSettingsWidgetState extends State<GeneralSettingsWidget> {
           elevation: 2.0,
         ),
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(
@@ -70,8 +72,7 @@ class _GeneralSettingsWidgetState extends State<GeneralSettingsWidget> {
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
+                      padding: EdgeInsets.all(10.0),
                       child: GridView(
                         padding: EdgeInsets.zero,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -145,7 +146,97 @@ class _GeneralSettingsWidgetState extends State<GeneralSettingsWidget> {
                               },
                             ),
                           ),
+                          wrapWithModel(
+                            model: _model.vBButtonComponentModel4,
+                            updateCallback: () => setState(() {}),
+                            child: VBButtonComponentWidget(
+                              buttonIcon: Icon(
+                                Icons.toggle_on_outlined,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 30.0,
+                              ),
+                              buttonText: 'Edge Mode ON',
+                              onButtonTap: () async {
+                                await actions.sendCommandOverBluetooth(
+                                  'OUTLINEMODE',
+                                  'ON',
+                                  FFAppState().connectedDeviceID,
+                                  '37200001-7638-4216-B629-96AD40F79BB1',
+                                  '47200008-7638-4216-B629-96AD40F79BB1',
+                                );
+                              },
+                            ),
+                          ),
+                          wrapWithModel(
+                            model: _model.vBButtonComponentModel5,
+                            updateCallback: () => setState(() {}),
+                            child: VBButtonComponentWidget(
+                              buttonIcon: Icon(
+                                Icons.toggle_off_outlined,
+                                color: FlutterFlowTheme.of(context).secondary,
+                                size: 30.0,
+                              ),
+                              buttonText: 'Edge Mode OFF',
+                              onButtonTap: () async {
+                                await actions.sendCommandOverBluetooth(
+                                  'OUTLINEMODE',
+                                  'OFF',
+                                  FFAppState().connectedDeviceID,
+                                  '37200001-7638-4216-B629-96AD40F79BB1',
+                                  '47200008-7638-4216-B629-96AD40F79BB1',
+                                );
+                              },
+                            ),
+                          ),
                         ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 100.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          backgroundColor: FlutterFlowTheme.of(context).primary,
+                          enableDrag: false,
+                          context: context,
+                          builder: (context) {
+                            return GestureDetector(
+                              onTap: () => FocusScope.of(context).unfocus(),
+                              child: Padding(
+                                padding: MediaQuery.viewInsetsOf(context),
+                                child: Container(
+                                  height: 300.0,
+                                  child: AdminPinWidget(),
+                                ),
+                              ),
+                            );
+                          },
+                        ).then((value) => safeSetState(() {}));
+                      },
+                      text: 'Admin Settings',
+                      options: FFButtonOptions(
+                        width: 130.0,
+                        height: 40.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Nunito',
+                                  color: FlutterFlowTheme.of(context).error,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 2.0,
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ),

@@ -1,6 +1,7 @@
 import '/components/disconnected_state/disconnected_state_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -11,21 +12,20 @@ export 'settings_template_model.dart';
 
 class SettingsTemplateWidget extends StatefulWidget {
   const SettingsTemplateWidget({
-    Key? key,
+    super.key,
     this.deviceID,
-  }) : super(key: key);
+  });
 
   final String? deviceID;
 
   @override
-  _SettingsTemplateWidgetState createState() => _SettingsTemplateWidgetState();
+  State<SettingsTemplateWidget> createState() => _SettingsTemplateWidgetState();
 }
 
 class _SettingsTemplateWidgetState extends State<SettingsTemplateWidget> {
   late SettingsTemplateModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -35,7 +35,7 @@ class _SettingsTemplateWidgetState extends State<SettingsTemplateWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.initializeDevice(
-        widget.deviceID!,
+        widget!.deviceID!,
       );
     });
 
@@ -46,26 +46,24 @@ class _SettingsTemplateWidgetState extends State<SettingsTemplateWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.8,
+                height: MediaQuery.sizeOf(context).height * 0.8,
                 child: Stack(
                   children: [
                     wrapWithModel(

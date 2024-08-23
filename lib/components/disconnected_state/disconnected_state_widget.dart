@@ -8,10 +8,10 @@ import 'disconnected_state_model.dart';
 export 'disconnected_state_model.dart';
 
 class DisconnectedStateWidget extends StatefulWidget {
-  const DisconnectedStateWidget({Key? key}) : super(key: key);
+  const DisconnectedStateWidget({super.key});
 
   @override
-  _DisconnectedStateWidgetState createState() =>
+  State<DisconnectedStateWidget> createState() =>
       _DisconnectedStateWidgetState();
 }
 
@@ -46,13 +46,13 @@ class _DisconnectedStateWidgetState extends State<DisconnectedStateWidget> {
     return Visibility(
       visible: FFAppState().connectionState == 'disconnected',
       child: Container(
-        width: MediaQuery.of(context).size.width * 1.0,
+        width: MediaQuery.sizeOf(context).width * 1.0,
         height: 440.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).primaryBackground,
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(25.0, 25.0, 25.0, 25.0),
+          padding: EdgeInsets.all(25.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -73,6 +73,7 @@ class _DisconnectedStateWidgetState extends State<DisconnectedStateWidget> {
                   style: FlutterFlowTheme.of(context).titleMedium.override(
                         fontFamily: 'Nunito',
                         color: FlutterFlowTheme.of(context).tertiary,
+                        letterSpacing: 0.0,
                       ),
                 ),
               ),
@@ -81,7 +82,10 @@ class _DisconnectedStateWidgetState extends State<DisconnectedStateWidget> {
                 child: Text(
                   'Please ensure the headset is powered on, and in bluetooth scan mode.',
                   textAlign: TextAlign.center,
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Nunito',
+                        letterSpacing: 0.0,
+                      ),
                 ),
               ),
               FFButtonWidget(
@@ -107,6 +111,7 @@ class _DisconnectedStateWidgetState extends State<DisconnectedStateWidget> {
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Nunito',
                         color: Colors.white,
+                        letterSpacing: 0.0,
                       ),
                   elevation: 2.0,
                   borderSide: BorderSide(

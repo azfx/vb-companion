@@ -12,7 +12,7 @@ export 'up_down_button_model.dart';
 
 class UpDownButtonWidget extends StatefulWidget {
   const UpDownButtonWidget({
-    Key? key,
+    super.key,
     String? settingName,
     this.commandName,
     this.serviceID,
@@ -20,9 +20,10 @@ class UpDownButtonWidget extends StatefulWidget {
     this.maxSettingValue,
     this.minSettingValue,
     int? deltaValue,
+    int? defaultValue,
   })  : this.settingName = settingName ?? 'Setting',
         this.deltaValue = deltaValue ?? 1,
-        super(key: key);
+        this.defaultValue = defaultValue ?? 10;
 
   final String settingName;
   final String? commandName;
@@ -31,9 +32,10 @@ class UpDownButtonWidget extends StatefulWidget {
   final int? maxSettingValue;
   final int? minSettingValue;
   final int deltaValue;
+  final int defaultValue;
 
   @override
-  _UpDownButtonWidgetState createState() => _UpDownButtonWidgetState();
+  State<UpDownButtonWidget> createState() => _UpDownButtonWidgetState();
 }
 
 class _UpDownButtonWidgetState extends State<UpDownButtonWidget> {
@@ -52,9 +54,8 @@ class _UpDownButtonWidgetState extends State<UpDownButtonWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.deviceID = FFAppState().connectedDeviceID;
-      });
+      _model.deviceID = FFAppState().connectedDeviceID;
+      setState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -74,7 +75,7 @@ class _UpDownButtonWidgetState extends State<UpDownButtonWidget> {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
       child: Container(
-        width: MediaQuery.of(context).size.width * 1.0,
+        width: MediaQuery.sizeOf(context).width * 1.0,
         height: 300.0,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(3.0),
@@ -98,20 +99,19 @@ class _UpDownButtonWidgetState extends State<UpDownButtonWidget> {
                   size: 70.0,
                 ),
                 onPressed: () async {
-                  if (_model.settingValue! < widget.maxSettingValue!) {
-                    setState(() {
-                      _model.settingValue =
-                          _model.settingValue! + widget.deltaValue;
-                    });
+                  if (_model.settingValue! < widget!.maxSettingValue!) {
+                    _model.settingValue =
+                        _model.settingValue! + widget!.deltaValue;
+                    setState(() {});
                     await actions.sendCommandOverBluetooth(
-                      widget.commandName!,
+                      widget!.commandName!,
                       valueOrDefault<String>(
                         _model.settingValue?.toString(),
                         'None',
                       ),
                       FFAppState().connectedDeviceID,
-                      widget.serviceID!,
-                      widget.characteristicID!,
+                      widget!.serviceID!,
+                      widget!.characteristicID!,
                     );
                   } else {
                     HapticFeedback.heavyImpact();
@@ -126,6 +126,7 @@ class _UpDownButtonWidgetState extends State<UpDownButtonWidget> {
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Nunito',
                       fontSize: 24.0,
+                      letterSpacing: 0.0,
                     ),
               ),
               FlutterFlowIconButton(
@@ -139,23 +140,22 @@ class _UpDownButtonWidgetState extends State<UpDownButtonWidget> {
                   size: 50.0,
                 ),
                 onPressed: () async {
-                  if (_model.settingValue! > widget.minSettingValue!) {
-                    setState(() {
-                      _model.settingValue = _model.settingValue! +
-                          valueOrDefault<int>(
-                            -1 * widget.deltaValue,
-                            1,
-                          );
-                    });
+                  if (_model.settingValue! > widget!.minSettingValue!) {
+                    _model.settingValue = _model.settingValue! +
+                        valueOrDefault<int>(
+                          -1 * widget!.deltaValue,
+                          1,
+                        );
+                    setState(() {});
                     await actions.sendCommandOverBluetooth(
-                      widget.commandName!,
+                      widget!.commandName!,
                       valueOrDefault<String>(
                         _model.settingValue?.toString(),
                         'None',
                       ),
                       FFAppState().connectedDeviceID,
-                      widget.serviceID!,
-                      widget.characteristicID!,
+                      widget!.serviceID!,
+                      widget!.characteristicID!,
                     );
                   } else {
                     HapticFeedback.heavyImpact();
@@ -164,13 +164,14 @@ class _UpDownButtonWidgetState extends State<UpDownButtonWidget> {
               ),
               Text(
                 valueOrDefault<String>(
-                  widget.settingName,
+                  widget!.settingName,
                   'Setting',
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Nunito',
                       color: FlutterFlowTheme.of(context).tertiary,
                       fontSize: 18.0,
+                      letterSpacing: 0.0,
                     ),
               ),
             ],

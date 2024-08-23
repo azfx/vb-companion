@@ -3,3 +3,4 @@ export 'turn_on_blue_tooth.dart' show turnOnBlueTooth;
 export 'initialize_device.dart' show initializeDevice;
 export 'on_brightness_slider_changed.dart' show onBrightnessSliderChanged;
 export 'send_command_over_bluetooth.dart' show sendCommandOverBluetooth;
+export 'get_e_d_i_ds_from_headset.dart' show getEDIDsFromHeadset;

@@ -14,21 +14,20 @@ export 'main_panel_model.dart';
 
 class MainPanelWidget extends StatefulWidget {
   const MainPanelWidget({
-    Key? key,
+    super.key,
     this.deviceID,
-  }) : super(key: key);
+  });
 
   final String? deviceID;
 
   @override
-  _MainPanelWidgetState createState() => _MainPanelWidgetState();
+  State<MainPanelWidget> createState() => _MainPanelWidgetState();
 }
 
 class _MainPanelWidgetState extends State<MainPanelWidget> {
   late MainPanelModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -49,7 +48,6 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -58,7 +56,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -76,6 +74,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
           elevation: 4.0,
         ),
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -89,7 +88,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width * 1.0,
+                          width: MediaQuery.sizeOf(context).width * 1.0,
                           height: 440.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context).primary,
@@ -132,7 +131,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                               '37200001-7638-4216-B629-96AD40F79BB1',
                                           characteristicID:
                                               '47200008-7638-4216-B629-96AD40F79BB1',
-                                          maxSettingValue: 10,
+                                          maxSettingValue: 15,
                                           minSettingValue: 1,
                                           deltaValue: 1,
                                         ),
@@ -152,6 +151,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                           maxSettingValue: 10,
                                           minSettingValue: 1,
                                           deltaValue: 1,
+                                          defaultValue: 1,
                                         ),
                                       ),
                                     ),
@@ -171,7 +171,7 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                       '47200008-7638-4216-B629-96AD40F79BB1',
                                     );
                                   },
-                                  text: 'Mode',
+                                  text: 'Next Mode',
                                   options: FFButtonOptions(
                                     width: 130.0,
                                     height: 50.0,
@@ -185,15 +185,29 @@ class _MainPanelWidgetState extends State<MainPanelWidget> {
                                         .override(
                                           fontFamily: 'Nunito',
                                           color: Colors.white,
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 2.0,
                                     borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondary,
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 0.0),
+                                child: Text(
+                                  'v1.0.1.1',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Nunito',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                             ],

@@ -2,6 +2,8 @@ import '/components/disconnected_state/disconnected_state_widget.dart';
 import '/components/up_down_button/up_down_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -9,17 +11,16 @@ import 'r_p_settings_model.dart';
 export 'r_p_settings_model.dart';
 
 class RPSettingsWidget extends StatefulWidget {
-  const RPSettingsWidget({Key? key}) : super(key: key);
+  const RPSettingsWidget({super.key});
 
   @override
-  _RPSettingsWidgetState createState() => _RPSettingsWidgetState();
+  State<RPSettingsWidget> createState() => _RPSettingsWidgetState();
 }
 
 class _RPSettingsWidgetState extends State<RPSettingsWidget> {
   late RPSettingsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -33,7 +34,6 @@ class _RPSettingsWidgetState extends State<RPSettingsWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -42,7 +42,7 @@ class _RPSettingsWidgetState extends State<RPSettingsWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -55,6 +55,7 @@ class _RPSettingsWidgetState extends State<RPSettingsWidget> {
                   fontFamily: 'Nunito',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -62,6 +63,7 @@ class _RPSettingsWidgetState extends State<RPSettingsWidget> {
           elevation: 2.0,
         ),
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(
@@ -78,6 +80,43 @@ class _RPSettingsWidgetState extends State<RPSettingsWidget> {
                       maxSettingValue: 10,
                       minSettingValue: 1,
                       deltaValue: 1,
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        await actions.sendCommandOverBluetooth(
+                          'RESET',
+                          'RPLEVEL',
+                          FFAppState().connectedDeviceID,
+                          '37200001-7638-4216-B629-96AD40F79BB1',
+                          '47200008-7638-4216-B629-96AD40F79BB1',
+                        );
+                      },
+                      text: 'Reset RP Level',
+                      options: FFButtonOptions(
+                        width: 130.0,
+                        height: 40.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Nunito',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 2.0,
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).secondary,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ),
                 ],

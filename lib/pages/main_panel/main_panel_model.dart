@@ -4,13 +4,14 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'main_panel_widget.dart' show MainPanelWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class MainPanelModel extends FlutterFlowModel {
+class MainPanelModel extends FlutterFlowModel<MainPanelWidget> {
   ///  State fields for stateful widgets in this page.
 
   // Model for UpDownButton component.
@@ -22,8 +23,7 @@ class MainPanelModel extends FlutterFlowModel {
   // Model for DisconnectedState component.
   late DisconnectedStateModel disconnectedStateModel;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {
     upDownButtonModel1 = createModel(context, () => UpDownButtonModel());
     upDownButtonModel2 = createModel(context, () => UpDownButtonModel());
@@ -32,13 +32,11 @@ class MainPanelModel extends FlutterFlowModel {
         createModel(context, () => DisconnectedStateModel());
   }
 
+  @override
   void dispose() {
     upDownButtonModel1.dispose();
     upDownButtonModel2.dispose();
     upDownButtonModel3.dispose();
     disconnectedStateModel.dispose();
   }
-
-  /// Additional helper methods are added here.
-
 }

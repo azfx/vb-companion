@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
@@ -17,14 +18,14 @@ export 'settings_old_model.dart';
 
 class SettingsOldWidget extends StatefulWidget {
   const SettingsOldWidget({
-    Key? key,
+    super.key,
     this.deviceID,
-  }) : super(key: key);
+  });
 
   final String? deviceID;
 
   @override
-  _SettingsOldWidgetState createState() => _SettingsOldWidgetState();
+  State<SettingsOldWidget> createState() => _SettingsOldWidgetState();
 }
 
 class _SettingsOldWidgetState extends State<SettingsOldWidget>
@@ -32,27 +33,8 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
   late SettingsOldModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
-  int get pageViewCurrentIndex => _model.pageViewController != null &&
-          _model.pageViewController!.hasClients &&
-          _model.pageViewController!.page != null
-      ? _model.pageViewController!.page!.round()
-      : 0;
 
-  final animationsMap = {
-    'stackOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 500.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -62,8 +44,23 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.initializeDevice(
-        widget.deviceID!,
+        widget!.deviceID!,
       );
+    });
+
+    animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 500.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -73,7 +70,6 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -82,17 +78,18 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
+          top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.8,
+                height: MediaQuery.sizeOf(context).height * 0.8,
                 child: Stack(
                   children: [
                     Padding(
@@ -130,11 +127,10 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                       .fromSTEB(
                                                           0.0, 5.0, 0.0, 5.0),
                                                   child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.6,
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.6,
                                                     height: 85.0,
                                                     decoration: BoxDecoration(
                                                       borderRadius:
@@ -166,7 +162,13 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                                 TextAlign.start,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Nunito',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                           ),
 
                                                           // 1. The widget code updates the json object sliderValues
@@ -202,15 +204,14 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                                   1,
                                                               onChanged:
                                                                   () async {
-                                                                setState(() {
+                                                                FFAppState()
+                                                                        .brightness =
+                                                                    getJsonField(
                                                                   FFAppState()
-                                                                          .brightness =
-                                                                      getJsonField(
-                                                                    FFAppState()
-                                                                        .currentSliderValue,
-                                                                    r'''$.brightness''',
-                                                                  );
-                                                                });
+                                                                      .currentSliderValue,
+                                                                  r'''$.brightness''',
+                                                                );
+                                                                setState(() {});
                                                               },
                                                             ),
                                                           ),
@@ -224,11 +225,10 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                       .fromSTEB(
                                                           0.0, 5.0, 0.0, 5.0),
                                                   child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.6,
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.6,
                                                     height: 85.0,
                                                     decoration: BoxDecoration(
                                                       color: Color(0x00E0E3E7),
@@ -261,7 +261,13 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                                 TextAlign.start,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Nunito',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                           ),
                                                           Container(
                                                             width: 200.0,
@@ -294,15 +300,14 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                                   1,
                                                               onChanged:
                                                                   () async {
-                                                                setState(() {
+                                                                FFAppState()
+                                                                        .contrast =
+                                                                    getJsonField(
                                                                   FFAppState()
-                                                                          .contrast =
-                                                                      getJsonField(
-                                                                    FFAppState()
-                                                                        .currentSliderValue,
-                                                                    r'''$.contrast''',
-                                                                  );
-                                                                });
+                                                                      .currentSliderValue,
+                                                                  r'''$.contrast''',
+                                                                );
+                                                                setState(() {});
                                                               },
                                                             ),
                                                           ),
@@ -316,11 +321,10 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                       .fromSTEB(
                                                           0.0, 5.0, 0.0, 5.0),
                                                   child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.6,
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.6,
                                                     height: 85.0,
                                                     decoration: BoxDecoration(
                                                       color: Color(0x00E0E3E7),
@@ -353,7 +357,13 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                                 TextAlign.start,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Nunito',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                           ),
                                                           Container(
                                                             width: 200.0,
@@ -385,15 +395,14 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                                   1,
                                                               onChanged:
                                                                   () async {
-                                                                setState(() {
+                                                                FFAppState()
+                                                                        .rpLevel =
+                                                                    getJsonField(
                                                                   FFAppState()
-                                                                          .rpLevel =
-                                                                      getJsonField(
-                                                                    FFAppState()
-                                                                        .currentSliderValue,
-                                                                    r'''$.rpLevel''',
-                                                                  );
-                                                                });
+                                                                      .currentSliderValue,
+                                                                  r'''$.rpLevel''',
+                                                                );
+                                                                setState(() {});
                                                               },
                                                             ),
                                                           ),
@@ -407,11 +416,10 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                       .fromSTEB(
                                                           0.0, 5.0, 0.0, 5.0),
                                                   child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.6,
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.6,
                                                     height: 85.0,
                                                     decoration: BoxDecoration(
                                                       color: Color(0x00E0E3E7),
@@ -444,7 +452,13 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                                 TextAlign.start,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Nunito',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                           ),
                                                           Container(
                                                             width: 200.0,
@@ -477,15 +491,14 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                                   1,
                                                               onChanged:
                                                                   () async {
-                                                                setState(() {
+                                                                FFAppState()
+                                                                        .volume =
+                                                                    getJsonField(
                                                                   FFAppState()
-                                                                          .volume =
-                                                                      getJsonField(
-                                                                    FFAppState()
-                                                                        .currentSliderValue,
-                                                                    r'''$.volume''',
-                                                                  );
-                                                                });
+                                                                      .currentSliderValue,
+                                                                  r'''$.volume''',
+                                                                );
+                                                                setState(() {});
                                                               },
                                                             ),
                                                           ),
@@ -525,17 +538,17 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                               .center,
                                                       children: [
                                                         Container(
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.2,
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.2,
                                                           height: 400.0,
                                                           child: custom_widgets
                                                               .BlueToothDeviceVerticalSlider(
-                                                            width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
                                                                     .width *
                                                                 0.2,
                                                             height: 400.0,
@@ -561,15 +574,14 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                                 1,
                                                             onChanged:
                                                                 () async {
-                                                              setState(() {
+                                                              FFAppState()
+                                                                      .zoomLevel =
+                                                                  getJsonField(
                                                                 FFAppState()
-                                                                        .zoomLevel =
-                                                                    getJsonField(
-                                                                  FFAppState()
-                                                                      .currentSliderValue,
-                                                                  r'''$.zoomLevel''',
-                                                                );
-                                                              });
+                                                                    .currentSliderValue,
+                                                                r'''$.zoomLevel''',
+                                                              );
+                                                              setState(() {});
                                                             },
                                                           ),
                                                         ),
@@ -585,7 +597,13 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                             'Zoom',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Nunito',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                           ),
                                                         ),
                                                       ],
@@ -597,10 +615,9 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                           ],
                                         ),
                                         Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              1.0,
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  1.0,
                                           height: 100.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
@@ -619,6 +636,7 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                         .override(
                                                           fontFamily: 'Nunito',
                                                           fontSize: 24.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),
@@ -732,6 +750,7 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                                 Duration(milliseconds: 500),
                                             curve: Curves.ease,
                                           );
+                                          setState(() {});
                                         },
                                         effect: smooth_page_indicator
                                             .ExpandingDotsEffect(
@@ -781,6 +800,7 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                     .override(
                                       fontFamily: 'Nunito',
                                       color: Colors.white,
+                                      letterSpacing: 0.0,
                                     ),
                                 elevation: 2.0,
                                 borderSide: BorderSide(
@@ -818,6 +838,7 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                     .override(
                                       fontFamily: 'Nunito',
                                       color: Colors.white,
+                                      letterSpacing: 0.0,
                                     ),
                                 elevation: 2.0,
                                 borderSide: BorderSide(
@@ -833,14 +854,13 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                     ),
                     if (FFAppState().connectionState == 'disconnected')
                       Container(
-                        width: MediaQuery.of(context).size.width * 1.0,
-                        height: MediaQuery.of(context).size.height * 0.8,
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        height: MediaQuery.sizeOf(context).height * 0.8,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBackground,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              25.0, 25.0, 25.0, 25.0),
+                          padding: EdgeInsets.all(25.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -866,6 +886,7 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                         fontFamily: 'Nunito',
                                         color: FlutterFlowTheme.of(context)
                                             .tertiary,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -875,8 +896,12 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                 child: Text(
                                   'Please ensure the headset is powered on, and in bluetooth scan mode.',
                                   textAlign: TextAlign.center,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Nunito',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                               FFButtonWidget(
@@ -905,6 +930,7 @@ class _SettingsOldWidgetState extends State<SettingsOldWidget>
                                       .override(
                                         fontFamily: 'Nunito',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 2.0,
                                   borderSide: BorderSide(

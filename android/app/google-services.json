@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "6516373915",
+    "project_id": "vbadmin",
+    "storage_bucket": "vbadmin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6516373915:android:c20c963cdfdbd35122c93e",
+        "android_client_info": {
+          "package_name": "com.lvl.vbadmin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlmUCg7jRmLaqaNU9ZS_kqBsK6NcAvncA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6516373915:android:fbb60831621145e422c93e",
+        "android_client_info": {
+          "package_name": "com.vb.companion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlmUCg7jRmLaqaNU9ZS_kqBsK6NcAvncA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

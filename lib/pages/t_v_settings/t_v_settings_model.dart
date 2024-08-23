@@ -5,11 +5,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 't_v_settings_widget.dart' show TVSettingsWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class TVSettingsModel extends FlutterFlowModel {
+class TVSettingsModel extends FlutterFlowModel<TVSettingsWidget> {
   ///  State fields for stateful widgets in this page.
 
   // Model for UpDownButton component.
@@ -23,8 +24,7 @@ class TVSettingsModel extends FlutterFlowModel {
   // Model for DisconnectedState component.
   late DisconnectedStateModel disconnectedStateModel;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {
     upDownButtonModel = createModel(context, () => UpDownButtonModel());
     vBButtonComponentModel1 =
@@ -37,6 +37,7 @@ class TVSettingsModel extends FlutterFlowModel {
         createModel(context, () => DisconnectedStateModel());
   }
 
+  @override
   void dispose() {
     upDownButtonModel.dispose();
     vBButtonComponentModel1.dispose();
@@ -44,7 +45,4 @@ class TVSettingsModel extends FlutterFlowModel {
     vBButtonComponentModel3.dispose();
     disconnectedStateModel.dispose();
   }
-
-  /// Additional helper methods are added here.
-
 }

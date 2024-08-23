@@ -10,17 +10,16 @@ import 'buddy_model.dart';
 export 'buddy_model.dart';
 
 class BuddyWidget extends StatefulWidget {
-  const BuddyWidget({Key? key}) : super(key: key);
+  const BuddyWidget({super.key});
 
   @override
-  _BuddyWidgetState createState() => _BuddyWidgetState();
+  State<BuddyWidget> createState() => _BuddyWidgetState();
 }
 
 class _BuddyWidgetState extends State<BuddyWidget> {
   late BuddyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final _unfocusNode = FocusNode();
 
   @override
   void initState() {
@@ -34,7 +33,6 @@ class _BuddyWidgetState extends State<BuddyWidget> {
   void dispose() {
     _model.dispose();
 
-    _unfocusNode.dispose();
     super.dispose();
   }
 
@@ -43,7 +41,7 @@ class _BuddyWidgetState extends State<BuddyWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -56,6 +54,7 @@ class _BuddyWidgetState extends State<BuddyWidget> {
                   fontFamily: 'Nunito',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: [],
@@ -63,6 +62,7 @@ class _BuddyWidgetState extends State<BuddyWidget> {
           elevation: 2.0,
         ),
         body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(
@@ -74,17 +74,19 @@ class _BuddyWidgetState extends State<BuddyWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                5.0, 5.0, 5.0, 5.0),
+                            padding: EdgeInsets.all(5.0),
                             child: Container(
-                              width: MediaQuery.of(context).size.width * 1.0,
+                              width: MediaQuery.sizeOf(context).width * 1.0,
                               height: 50.0,
                               decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
-                                    offset: Offset(0.0, 2.0),
+                                    offset: Offset(
+                                      0.0,
+                                      2.0,
+                                    ),
                                   )
                                 ],
                                 border: Border.all(
@@ -99,14 +101,14 @@ class _BuddyWidgetState extends State<BuddyWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Nunito',
+                                      letterSpacing: 0.0,
                                       fontStyle: FontStyle.italic,
                                     ),
                               ),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 10.0, 10.0, 10.0),
+                            padding: EdgeInsets.all(10.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -142,6 +144,7 @@ class _BuddyWidgetState extends State<BuddyWidget> {
                                     .override(
                                       fontFamily: 'Nunito',
                                       color: Colors.white,
+                                      letterSpacing: 0.0,
                                     ),
                                 borderSide: BorderSide(
                                   color: FlutterFlowTheme.of(context).secondary,
@@ -173,6 +176,7 @@ class _BuddyWidgetState extends State<BuddyWidget> {
                                       .override(
                                         fontFamily: 'Nunito',
                                         fontSize: 16.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -197,6 +201,7 @@ class _BuddyWidgetState extends State<BuddyWidget> {
                                         .override(
                                           fontFamily: 'Nunito',
                                           color: Colors.white,
+                                          letterSpacing: 0.0,
                                         ),
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context)
@@ -214,8 +219,7 @@ class _BuddyWidgetState extends State<BuddyWidget> {
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
+                      padding: EdgeInsets.all(10.0),
                       child: GridView(
                         padding: EdgeInsets.zero,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -336,6 +340,7 @@ class _BuddyWidgetState extends State<BuddyWidget> {
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Nunito',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                         borderSide: BorderSide(
                           color: FlutterFlowTheme.of(context).tertiary,

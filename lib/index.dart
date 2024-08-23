@@ -16,3 +16,15 @@ export '/pages/buddy/buddy_widget.dart' show BuddyWidget;
 export '/pages/fittness_settings/fittness_settings_widget.dart'
     show FittnessSettingsWidget;
 export '/backup/disconnected/disconnected_widget.dart' show DisconnectedWidget;
+export '/pages/reading/reading_widget.dart' show ReadingWidget;
+export '/pages/contrast_modes/contrast_modes_widget.dart'
+    show ContrastModesWidget;
+export '/pages/videos/videos_widget.dart' show VideosWidget;
+export '/pages/camera_picture_modes/camera_picture_modes_widget.dart'
+    show CameraPictureModesWidget;
+export '/pages/admin_settings/admin_settings_widget.dart'
+    show AdminSettingsWidget;
+export '/pages/eye_tests/eye_tests_widget.dart' show EyeTestsWidget;
+export '/pages/setup_wifi/setup_wifi_widget.dart' show SetupWifiWidget;
+export '/pages/e_d_i_d_settings/e_d_i_d_settings_widget.dart'
+    show EDIDSettingsWidget;
